@@ -1,0 +1,5 @@
+D:\Applications\DropShipping\ShourceCode\DropShipping.Data\bin\Debug\DropShipping.Data.dll.config
+D:\Applications\DropShipping\ShourceCode\DropShipping.Data\bin\Debug\DropShipping.Data.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Data\bin\Debug\DropShipping.Data.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Data\obj\Debug\DropShipping.Data.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Data\obj\Debug\DropShipping.Data.pdb

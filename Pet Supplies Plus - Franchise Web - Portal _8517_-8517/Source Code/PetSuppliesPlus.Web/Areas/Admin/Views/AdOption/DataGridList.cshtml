@@ -1,0 +1,95 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.AdOption.AdOptionModel>
+ @using PetSuppliesPlus.Framework
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ADOptionName
+                </td>
+                @*<td>
+                        @item.MinimumCirculation
+                    </td>*@
+                <td>
+                    @item.Vendorname
+                </td>
+                @if (item.SpecialChoice == ((byte)SpecialAddOptions.NotPrinting).ToString())
+                {
+                    <td>
+                        NotPrinting
+                    </td>
+                }
+                else if (item.SpecialChoice == ((byte)SpecialAddOptions.SelfDistributing).ToString())
+                {
+                 <td>SelfDistributing</td>   
+                }
+                else
+                {
+                    <td></td>
+                }
+
+                    <td>
+                        @(item.IsActive == true ? "Active" : "InActive")
+                    </td>
+                    <td>
+                        <a href="@Url.Content("~/Admin/AdOption/Add/")@item.EncryptedID" title="edit"><img alt="edit" src="@Url.Content("~/Content/images/edit.png")"></a>
+                        @if (item.IsActive)
+                        {
+                            <a href="javascript:void(0);" onclick="removeAdOption('@item.EncryptedID')" title="InActive"><img alt="InActive" src="@Url.Content("~/Content/images/delete.png")"></a>
+                        }
+                    </td>
+                </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="10">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="6">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }
+    <script>
+        function CompanyDetail(id) {
+            $('#' + id).css('display', '');
+        }
+
+
+        function removeAdOption(eId) {
+
+            if (confirm('Are you sure you want to InActivate this AdOption?')) {
+                var data = {
+                    id: eId
+                };
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("DeleteAdOption", "AdOption")',
+                    type: 'POST',
+                    data: JSON.stringify({ id: eId }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.Message);
+                        if (data.Status == 0) {
+                            asynList();
+                        }
+                    },
+                    error: function (data) {
+                    }
+
+                });
+            }
+        }
+    </script>

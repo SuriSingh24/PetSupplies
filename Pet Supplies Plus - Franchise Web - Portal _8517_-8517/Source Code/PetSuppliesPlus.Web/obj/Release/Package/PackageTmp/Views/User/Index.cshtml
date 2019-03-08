@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage User</h2>
+
+<div class="tabular-data">
+    <table class="table  large-only tablularData">
+        <caption>User Account <span>List</span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th>
+                    Profile
+                </th>
+                <th>
+                    @*@if (cId > 0)
+                        {<input type="hidden" id="cid" name="cid" value="@cId" />}*@
+                    <a class="sort-icon" onclick="sortRequest('name')">Name</a>
+                    <br />
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" />
+                </th>
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('email')">Email</a>
+                    <br />
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Email" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('address')">Address </a>
+                    <br />
+                    <input type="text" id="address" name="address" class="form-control" placeholder="Address" />
+                </th>
+                <th>
+                        <a class="sort-icon" onclick="sortRequest('country')">Country</a>
+                        <br />
+                        <input type="text" id="country" name="country" class="form-control" placeholder="Country" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('city')">City</a>
+                        <br />
+                        <input type="text" id="city" name="city" class="form-control" placeholder="City" />
+                    </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('mobile')">Mobile</a>
+                    <br />
+                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('department')">Department</a>
+                    <br />
+                    <input type="text" id="department" name="department" class="form-control" placeholder="Department" />
+                </th>
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('role')">Role</a>
+                    <br />
+                    <input type="text" id="role" name="role" class="form-control" placeholder="Role" />
+                </th>
+                <th>
+                    <a class="sort-icon datepicker" onclick="sortRequest('createdon')">Update</a>
+                    <br />
+                    <input type="text" id="createdon" name="createdon" class="form-control" placeholder="Update" />
+                </th>
+                <th>
+                    <a class="sort-icon datepicker" onclick="sortRequest('status')">Status</a>
+                    <br />
+                    <select onchange="searchRequest();" name="status" id="status" class="form-control">
+                        <option value="">All</option>
+                        <option value="1">Active</option>
+                        <option value="2">InActive</option>
+
+                    </select>
+                </th>
+                @*<th>
+                        <a class="sort-icon datepicker" onclick="sortRequest('company')">Company Name</a>
+                        <br />
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Company Name" />
+                    </th>*@
+                <th style="vertical-align: top; width: 100px;">
+                    Action
+                    <br />
+                    @*<img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />*@
+
+                    @*<a href="@Url.Content("~/ManageUsers/Add")">
+                        <img src="@Url.Content("~/content/images/add-user.png")" title="add" style="cursor:pointer;" />
+                    </a>*@
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "ManageUsers")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'createdon';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+       
+    });
+</script>
+    

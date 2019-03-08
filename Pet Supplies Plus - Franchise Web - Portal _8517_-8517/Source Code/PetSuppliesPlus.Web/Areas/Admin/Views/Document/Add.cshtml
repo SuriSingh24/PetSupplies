@@ -1,0 +1,123 @@
+﻿@model PetSuppliesPlus.Models.DocumentModel
+@{
+    ViewBag.Title = "Document";
+    Layout = null;
+}
+
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+@using (Html.BeginForm("Save", "Document", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Document</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            @*<div class="col-md-6 col-sm-6">
+                                <label>Month<span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.MonthID, new SelectList(ViewBag.Month, "Value", "Text"), "Select Month", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.MonthID)
+                            </div>*@
+                            <div class="col-md-6 col-sm-6">
+                                <label>Document<span class="text-danger">*</span></label>
+                                @Html.HiddenFor(m => m.MonthID)
+                                <div class="col-md-12 col-sm-12">
+                                        <input type="file" id="files" name="files" />
+                                </div>
+                                @Html.ValidationMessageFor(m => m.FileName)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <button type="submit" class="btn btn-default save" onclick="return Save();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageAdMonth/Index")';">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<script>
+    @*$('body').on('change', 'input[type = file]', function (e) {
+        var fName = $(this).val();
+        if (fName != "") {
+                //_files = e.target.files;
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    data.append("file0", e.target.files[0]);
+
+                    _isShowProcess = false;
+
+                    $.ajax({
+                        url: '@Url.Action("Upload", "Document")',
+                        type: 'POST',
+                        data: data,
+                        async: false,
+                        success: function (data) {
+                            if (data.Status == 0) {
+                                //alert(data.Message);
+                                $('#Attachment').val(data.Message);
+                                $('#photoPreview').attr('src', _imgPath + data.Message);
+                                _isShowProcess = true;
+                            }
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                }
+         
+        }
+    });*@
+
+    function Save() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("Save", "AdOption")',
+                type: 'POST',
+                data: data.serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>
+

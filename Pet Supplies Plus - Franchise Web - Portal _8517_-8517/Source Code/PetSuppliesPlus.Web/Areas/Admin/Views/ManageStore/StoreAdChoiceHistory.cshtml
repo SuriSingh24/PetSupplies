@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>Ad Choice <span>History</span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th width="10%">
+                    <a class="sort-icon" onclick="sortRequest('Month')">Month</a>
+                    <br />
+                    <input type="text" id="Month" name="Month" class="form-control" placeholder="Month" />
+                    <input type="text" id="userid" name="userid" style="display:none;" />
+                </th>
+                <th width="10%">
+                    <a class="sort-icon" onclick="sortRequest('Year')">Year</a>
+                    <br />
+                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Year" />
+                </th>
+                <th width="10%">
+                    <a class="sort-icon" onclick="sortRequest('storeid')">Store ID</a>
+                    <br />
+                    <input type="text" id="storeid" name="storeid" class="form-control" placeholder="Store ID" />
+                </th>
+                <th width="25%">
+                    <a class="sort-icon" onclick="sortRequest('storename')">Store Name</a>
+                    <br />
+                    <input type="text" id="storename" name="storename" class="form-control" placeholder="Store Name" />
+                    @*<input type="text" id="userid" name="userid" style="display:none;" />*@
+                </th>
+                <th width="15%">
+                    <a class="sort-icon" onclick="sortRequest('adoptionname')">Ad Option</a>
+                    <br />
+                    <input type="text" id="adoptionname" name="adoptionname" class="form-control" placeholder="Ad Option" />
+                </th>
+                <th width="15%">
+                    <a class="sort-icon" onclick="sortRequest('coupon')">Coupon</a>
+                    <br />
+                    <input type="text" id="coupon" name="coupon" class="form-control" placeholder="Coupon" />
+                </th>
+                <th width="20%">
+                    <a class="sort-icon" onclick="sortRequest('dropnumber')">Drop Number</a>
+                    <br />
+                    <input type="text" id="dropnumber" name="dropnumber" class="form-control number" placeholder="Drop Number" />
+                </th>
+                <th width="10%">
+                        <a class="sort-icon" onclick="sortRequest('device')">Device</a>
+                        <br />
+                        <input type="text" id="device" name="device" class="form-control" placeholder="Device" />
+                    </th>
+                    <th width="10%">
+                        <a class="sort-icon" onclick="sortRequest('browser')">Browser</a>
+                        <br />
+                        <input type="text" id="browser" name="browser" class="form-control" placeholder="Browser" />
+                    </th>
+                <th style="display:none;"><img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" /></th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/AjaxGrid.js"></script>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridListForStoreAdChoiceHistory", "ManageStore")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'createdon';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+
+</script>
+
+

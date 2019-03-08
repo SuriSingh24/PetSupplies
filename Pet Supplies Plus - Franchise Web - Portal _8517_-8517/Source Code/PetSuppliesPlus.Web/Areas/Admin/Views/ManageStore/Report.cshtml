@@ -1,0 +1,148 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceModel
+@using PetSuppliesPlus.Framework
+@{
+    ViewBag.Title = "Output Report";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>
+            <div class="button-left  right_btn"> Output Report <span>List</span></div>
+            @using (Html.BeginForm("ExportOutputReportToExcel", "ManageStore", FormMethod.Post, new { @role = "form", @enctype = "multipart/form-data" }))
+            {
+                <button style="float:right" type="submit" id="Export" class="btn btn-default" title="Download report in Excel">Download</button>
+            }
+
+            @Html.DropDownList("month_dp", new SelectList(ViewBag.MonthList, "Value", "Text"), "Select", new { @class = "form-control" })
+
+        </caption>
+
+        <thead> <!-- class="th-scroll"-->
+            <tr id="search-filter">
+                @*<th>
+                        @Html.DropDownList("monthid", new SelectList(ViewBag.MonthList, "Value", "Text"), "All", new { @class = "form-control" })
+                    </th>*@
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('ihw')">IHW &nbsp;  &nbsp;  &nbsp; &nbsp;  </a>
+                    <br />
+                    <input type="text" id="ihw" name="ihw" class="form-control datepicker" placeholder="IHW" />
+                    <input type="text" id="monthid" name="monthid" class="form-control" style="display:none;" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storegroup')">Store Group &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                    <br />
+                    @*<input type="text" id="AdOptionName" name="AdOptionName" class="form-control number" placeholder="Option Name" />*@
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storeid')">Individual Store </a>
+                    <br />
+                    @Html.DropDownList("storeid", new SelectList(ViewBag.StoreList, "Value", "Value"), "All", new { @class = "form-control" })
+                </th>
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('copyversion')">Copy Version A </a>
+                    <br />
+                    <input type="text" id="copyversion" name="copyversion" class="form-control" placeholder="Copy Version" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storecode')">Copy Version B</a>
+                    <br />
+                    <input type="text" id="storecode" name="storecode" class="form-control" placeholder="Copy Version" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storecode')">Version Code </a>
+                    <br />
+                    <input type="text" id="storecode" name="storecode" class="form-control" placeholder="Version Code" />
+                </th>
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('adoptionname')">Product&nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;</a>
+                    <br />
+                    <input type="text" id="adoptionname" name="adoptionname" class="form-control" placeholder="Product" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('artdue')">Art Due&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp;</a>
+                    <br />
+                    <input type="text" id="artdue " name="artdue" class="form-control" placeholder="Art Due" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('coupontext')">Coupon  &nbsp;  &nbsp;  &nbsp; &nbsp;</a>
+                    <br />
+                    <input type="text" id="coupontext" name="coupontext" class="form-control" placeholder="Coupon" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('artworkcode')">Art Work Code</a>
+                    <br />
+                    <input type="text" id="artworkcode " name="artworkcode" class="form-control" placeholder="Art Due" />
+                </th>
+
+                @*<th style="vertical-align: top; width: 30px;">
+                    Action
+                    <br />
+                    <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+                </th>*@
+            </tr>
+        </thead>
+        <tbody id="data-grid"> <!--  class="tscroll" -->
+            <!-- Data Table  -->
+        </tbody>
+
+    </table>
+</div>
+<div id="popup-big-text" class="work-popup">
+    <div class="work-area">
+        <a href="javascript:void(0);" class="close-btn">X</a>
+        <div class="work-body Savemodel-body">
+            <h1 class="pop_head">&nbsp;</h1>
+            <div class="content_body popup-big-text-body">
+            </div>
+            <div class="footer_btn">
+                <ul>
+                    <li>
+                        <input type="button" value="OK" class="btn-popup-close" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/AjaxGrid.js"></script>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("ReportDataGridList", "ManageStore")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'userid';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+
+    $('body').on('change', '#month_dp', function () {
+        $('#monthid').val($(this).val());
+        searchRequest();
+    });
+
+    $('body').on('click', '.big-text', function () {
+        var div = $(this).attr('data-div');
+        var content = $(div).html();
+        $('.popup-big-text-body').html(content);
+        $('#popup-big-text').fadeIn();
+    });
+
+    $('body').on('click', '.close-btn,.btn-popup-close', function () {
+        $('#popup-big-text').fadeOut();
+    });
+
+    $(function () {
+        $('.datepicker').datepicker();
+    });
+</script>

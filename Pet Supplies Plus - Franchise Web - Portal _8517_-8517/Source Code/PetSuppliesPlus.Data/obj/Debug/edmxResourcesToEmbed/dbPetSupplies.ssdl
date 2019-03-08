@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PetSupplies_8517.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdMonth">
+    <Key>
+      <PropertyRef Name="AdMonthID" />
+    </Key>
+    <Property Name="AdMonthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdCoupnID" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="LockOutEndDate" Type="datetime" />
+    <Property Name="LockOutStartDate" Type="datetime" />
+    <Property Name="DropNumber" Type="int" />
+    <Property Name="PetpartnerInfo" Type="nvarchar(max)" />
+    <Property Name="CorpInHomeDate" Type="datetime" />
+    <Property Name="AdOptionID" Type="int" />
+    <Property Name="CorpPlanText" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ADOption">
+    <Key>
+      <PropertyRef Name="ADOptionID" />
+    </Key>
+    <Property Name="ADOptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADOptionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecialChoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="MinimumCirculation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vendorname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Inactive" Type="bit" />
+  </EntityType>
+  <EntityType Name="AllowedStoreOption">
+    <Key>
+      <PropertyRef Name="AllowedStoreOptionID" />
+    </Key>
+    <Property Name="AllowedStoreOptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="AdOptionID" Type="int" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponText" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="CouponAdMonth">
+    <Key>
+      <PropertyRef Name="AdMonthID" />
+      <PropertyRef Name="CouponId" />
+    </Key>
+    <Property Name="AdMonthID" Type="int" Nullable="false" />
+    <Property Name="CouponId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MonthID" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="StackTrace" Type="varchar(max)" />
+    <Property Name="Source" Type="varchar(max)" />
+    <Property Name="Url" Type="varchar" MaxLength="255" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ExceptionReport">
+    <Key>
+      <PropertyRef Name="ExceptionID" />
+    </Key>
+    <Property Name="ExceptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MonthId" Type="int" />
+    <Property Name="StoreId" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="400" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="IsAnyAdChoiseAssigned" Type="bit" />
+  </EntityType>
+  <EntityType Name="LoginHistory">
+    <Key>
+      <PropertyRef Name="LoginHistoryID" />
+    </Key>
+    <Property Name="LoginHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="IPaddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Device" Type="nvarchar" MaxLength="50" />
+    <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Market">
+    <Key>
+      <PropertyRef Name="MarketID" />
+    </Key>
+    <Property Name="MarketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="Ownergroup" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Storename" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MarketID" Type="int" />
+    <Property Name="StoreCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="ArtworkCode" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="StoreAdChoice">
+    <Key>
+      <PropertyRef Name="ChoiceID" />
+    </Key>
+    <Property Name="ChoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdMonthID" Type="int" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="AdOptionID" Type="int" />
+    <Property Name="TimeStamp" Type="time" Precision="7" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Device" Type="nvarchar" MaxLength="50" />
+    <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+    <Property Name="InHomeDate" Type="datetime" />
+    <Property Name="ChoiceInitials" Type="nvarchar" MaxLength="50" />
+    <Property Name="FollowedCorporate" Type="bit" />
+    <Property Name="NotPrinting" Type="bit" />
+    <Property Name="OwnDistribution" Type="bit" />
+    <Property Name="CouponID" Type="int" />
+  </EntityType>
+  <EntityType Name="StoreAdChoiceHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChoiceID" Type="int" />
+    <Property Name="AdMonthID" Type="int" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="AdOptionID" Type="int" />
+    <Property Name="TimeStamp" Type="time" Precision="7" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Device" Type="nvarchar" MaxLength="50" />
+    <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+    <Property Name="InHomeDate" Type="datetime" />
+    <Property Name="ChoiceInitials" Type="nvarchar" MaxLength="50" />
+    <Property Name="CouponID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'PetSupplies_8517.dbo.StoreList$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StoreList$">
+          <Property Name="StoreId" Type="float" />
+          <Property Name="OwnerGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="Circulation" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarketID" Type="int" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ownername" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserStore">
+    <Key>
+      <PropertyRef Name="UserStoreID" />
+    </Key>
+    <Property Name="UserStoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="StoreID" Type="int" />
+  </EntityType>
+  <Association Name="FK_AdMonth_ADOption">
+    <End Role="ADOption" Type="Self.ADOption" Multiplicity="0..1" />
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="AdMonth">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdMonth_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="AdMonth">
+        <PropertyRef Name="AdCoupnID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllowedStoreOption_ADOption">
+    <End Role="ADOption" Type="Self.ADOption" Multiplicity="0..1" />
+    <End Role="AllowedStoreOption" Type="Self.AllowedStoreOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="AllowedStoreOption">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllowedStoreOption_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="AllowedStoreOption" Type="Self.AllowedStoreOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="AllowedStoreOption">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CouponAdMonth_AdMonth">
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="1" />
+    <End Role="CouponAdMonth" Type="Self.CouponAdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="CouponAdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CouponAdMonth_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
+    <End Role="CouponAdMonth" Type="Self.CouponAdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="CouponAdMonth">
+        <PropertyRef Name="CouponId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_AdMonth">
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="0..1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="MonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExceptionReport_AdMonth">
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="0..1" />
+    <End Role="ExceptionReport" Type="Self.ExceptionReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="ExceptionReport">
+        <PropertyRef Name="MonthId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExceptionReport_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="ExceptionReport" Type="Self.ExceptionReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="ExceptionReport">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginHistory_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="LoginHistory" Type="Self.LoginHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LoginHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Store_Market">
+    <End Role="Market" Type="Self.Market" Multiplicity="0..1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Market">
+        <PropertyRef Name="MarketID" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="MarketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_AdMonthID">
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="0..1" />
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="AdMonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_ADOption">
+    <End Role="ADOption" Type="Self.ADOption" Multiplicity="0..1" />
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_AdMonth">
+    <End Role="AdMonth" Type="Self.AdMonth" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="AdMonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_ADOption">
+    <End Role="ADOption" Type="Self.ADOption" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_StoreAdChoice">
+    <End Role="StoreAdChoice" Type="Self.StoreAdChoice" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreAdChoice">
+        <PropertyRef Name="ChoiceID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="ChoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StoreAdChoiceHistory" Type="Self.StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserStore_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="UserStore" Type="Self.UserStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="UserStore">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserStore_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserStore" Type="Self.UserStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserStore">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="PetSupplies_8517StoreContainer">
+    <EntitySet Name="AdMonth" EntityType="Self.AdMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADOption" EntityType="Self.ADOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllowedStoreOption" EntityType="Self.AllowedStoreOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CouponAdMonth" EntityType="Self.CouponAdMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExceptionReport" EntityType="Self.ExceptionReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreAdChoice" EntityType="Self.StoreAdChoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreAdChoiceHistory" EntityType="Self.StoreAdChoiceHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserStore" EntityType="Self.UserStore" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AdMonth_ADOption" Association="Self.FK_AdMonth_ADOption">
+      <End Role="ADOption" EntitySet="ADOption" />
+      <End Role="AdMonth" EntitySet="AdMonth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdMonth_Coupon" Association="Self.FK_AdMonth_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="AdMonth" EntitySet="AdMonth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllowedStoreOption_ADOption" Association="Self.FK_AllowedStoreOption_ADOption">
+      <End Role="ADOption" EntitySet="ADOption" />
+      <End Role="AllowedStoreOption" EntitySet="AllowedStoreOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllowedStoreOption_Store" Association="Self.FK_AllowedStoreOption_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="AllowedStoreOption" EntitySet="AllowedStoreOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CouponAdMonth_AdMonth" Association="Self.FK_CouponAdMonth_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonth" />
+      <End Role="CouponAdMonth" EntitySet="CouponAdMonth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CouponAdMonth_Coupon" Association="Self.FK_CouponAdMonth_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="CouponAdMonth" EntitySet="CouponAdMonth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_AdMonth" Association="Self.FK_Document_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonth" />
+      <End Role="Document" EntitySet="Document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExceptionReport_AdMonth" Association="Self.FK_ExceptionReport_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonth" />
+      <End Role="ExceptionReport" EntitySet="ExceptionReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExceptionReport_Store" Association="Self.FK_ExceptionReport_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="ExceptionReport" EntitySet="ExceptionReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginHistory_User" Association="Self.FK_LoginHistory_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="LoginHistory" EntitySet="LoginHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Store_Market" Association="Self.FK_Store_Market">
+      <End Role="Market" EntitySet="Market" />
+      <End Role="Store" EntitySet="Store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_AdMonthID" Association="Self.FK_StoreAdChoice_AdMonthID">
+      <End Role="AdMonth" EntitySet="AdMonth" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_ADOption" Association="Self.FK_StoreAdChoice_ADOption">
+      <End Role="ADOption" EntitySet="ADOption" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_Coupon" Association="Self.FK_StoreAdChoice_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_Store" Association="Self.FK_StoreAdChoice_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_User" Association="Self.FK_StoreAdChoice_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_AdMonth" Association="Self.FK_StoreAdChoiceHistory_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonth" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_ADOption" Association="Self.FK_StoreAdChoiceHistory_ADOption">
+      <End Role="ADOption" EntitySet="ADOption" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_Coupon" Association="Self.FK_StoreAdChoiceHistory_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_Store" Association="Self.FK_StoreAdChoiceHistory_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_StoreAdChoice" Association="Self.FK_StoreAdChoiceHistory_StoreAdChoice">
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoice" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_User" Association="Self.FK_StoreAdChoiceHistory_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserStore_Store" Association="Self.FK_UserStore_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="UserStore" EntitySet="UserStore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserStore_User" Association="Self.FK_UserStore_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserStore" EntitySet="UserStore" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

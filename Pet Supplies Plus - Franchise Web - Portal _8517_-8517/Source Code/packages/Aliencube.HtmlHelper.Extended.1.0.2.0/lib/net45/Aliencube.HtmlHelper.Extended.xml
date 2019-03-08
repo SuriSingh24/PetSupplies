@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aliencube.HtmlHelper.Extended</name>
+    </assembly>
+    <members>
+        <member name="T:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions">
+            <summary>
+            This represents the extension methods entity for the <c>HtmlHelper</c> class.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.String,System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="protocol">HTTP protocal.</param>
+            <param name="hostName">Hostname.</param>
+            <param name="fragment">URL fragment - anchor name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageActionLinkExtensions.ImageActionLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the action link containing image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="actionName">MVC action name.</param>
+            <param name="controllerName">MVC controller name.</param>
+            <param name="protocol">HTTP protocal.</param>
+            <param name="hostName">Hostname.</param>
+            <param name="fragment">URL fragment - anchor name.</param>
+            <param name="routeValues">List of the route values.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes used for the {img} tag.</param>
+            <returns>Returns the action link containing image.</returns>
+        </member>
+        <member name="T:Aliencube.HtmlHelper.Extended.HtmlHelperImageLinkExtensions">
+            <summary>
+            This represents the extension methods entity for the <c>HtmlHelper</c> class.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageLinkExtensions.ImageLink(System.Web.Mvc.HtmlHelper,System.String,System.String)">
+            <summary>
+            Renders the &lt;a&gt; tag with image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="href">Link URL.</param>
+            <returns>Returns the &lt;a&gt; tag with image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageLinkExtensions.ImageLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Renders the &lt;a&gt; tag with image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="href">Link URL.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes for the {img} tag.</param>
+            <returns>Returns the &lt;a&gt; tag with image.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageLinkExtensions.ImageLink(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the &lt;a&gt; tag with image.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="href">Link URL.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <param name="imageAttributes">List of attributes for the {img} tag.</param>
+            <returns>Returns the &lt;a&gt; tag with image.</returns>
+        </member>
+        <member name="T:Aliencube.HtmlHelper.Extended.HtmlHelperLinkExtensions">
+            <summary>
+            This represents the extension methods entity for the <c>HtmlHelper</c> class.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperLinkExtensions.Link(System.Web.Mvc.HtmlHelper,System.String,System.String)">
+            <summary>
+            Renders the &lt;a&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="linkText">Link text.</param>
+            <param name="href">Link URL.</param>
+            <returns>Returns the &lt;a&gt; tag.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperLinkExtensions.Link(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Object)">
+            <summary>
+            Renders the &lt;a&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="linkText">Link text.</param>
+            <param name="href">Link URL.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <returns>Returns the &lt;a&gt; tag.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperLinkExtensions.Link(System.Web.Mvc.HtmlHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the &lt;a&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="linkText">Link text.</param>
+            <param name="href">Link URL.</param>
+            <param name="htmlAttributes">List of attributes used for the {a} tag.</param>
+            <returns>Returns the &lt;a&gt; tag.</returns>
+        </member>
+        <member name="T:Aliencube.HtmlHelper.Extended.PropertyHelper">
+            <summary>
+            This represents the helper entity for properties.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.PropertyHelper.ConvertAnonymousObjectToRouteValueDictionary(System.Object)">
+            <summary>
+            Converts the anonymous type object to the <c>RouteValueDictionary</c> type object.
+            </summary>
+            <param name="attributes">Anonymous type object.</param>
+            <returns>Returns the <c>RouteValueDictionary</c> type object.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.PropertyHelper.ConvertAnonymousObjectToDictionary(System.Object)">
+            <summary>
+            Converts the anonymous type object to the <c>Dictionary{string, object}</c> type object.
+            </summary>
+            <param name="attributes">Anonymous type object.</param>
+            <returns>Returns the <c>Dictionary{string, object}</c> type object.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.PropertyHelper.ConvertDictionaryToRouteValueDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Converts the <c>Dictionary{string, object}</c> type object to the <c>RouteValueDictionary</c> object.
+            </summary>
+            <param name="attributes"><c>Dictionary{string, object}</c> type object.</param>
+            <returns>Returns the <c>RouteValueDictionary</c> type object.</returns>
+        </member>
+        <member name="T:Aliencube.HtmlHelper.Extended.TagBuilderExtensions">
+            <summary>
+            This represents the extension methods entity for the <c>TagBuilder</c> class.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.TagBuilderExtensions.ToMvcHtmlString(System.Web.Mvc.TagBuilder,System.Web.Mvc.TagRenderMode)">
+            <summary>
+            Converts the <c>TagBuilder</c> instance to <c>MvcHtmlString</c> object.
+            </summary>
+            <param name="tagBuilder"><c>TagBuilder</c> instance.</param>
+            <param name="renderMode"><c>TagRenderMode</c> enum value.</param>
+            <returns>Returns <c>MvcHtmlString</c> object.</returns>
+        </member>
+        <member name="T:Aliencube.HtmlHelper.Extended.HtmlHelperImageExtensions">
+            <summary>
+            This represents the extension methods entity for the <c>System.Web.Mvc.HtmlHelper</c> class.
+            </summary>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageExtensions.Image(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Renders the &lt;img&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <returns>Returns the &lt;img&gt; tag in HTML format.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageExtensions.Image(System.Web.Mvc.HtmlHelper,System.String,System.Object)">
+            <summary>
+            Renders the &lt;img&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="imageAttributes">List of attributes for the {img} tag.</param>
+            <returns>Returns the &lt;img&gt; tag in HTML format.</returns>
+        </member>
+        <member name="M:Aliencube.HtmlHelper.Extended.HtmlHelperImageExtensions.Image(System.Web.Mvc.HtmlHelper,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the &lt;img&gt; tag.
+            </summary>
+            <param name="htmlHelper"><c>HtmlHelper</c> instance.</param>
+            <param name="src">Image file location.</param>
+            <param name="imageAttributes">List of attributes for the {img} tag.</param>
+            <returns>Returns the &lt;img&gt; tag in HTML format.</returns>
+        </member>
+    </members>
+</doc>

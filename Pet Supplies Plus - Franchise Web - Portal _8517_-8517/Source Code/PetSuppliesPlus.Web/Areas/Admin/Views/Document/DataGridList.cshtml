@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PetSuppliesPlus.Models.DocumentModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = null;
+    }
+    @if (Model != null && Model.Count() > 0)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                @if (item.MonthID != null)
+                {
+                <td>
+                    @*@(new DateTime(2000, item.MonthID, 1).ToString("MMMM"))*@
+                    @item.ID
+                </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>
+                    @item.FileName
+                </td>
+                <td>
+                    <a href="javascript:void(0);" onclick="removeDocument('@item.EncyptedID')" title="InActive"><img alt="delete" src="@Url.Content("~/Content/images/delete.png")"></a>
+                </td>
+
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="3">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }
+    <script>
+        function removeDocument(eId) {
+            if (confirm('Are you sure you want to delete this Document?')) {
+                var data = {
+                    id: eId
+                };
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("DeleteDocument", "Document")',
+                    type: 'POST',
+                    data: JSON.stringify({ id: eId }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.Message);
+                        if (data.Status == 0) {
+                            asynList();
+                        }
+                    },
+                    error: function (data) {
+                    }
+                });
+            }
+        }
+    </script>

@@ -1,0 +1,75 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceModel
+@{
+    ViewBag.Title = "ConfirmationPage";
+    Layout = null;
+}
+<label>Confirmation Summary</label>
+<form id="ConfirmationPage">
+<dl class="dl-horizontal">
+    <dt>Store No</dt>
+    <dd>#@(Model.StoreID.ToString("SR00000"))</dd>
+    <dt>Store</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Storename)
+    </dd>
+    <dt>OwnerName</dt>
+    <dd>@(Model.Ownername)</dd>
+    <dt>Select Choice</dt>
+    <dd>@(Model.ChoiceInitials)</dd>
+    @if (Model.ADOptionName != null)
+    {
+        <dt>Option</dt>
+        <dd>@(Model.ADOptionName)</dd>
+    }
+    @if (Model.CouponName != null)
+    {
+        <dt>Coupon</dt>
+        <dd>@(Model.CouponName)</dd>
+    }
+</dl>
+<button type="button" class="btn btn-default save" onclick="return SaveSelectedData();">Save</button>
+<button type="button" class="btn btn-default save" onclick="window.location = '@Url.Content("~/store/Detail/")@Model.StoreID';">Edit</button>
+<button type="button" class="btn btn-default save" onclick="window.location = '@Url.Content("~/store/Index/")@Model.UserID';">Cancel</button>
+</form>
+
+<script src="~/Scripts/jquery-ui.js"></script>
+<script type="text/javascript">
+    function SaveSelectedData() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("SaveSelectedData", "Store")',
+                type: 'POST',
+                data: data.serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        @*$('.alert').delay(1000).slideUp("slow", function () {
+                            redirect('@Url.Content("~/admin/managecouponadmonth/index/" + Model.MonthId)');
+                        });*@
+                        asynList();
+                        $('.alert-success').delay(1500).slideUp();
+                       
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+      
+</script>

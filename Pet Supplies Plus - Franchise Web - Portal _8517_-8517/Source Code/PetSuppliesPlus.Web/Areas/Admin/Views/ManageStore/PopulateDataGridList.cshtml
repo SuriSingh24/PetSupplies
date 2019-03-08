@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Store.StoreAdChoiceModel>
+    @{
+        Layout = null;
+    }
+    @if (Model != null && Model.Count() > 0)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.ChoiceID)</td>
+               
+                <td>@(item.AdMonthID)</td>
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="12">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="12">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }
+    

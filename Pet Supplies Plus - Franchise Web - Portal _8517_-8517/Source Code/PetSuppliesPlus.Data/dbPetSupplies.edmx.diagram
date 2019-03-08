@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="07d7a6dc09944c6195d1fecb459b61d7" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="PetSupplies_8517.AdMonth" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="PetSupplies_8517.ADOption" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="PetSupplies_8517.AllowedStoreOption" Width="1.5" PointX="6" PointY="9.125" />
+        <EntityTypeShape EntityType="PetSupplies_8517.Coupon" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="PetSupplies_8517.Document" Width="1.5" PointX="5.25" PointY="16.75" />
+        <EntityTypeShape EntityType="PetSupplies_8517.EventLog" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PetSupplies_8517.ExceptionReport" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="PetSupplies_8517.LoginHistory" Width="1.5" PointX="7.5" PointY="18.375" />
+        <EntityTypeShape EntityType="PetSupplies_8517.Market" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="PetSupplies_8517.Store" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="PetSupplies_8517.StoreAdChoice" Width="1.5" PointX="7.5" PointY="12.375" />
+        <EntityTypeShape EntityType="PetSupplies_8517.StoreAdChoiceHistory" Width="1.5" PointX="9.75" PointY="12.5" />
+        <EntityTypeShape EntityType="PetSupplies_8517.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PetSupplies_8517.User" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="PetSupplies_8517.UserStore" Width="1.5" PointX="8.5" PointY="8.375" />
+        <AssociationConnector Association="PetSupplies_8517.FK_AdMonth_ADOption" />
+        <AssociationConnector Association="PetSupplies_8517.FK_AdMonth_Coupon" />
+        <AssociationConnector Association="PetSupplies_8517.FK_Document_AdMonth" />
+        <AssociationConnector Association="PetSupplies_8517.FK_ExceptionReport_AdMonth" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoice_AdMonthID" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_AdMonth" />
+        <AssociationConnector Association="PetSupplies_8517.FK_AllowedStoreOption_ADOption" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoice_ADOption" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_ADOption" />
+        <AssociationConnector Association="PetSupplies_8517.FK_AllowedStoreOption_Store" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoice_Coupon" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_Coupon" />
+        <AssociationConnector Association="PetSupplies_8517.FK_ExceptionReport_Store" />
+        <AssociationConnector Association="PetSupplies_8517.FK_LoginHistory_User" />
+        <AssociationConnector Association="PetSupplies_8517.FK_Store_Market" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoice_Store" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_Store" />
+        <AssociationConnector Association="PetSupplies_8517.FK_UserStore_Store" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoice_User" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_StoreAdChoice" />
+        <AssociationConnector Association="PetSupplies_8517.FK_StoreAdChoiceHistory_User" />
+        <AssociationConnector Association="PetSupplies_8517.FK_UserStore_User" />
+        <AssociationConnector Association="PetSupplies_8517.CouponAdMonth" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

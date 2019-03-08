@@ -1,0 +1,112 @@
+﻿@model PetSuppliesPlus.Models.ForgotPasswordModel
+@{
+    ViewBag.Title = "Forgot Password";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Forgot <span> Password</span></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Enter your Email Address", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="">
+                                    <div class="">
+                                        <button class="btn btn-default save" type="button" onclick="doReset()">Submit</button>
+                                        <a href="@Url.Action("Index", "Account")" class="space-left">Back to login </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+                        </div>
+                    </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function fnSuccess(data) {
+        if (data) {
+            alert(data.Message);
+            clear();
+        }
+        //alert(data.Message);
+        bootbox.alert(data.Message);
+    }
+
+    function fnError(data) {
+
+    }
+
+    function clear() {
+        $('#Email').val('');
+    }
+
+    function doReset() {
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("ResetPassword","AdminForgotPassword")',
+                type: 'POST',
+                data: data.serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.Status == 0) {
+                        // window.location = '/';
+                        alert(data.Message);
+                        clear();
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+
+    $(function () {
+        $('#top-area').hide();
+    });
+
+</script>
+
+

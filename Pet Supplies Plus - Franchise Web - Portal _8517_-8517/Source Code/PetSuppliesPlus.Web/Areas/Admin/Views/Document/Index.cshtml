@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Document";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Add", "Document")
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>Document <span>List</span></caption>
+        <thead>
+            <tr id="search-filter">
+                @*<th>
+                    <a class="sort-icon" onclick="sortRequest('month')">Month</a>
+                    <br />
+                    @Html.DropDownList("month", new SelectList(ViewBag.MonthList, "Value", "Text"), "All", new { @class = "form-control" })
+                </th>*@
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('id')">Id</a>
+                    <br />
+                    <input type="text" id="id" name="id" class="form-control" placeholder="Document Id" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('name')">File Name</a>
+                    <br />
+                    <input type="text" id="name" name="name" class="form-control" placeholder="name" />
+                </th>
+                <th style="vertical-align: top; width: 100px;">
+                    Action
+                    <br />
+                    <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/AjaxGrid.js"></script>
+
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "Document")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'month';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+</script>
+

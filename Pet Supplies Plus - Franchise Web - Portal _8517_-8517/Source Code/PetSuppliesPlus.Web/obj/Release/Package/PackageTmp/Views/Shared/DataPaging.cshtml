@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+@if (ViewBag.DataPaging != null)
+{
+    PetSuppliesPlus.Models.DataPagingModel PagingModel = (PetSuppliesPlus.Models.DataPagingModel)ViewBag.DataPaging;
+
+    if (PagingModel.TotalRecords > 0)
+    {
+        PagingModel.TotalPages = (PagingModel.TotalRecords / PagingModel.PageSize) + ((PagingModel.TotalRecords % PagingModel.PageSize == 0) ? 0 : 1);
+        PagingModel.StartRecord = (PagingModel.TotalRecords == 0) ? 0 : (((PagingModel.CurrentPageID - 1) * PagingModel.PageSize) + 1);
+        PagingModel.EndRecord = (PagingModel.TotalPages == PagingModel.CurrentPageID || PagingModel.TotalRecords == 0) ? PagingModel.TotalRecords : (((PagingModel.CurrentPageID - 1) * PagingModel.PageSize) + PagingModel.PageSize);
+
+
+        PagingModel.StartPageNumber = 1;
+        PagingModel.EndPageNumber = PagingModel.TotalPages;
+        if (PagingModel.TotalPages > 8 && PagingModel.CurrentPageID > 4)
+        {
+            PagingModel.StartPageNumber = PagingModel.CurrentPageID - 3;
+            PagingModel.EndPageNumber = PagingModel.StartPageNumber + 7;
+            if (PagingModel.EndPageNumber > PagingModel.TotalPages)
+            {
+                PagingModel.EndPageNumber = PagingModel.TotalPages;
+                PagingModel.StartPageNumber = PagingModel.EndPageNumber - 7;
+            }
+        }
+        else if (PagingModel.CurrentPageID < 5)
+        {
+            PagingModel.EndPageNumber = PagingModel.TotalPages < 8 ? PagingModel.TotalPages : 8;
+        }
+
+    <div class="widget-paging">
+        <div class="page-status">
+            <span class="fl margin-right10">
+                <select id="selectPageSize" class="pagination_pagesize select">
+                    <option value="3">3</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </span>Showing @PagingModel.StartRecord - @PagingModel.EndRecord of @PagingModel.TotalRecords
+        </div>
+        @if (PagingModel.TotalPages > 1)
+        { 
+            <div class="page-no">
+                @if (PagingModel.CurrentPageID ==1)
+                {
+                    <span class="button orange disabled">First</span>
+                    <span class="button orange disabled"><img src="@Url.Content("~/Content/images/arrow-l.png")" alt="Previous"></span>
+                }
+                else
+                {
+                    <span class="button  orange" onclick="pageRequest('1')">First</span>
+                    <span class="button orange" onclick="pageRequest('@(PagingModel.CurrentPageID - 1)')"><img src="@Url.Content("~/Content/images/arrow-l.png")" alt="Previous"></span>
+                }
+                 
+                    @for (int TStart = PagingModel.StartPageNumber; TStart <= PagingModel.EndPageNumber && TStart <= PagingModel.TotalPages; TStart++)
+                    {
+                        if (TStart == PagingModel.CurrentPageID)
+                        {
+                        <span class='button active'>@TStart</span>
+                        }
+                        else
+                        {
+                        <span class='button orange' onclick="pageRequest('@TStart')">@TStart</span>
+                        }
+                    }
+                 
+                @if (PagingModel.CurrentPageID == PagingModel.TotalPages)
+                {
+                    <span class='button disabled'><img src="@Url.Content("~/Content/images/arrow-r.png")"  alt="Next"></span>
+                    <span class='button disabled'>Last</span>
+                }
+                else
+                {
+                    <span class='button  orange' onclick="pageRequest('@(PagingModel.CurrentPageID + 1)')"><img src="@Url.Content("~/Content/images/arrow-r.png")"  alt="Next"></span>
+                    <span class='button  orange' onclick="pageRequest('@PagingModel.TotalPages')">Last</span>
+                }
+            </div>
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#selectPageSize').val('@PagingModel.PageSize');
+        });
+    </script>
+        
+    }
+    else
+    {
+    <span class="no-record">No Record Found</span>
+    }
+}

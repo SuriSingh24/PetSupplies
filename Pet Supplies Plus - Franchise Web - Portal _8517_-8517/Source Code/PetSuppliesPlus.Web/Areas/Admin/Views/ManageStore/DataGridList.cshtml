@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Store.StoreModel>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count() > 0)
+{
+    int counter = 0;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.StoreID)</td>
+            <td>
+                @item.Ownergroup
+            </td>
+            <td>@(item.Storename)</td>
+            @*<td>@(item.Circulation)</td>*@
+            <td>@(item.City)</td>
+            <td>@(item.State)</td>
+            <td>@(item.MarketName)</td>
+            <td>@(item.StoreCode)</td>
+            <td>@(item.ArtworkCode)</td>
+            <td >
+                <a href="@Url.Content("~/Admin/ManageStore/History/")@item.EncryptedID" title="history"><img alt="history" src="@Url.Content("~/Content/images/list.png")"></a>
+                <a href="@Url.Content("~/Admin/ManageStore/Add/")@item.EncryptedID" title="edit"><img alt="edit" src="@Url.Content("~/Content/images/edit.png")"></a>
+                <a href="javascript:void(0);" onclick="removeStore('@item.EncryptedID')" title="InActive"><img alt="delete" src="@Url.Content("~/Content/images/delete.png")"></a>
+               
+            </td>
+        </tr>
+        counter++;
+    }
+    <tr>
+        <td colspan="12">
+            @Html.Partial("DataPaging")
+        </td>
+    </tr>
+}
+else
+{
+    <tr>
+        <td colspan="12">
+            <span class="no-data">No record found.</span>
+        </td>
+    </tr>
+
+}
+<script>
+   
+    function removeStore(eId) {
+
+        if (confirm('Are you sure you want to delete this Store?')) {
+            var data = {
+                id: eId
+            };
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("DeleteStore", "ManageStore")',
+                type: 'POST',
+                data: JSON.stringify({ id: eId }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Message);
+                    if (data.Status == 0) {
+                        asynList();
+                    }
+                },
+                error: function (data) {
+                }
+
+            });
+        }
+    }
+</script>

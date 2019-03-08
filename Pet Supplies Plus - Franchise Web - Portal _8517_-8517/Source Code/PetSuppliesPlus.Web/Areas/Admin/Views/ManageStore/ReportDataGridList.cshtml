@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Store.StoreReportModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(item.InHomeDate.HasValue ? item.InHomeDate.Value.ToString(ApplicationConstant.DateFormatDisplay) : "")
+                </td>
+                <td>
+                    
+                @if (!string.IsNullOrEmpty(item.StoreGroup) && item.StoreGroup.Length > 40)
+                {
+                    <a href="javascript:void(0);" data-div=".divstore_@item.ChoiceID" class="big-text">@item.StoreGroup.GetLimitedText(40)</a>
+
+                    <div class="divstore_@item.ChoiceID" style="display:none;">@item.StoreGroup</div>
+                }
+                else
+                {
+                    <span>@item.StoreGroup</span>
+                }
+            </td>
+            <td>
+                @item.StoreID
+            </td>
+            <td></td>
+            <td>
+                @item.StoreCode
+            </td>
+            <td></td>
+            <td>
+                @item.AdOptionName
+            </td>
+            <td></td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.CouponText) && item.CouponText.Length > 40)
+                {
+                    <a href="javascript:void(0);" data-div=".divstorec_@item.ChoiceID" class="big-text">@item.CouponText.GetLimitedText(40)</a>
+
+                    <div class="divstorec_@item.ChoiceID" style="display:none;">@item.CouponText</div>
+                }
+                else
+                {
+                    <span>@item.CouponText</span>
+                }
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ArtWorkCode) && item.ArtWorkCode.Length > 40)
+                {
+                    <a href="javascript:void(0);" data-div=".divstorea_@item.ChoiceID" class="big-text">@item.ArtWorkCode.GetLimitedText(40)</a>
+
+                    <div class="divstorea_@item.ChoiceID" style="display:none;">@item.ArtWorkCode</div>
+                }
+                else
+                {
+                    <span>@item.ArtWorkCode</span>
+                }
+            </td>
+
+            @*<td></td>*@
+        </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="11">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="6">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }

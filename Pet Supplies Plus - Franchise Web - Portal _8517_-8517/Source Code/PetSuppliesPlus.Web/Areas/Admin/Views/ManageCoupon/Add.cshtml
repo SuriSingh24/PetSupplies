@@ -1,0 +1,120 @@
+﻿@model PetSuppliesPlus.Model.Coupon.CouponModel
+@{
+    ViewBag.Title = "Coupon";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+
+
+
+
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+@using (Html.BeginForm("Add", "Coupon", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Coupon</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Coupon Text<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.CouponText, new { @class = "form-control", @placeholder = "Coupon Text"})
+                                @Html.ValidationMessageFor(m => m.CouponText)
+                                @Html.HiddenFor(m => m.EncryptedID)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Is Active<span class="text-danger">*</span></label>
+                                @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control chk-box"})
+                                @Html.ValidationMessageFor(m => m.IsActive)
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <button type="button" class="btn btn-default save" onclick="return SaveCoupon();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageCoupon/Index")';">Cancel</button>
+                                <input type="reset" id="btnReset" name="btnReset" style="display: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script type="text/javascript">
+    function clear() {
+        $('#Name').val('')
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveCoupon();
+        }
+    });
+    function SaveCoupon() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("Save", "ManageCoupon")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        $('.alert').delay(3000).slideUp("slow", function () {
+                           redirect('@Url.Content("~/admin/managecoupon/index")');
+                        });
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                    }
+
+                    @*if (data.Status == 0) {
+                        redirect('@Url.Content("~/admin/managecoupon/index")');
+                    }
+                    else {
+                        $('#error-messgae').html(data.Message);
+                        $('.alert-error').slideDown();
+                    }*@
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

@@ -1,0 +1,140 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceModel
+@{
+    ViewBag.Title = "Store | " + (Model.Storename ?? "");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-responsive table-bg">
+    <h1>Monthly Print Decision</h1>
+    <div class="col-md-12 col-sm-12">
+
+        <div class="alert alert-error" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="error-messgae"></strong></li>
+            </ul>
+        </div>
+        <div class="alert alert-success" style="display: none;">
+            <button data-dismiss="alert" class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="success-messgae"></strong></li>
+            </ul>
+        </div>
+        <form id="Detail">
+            <dl class="dl-horizontal">
+                <dt>Store No</dt>
+                <dd>#@(Model.StoreID.ToString("SR00000"))</dd>
+
+                <dt>                Store            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Storename)
+                </dd>
+            </dl>
+
+            <input type="radio" name="ChoiceInitials" id="fc" value="Follow Coporate" checked="checked">Follow Coporate</br>
+
+            <input type="radio" name="ChoiceInitials" id="ic" value="Individual Choice"> Individual Choice</br>
+
+            <input type="radio" name="ChoiceInitials" id="np" value="Not printing"> Not printing</br>
+            <div id="DivIndividualChoice">
+                @Html.DropDownListFor(m => m.AdOptionID, new SelectList(Model.AdOptionList, "Value", "Text"), "Select Option", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.AdOptionID)
+            </div>
+            <div id="DivNotPrinting">
+                <button type="button" class="btn btn-default save" onclick="return GoToConfirmationPage();">Continue</button>
+            </div>
+            <div id="DivCommon">
+                <button type="button" class="btn btn-default save" onclick="return GoToCouponPage();">Continue</button>
+            </div>
+
+            <button type="button" class="btn btn-default save" onclick="window.location = '@Url.Content("~/store/index")';">Back To Store</button>
+        </form>
+        <div id="DivCoupon"></div>
+        <div id="DivNPConfirmation"></div>
+
+        @section scripts
+        {
+            <script src="~/Scripts/jquery-ui.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#DivIndividualChoice').hide();
+                    $('#DivNotPrinting').hide();
+                    $('#fc').on('click', function () {
+                        $('#DivIndividualChoice').hide();
+                        $('#DivNotPrinting').hide();
+                        $('#DivCommon').show();
+                    });
+                    $('#ic').on('click', function () {
+                        $('#DivIndividualChoice').show();
+                        $('#DivNotPrinting').hide();
+                        $('#DivCommon').show();
+                    });
+                    $('#np').on('click', function () {
+                        $('#DivIndividualChoice').hide();
+                        $('#DivNotPrinting').show();
+                        $('#DivCommon').hide();
+                    });
+                    $('#yes').on('click', function () {
+                        $('#CouponID').show();
+                    });
+                    $('#no').on('click', function () {
+                        $('#CouponID').hide();
+                    });
+                });
+
+                function GoToCouponPage() {
+                    if ($('form').valid()) {
+                        var data = $('form');
+                        $.ajax({
+                            cache: false,
+                            async: true,
+                            url: '@Url.Action("CouponPage", "Store")',
+                            type: 'POST',
+                            data: data.serialize(),
+                            dataType: 'html',
+                            success: function (data) {
+                                $('#DivCoupon').html(data);
+                            },
+                            error: function (data) {
+                            },
+                            beforeSend: function () {
+                                $('.wait-pupup').fadeIn();
+                            },
+                            complete: function () {
+                                $('.wait-pupup').fadeOut();
+                            }
+                        });
+                    }
+                }
+
+                function GoToConfirmationPage() {
+                    if ($('form').valid()) {
+                        var data = $('form');
+                        $.ajax({
+                            cache: false,
+                            async: true,
+                            url: '@Url.Action("ConfirmationPage", "Store")',
+                            type: 'POST',
+                            data: data.serialize(),
+                            dataType: 'html',
+                            success: function (data) {
+                                $('#DivNPConfirmation').html(data);
+                            },
+                            error: function (data) {
+                            },
+                            beforeSend: function () {
+                                $('.wait-pupup').fadeIn();
+                            },
+                            complete: function () {
+                                $('.wait-pupup').fadeOut();
+                            }
+                        });
+                    }
+                }
+            </script>
+        }
+

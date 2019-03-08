@@ -1,0 +1,240 @@
+﻿@model IList<PetSuppliesPlus.Model.Store.StoreAdChoiceModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "Ad Confirmation";
+        string choiceInitials = "";
+    }
+    <h2>Ad Confirmation @(ViewBag.CurrentMonth)</h2>
+    <div class="alrt-text2">
+        <p>
+            <b> Notes:</b><br />
+            @if (ViewBag.CurrentMonth != null)
+            {
+                <span>You can adjust until @ViewBag.CurrentMonth.</span>
+            }
+            else
+            {
+                <span>You can adjust until deadline date.</span>
+            }
+
+        </p>
+    </div>
+    <div class="alert-main">
+        <div class="alert alert-error" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="error-messgae"></strong></li>
+            </ul>
+        </div>
+        <div class="alert alert-success" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="success-messgae">We have successfully received your Ad-Option Response(s). Thank you for your Submission. You may edit your responses before the date of (Lockout Date).</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="table-responsive table-bg">
+            <h1>Ad Confirmation</h1>
+            @using (Html.BeginForm("CouponSelection", "Store", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "frmUserAdChoice" }))
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr id="search-filter">
+                            <th width="22%">
+                                Store Name
+                            </th>
+                            <th width="13%">
+                                Store #
+                            </th>
+                            <th width="65%">Ad Choice Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-grid">
+                        <!-- Data Table  -->
+                        @if (Model != null)
+                        {
+                            int counter = 0;
+
+                            for (int i = 0; i < Model.Count(); i++)
+                            {
+                                bool isChecked = Model[i].IsCouponApply ?? false;
+                                bool isIC = Model[i].UserAdChoice == UserAdChoice.IndividualChoice;
+                                string UserAdType = Model[i].UserAdChoice == UserAdChoice.FollowCorporate ? "Follow Corporate, " + Model[i].ADOptionName + " " + Model[i].AdCouponName ?? ""
+                                    : Model[i].UserAdChoice == UserAdChoice.IndividualChoice ? "Alternative Options, " + Model[i].ADOptionName ?? ""
+                                    : Model[i].UserAdChoice == UserAdChoice.DoingOwnDistribution ? " " + Model[i].ADOptionName
+                                    : "" + Model[i].ADOptionName;
+                                string withCoupon = isIC == true ? (isChecked == true ? " with " + Model[i].CouponName : " without coupon") : "";
+                                choiceInitials = Model[i].ChoiceInitials ?? "";
+                                <tr>
+                                    <td>
+                                        @Model[i].Storename, @Model[i].Ownername
+                                    </td>
+                                    <td>@(Model[i].StoreID.ToString())</td>
+                                    <td>
+                                        @Html.HiddenFor(m => m[i].ChoiceID, new { @id = "ChoiceID" + i })
+                                        @Html.HiddenFor(m => m[i].EncryptedID, new { @id = "EncryptedID" + i })
+                                        @Html.HiddenFor(m => m[i].UserAdChoice, new { @id = "UserAdChoice" + i })
+                                        @Html.HiddenFor(m => m[i].StoreID, new { @id = "StoreID" + i })
+                                        @Html.HiddenFor(m => m[i].AdMonthID, new { @id = "AdMonthID" + i })
+                                        @Html.HiddenFor(m => m[i].FollowedCorporate, new { @id = "FollowedCorporate" + i })
+                                        @Html.HiddenFor(m => m[i].AdOptionID, new { @id = "AdOptionID" + i })
+                                        @Html.HiddenFor(m => m[i].SelectedAdOption, new { @id = "SelectedAdOption" + i })
+                                        @Html.HiddenFor(m => m[i].ADOptionName, new { @id = "ADOptionName" + i })
+                                        @Html.HiddenFor(m => m[i].InHomeDate, new { @id = "InHomeDate" + i })
+                                        @Html.HiddenFor(m => m[i].IsCouponApply, new { @id = "IsCouponApply" + i })
+                                        @Html.HiddenFor(m => m[i].CouponName, new { @id = "CouponName" + i })
+                                        @Html.HiddenFor(m => m[i].CouponID, new { @id = "CouponID" + i })
+                                        @Html.HiddenFor(m => m[i].ChoiceInitials, new { @class = "choice-initials", @id = "ChoiceInitials" + i })
+
+                                        @UserAdType @withCoupon
+                                        @*Doing @(Model[i].InHomeDate.Year > 2000 ? UserAdType + ", " + Model[i].InHomeDate.ToString(ApplicationConstant.DateFormatDisplay) : UserAdType ) @withCoupon*@
+                                    </td>
+                                </tr>
+                                counter++;
+                            }
+                        }
+                        <tr>
+                            <td colspan="2">
+                                <input type="text" id="UserInitials" name="UserInitials" class="form-control" placeholder="Initial To Verify Your Choices" value="" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-default save right button-confirm" onclick="return Continue();">Save</button>
+                                <button type="button" class="btn btn-default save button-confirm" onclick="return BackToSelection();">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+    <div id="Savemodel" class="work-popup">
+        <div class="work-area">
+            <a href="javascript:void(0);" class="close-btn">X</a>
+            <div class="work-body Savemodel-body">
+
+                <h1 class="pop_head">&nbsp;</h1>
+                <div class="content_body">
+                </div>
+                <div class="footer_btn">
+                    <ul>
+                        @*<li><a href="#">Submit</a></li>*@
+                        <li>
+                            <input type="button" value="OK" class="btn-popup-close" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts
+{
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-ui.js"></script>
+
+        <script type="text/javascript">
+            var isCouponSelection = true;
+            var isUserChoiceSelection = false;
+            var usrAdChoiceId = '[0].EncryptedID';
+
+            $('.datepicker').datepicker({
+                minDate: 0
+            });
+
+            $('body').on('click', '.yes', function () {
+                if (isCouponSelection) {
+                    $(this).find('.coupon-list').slideDown();
+                }
+                var storeId = $(this).attr('data-id');
+                var ind = $(this).attr('data-ind');
+                setCouponApply(ind, 'True');
+            });
+
+            $('body').on('click', '.no', function () {
+                if (isCouponSelection) {
+                    $(this).parent().find('select').val('');
+                    $(this).parent().find('.coupon-list').slideUp();
+                }
+
+                var storeId = $(this).attr('data-id');
+                var ind = $(this).attr('data-ind');
+                setCouponApply(ind, 'False');
+            });
+
+            function setCouponApply(ind, userChoice) {
+                $('#IsCouponApply' + ind).val(userChoice);
+            }
+
+            function Continue() {
+                $('#UserInitials').css("border-color", "#cccccc");
+                var initials = $('#UserInitials').val();
+                if (initials != undefined && initials != "") {
+                    $('.choice-initials').val(initials);
+                }
+                else {
+                    $('#UserInitials').css("border-color", "red")
+                    $('.content_body').html('Please Enter Initials To Confirm Choices');
+                    $('#Savemodel').fadeIn();
+                    //alert('please enter inital');
+                    return false;
+                }
+
+                $('.alert-error').slideUp();
+                //if ($('form').valid()) {
+                var data = $('form');
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    url: '@Url.Action("SaveUserAdChoice", "Store")',
+                    type: 'POST',
+                    data: data.serialize(),
+                    //contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('.alert ul li strong').html(data.Message);
+                        if (data.Status == 0) {
+                            $('.alert-success').slideDown();
+                            //$('button.save').fadeOut();
+                            $('.content_body').html(data.Message);
+                            $('#Savemodel').fadeIn();
+                            //$('#displaymsg').html(data.Message);
+                            //$('#Savemodel').modal('show');
+                            //alert(data.Message);
+                            // $('.alert').delay(10000).slideUp("slow", function () {
+                            // redirect('@Url.Content("~/store")');
+                            //    });
+                        }
+                        else {
+                            $('.alert-error').slideDown();
+                        }
+                        $('.button-confirm').hide();
+                    },
+                    error: function (data) {
+                    },
+                    beforeSend: function () {
+                        $('.wait-pupup').fadeIn();
+                    },
+                    complete: function () {
+                        $('.wait-pupup').fadeOut();
+                    }
+                });
+                //}
+            }
+            $('body').on('click', '.close-btn, .btn-popup-close', function () {
+                $('#Savemodel').fadeOut();
+            });
+            function BackToSelection() {
+                window.location = '@Url.Content("~/store")';
+
+            }
+        </script>
+
+    }

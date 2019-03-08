@@ -1,0 +1,109 @@
+﻿@model PetSuppliesPlus.Models.LoginModel
+@{
+    ViewBag.Title = "Admin Login";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+<div class="row">
+    <div class="col-md-2">&nbsp;</div>
+    <div class="col-md-8">
+        <h2>@ViewBag.Title</h2>
+        <section id="loginForm">
+            @*@Html.Partial("~/Views/Shared/_Notifications.cshtml")*@
+            <div class="alert alert-error row" style="display: none;">
+                <button class="close" type="button">
+                    ×
+                </button>
+                <ul>
+                    <li><strong id="error-messgae"></strong></li>
+                </ul>
+            </div>
+            <hr />
+            @using (Html.BeginForm("Dologin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(m => m.ReturnUrl);
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-10" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @placeholder = "Enter your Email Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-10" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @placeholder = "Enter your Password", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(mbox => mbox.RememberMe)
+                        &nbsp;Remember me
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-md-10">
+                        <input type="button" value="Log in" class="btn btn-default" onclick="doLogin()" />
+                        <a href="@Url.Action("Index", "AdminForgotPassword")" class="space-left">Forgot Password </a>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+
+</div>
+
+
+@*@section script{*@
+<script type="text/javascript">
+    function clear() {
+        $('#Email').val('');
+        $('#Password').val('');
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            doLogin();
+        }
+    });
+
+    function doLogin() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("DoLogin", "Account")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.Status == 0) {
+                        window.location = data.Message;
+                    }
+                    else {
+                        //alert(data.Message);
+                        $('#error-messgae').html(data.Message);
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

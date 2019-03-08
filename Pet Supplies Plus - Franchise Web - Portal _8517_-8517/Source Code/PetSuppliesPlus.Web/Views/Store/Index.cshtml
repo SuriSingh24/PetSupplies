@@ -1,0 +1,483 @@
+﻿@using PetSuppliesPlus.Framework;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Store List";
+    string Message = ViewBag.Message != null ? ViewBag.Message.ToString() : "";
+    bool isMonthAvailable = Message != "NoMonth";
+}
+
+@if (!isMonthAvailable)
+{
+    <div class="no-ad-month">
+        There is currently no Ad-Month decision to be made. Please contact
+        <a href="mailTo:adrequest@petsuppliesplus.com">adrequest@petsuppliesplus.com</a> for further questions.
+    </div>
+}
+else
+{
+    <h2>Corporate Plan @ViewBag.CurrentMonth</h2>
+    <div class="alrt-text2">
+        <p>@ViewBag.CorpPlanText </p>
+        <p>@ViewBag.PetPartnerInfo</p>
+        @foreach (var DocumentModel in ViewBag.DoucumentList)
+        {
+            <span> <a href="@Url.Content("~/DataContainer/Documents/"+ DocumentModel.FilePath)" title="Download" target="_blank" download="true">@DocumentModel.FileName <img src="@Url.Content("~/Content/images/download.png")" /></a> </span>
+        }
+    </div>
+    <div class="alert-main">
+        <div class="alert alert-error " style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="error-messgae"></strong></li>
+            </ul>
+        </div>
+        <div class="alert alert-success" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="success-messgae"></strong></li>
+            </ul>
+        </div>
+
+    </div>
+
+<div class="alrt-text2">
+    <h3>If You Want To Make A Selection For All Your Store(s), Choose In This Box</h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="select-all">
+                <li class="all-fc fff">
+                    <input type="radio" class="txt1" name="selector_all" id="f-option_all">
+                    <label for="f-option_all" class="txt_label1">Follow Corporate</label>
+                    <div class="check"></div>
+                </li>
+                <li class="all-np">
+                    <input type="radio" class="txt2" name="selector_all" id="n-option_all">
+                    <label for="n-option_all" class="txt_label2">Not Printing for the Month</label>
+                    <div class="check"></div>
+                </li>
+                <li class="all-od">
+                    <input type="radio" class="txt3" name="selector_all" id="d-option_all">
+                    <label for="d-option_all" class="txt_label3">Self-Distributing<br /> (Creating Own Artwork From Files Provided By PSP)</label>
+                    <div class="check"></div>
+                </li>
+                <li class="all-ic">
+                    <input type="radio" name="selector_all" id="i-option_all">
+                    <label for="i-option_all">Alternative Options</label>
+                    <div class="check"></div>
+                    <span class="clear-fix"></span>
+                    <ul class="ic-info-all" style="display:none;">
+                        <li class="clear-fix">
+                            @Html.DropDownList("AdOptionIdAll", new SelectList(ViewBag.AdOptionList, "Value", "Text"), "Select Ad Option", new { @class = "form-control ad-options-all", @style = "margin-bottom:10px;" })
+                        </li>
+
+                        <!-- Coupon Selection Start  -->
+                        <li class="ic-info-coupon-all clear-fix" style="display:none;">
+                            <p> Choose Coupon </p>
+                            <ul class="coupen_allactive">
+                                <li class="c-yes-all">
+                                    <input id="coupon-option-yes-all" type="radio" name="coupon-option-all">
+                                    <label for="coupon-option-yes-all">Yes</label>
+                                    <span class="check"></span>
+                                    <p class="coupon-list-all" style="display:none;">
+                                        @Html.DropDownList("CouponIdAll", new SelectList(ViewBag.CouponList, "Value", "Text"), "Select Coupon", new { @class = "form-control ad-Coupon-all", @style = "margin-bottom:10px;" })
+                                    </p>
+                                </li>
+                                <li class="c-no-all">
+                                    <input id="coupon-option-no-yes" type="radio" name="coupon-option-all">
+                                    <label for="coupon-option-no-yes">No</label>
+                                    <span class="check"></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Coupon Selection End  -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="table-responsive table-bg">
+        <h1>
+            Individual Store Choice(s):<br />
+            <span style="font-size:14px;">
+                *Even After Using Select All Functionality You Can Still Edit Individual Store(s) Below* @*@ViewBag.StoreChoice*@
+            </span>
+        </h1>
+        @using (Html.BeginForm("Next", "Store", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "frmUserAdChoice" }))
+        {
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr id="search-filter">
+                        <th width="17%">
+                            Store Name
+
+                            @*<a class="sort-icon" onclick="sortRequest('Storename')">Store Names</a>
+                                <br />
+                                <input type="text" id="Storename" name="Storename" class="form-control" placeholder="Store Names" value="@ViewBag.SearchText" />*@
+                        </th>
+                        <th width="8%">
+                            Store #
+                            @*<a class="sort-icon" onclick="sortRequest('storeid')">Store no</a>
+                                <br />
+                                <input type="text" id="storeid" name="storeid" class="form-control" placeholder="Store no" />*@
+
+                        </th>
+                        <th width="75%">
+                            Monthly Ad Choice<br />
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="data-grid">
+                    <!-- Data Table  -->
+                    @Html.Action("DataGridList", "Store")
+                    @if (isMonthAvailable)
+                    {
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="right">
+                                <button type="button" class="btn btn-default save" onclick="return Continue();">Continue</button>
+                                @*<button type="button" class="btn btn-default save" onclick="return BackToSelection();">Back to Selection</button>*@
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" style="color:red; font-size:25px;">
+                                There is currently no Ad-Month decision to be made. Please contact
+                                <a href="mailTo:adrequest@petsuppliesplus.com">adrequest@petsuppliesplus.com</a> for further questions.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+    </div>
+</div>
+<div id="Savemodel" class="work-popup">
+    <div class="work-area">
+        <a href="javascript:void(0);" class="close-btn">X</a>
+        <div class="work-body Savemodel-body">
+
+            <h1 class="pop_head">&nbsp;</h1>
+            <div class="content_body">
+            </div>
+            <div class="footer_btn">
+                <ul>
+                    @*<li><a href="#">Submit</a></li>*@
+                    <li>
+                        <input type="button" value="OK" class="btn-popup-close" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+}
+@section scripts
+{
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
+    @*<script src="~/Scripts/AjaxGrid.js"></script>*@
+    <script type="text/javascript">
+        @*_accessUrl = '@Url.Action("DataGridList", "Store")';
+        _gridDivId = 'data-grid';
+        _searchBoxDivId = 'search-filter';
+        _showAllRecords = true;
+        _sortExpression = 'createdon';
+        _isEditorPage = true;*@
+
+        var isCouponSelection = true;
+        var isUserChoiceSelection = true;
+        var usrAdChoiceId = '[0].EncryptedID';
+
+        $('.datepicker').datepicker({
+            minDate: 0
+        });
+
+        $('body').on('click', '.ic', function () {
+            if (isUserChoiceSelection) {
+                $(this).find('.ic-info').slideDown();
+            }
+            var userChoice = parseInt($(this).attr('data-uc'));
+            var storeId = $(this).attr('data-id');
+            var ind = $(this).attr('data-ind');
+            setUserAdChoice(ind, userChoice);
+        });
+
+        $('body').on('click', '.fc,.np,.od', function () {
+            if (isUserChoiceSelection) {
+                $(this).parent().find('select').val('');
+                $(this).parent().find('.datepicker').val('');
+                $(this).parent().find('.ic-info').slideUp();
+                $(this).parent().parent().find('.ic-info .ic-info-coupon').slideUp();
+                $(this).parent().parent().find('.ic-info .ic-info-coupon .coupon-list').slideUp();
+            }
+
+            var userChoice = parseInt($(this).attr('data-uc'));
+            var storeId = $(this).attr('data-id');
+            var ind = $(this).attr('data-ind');
+            setUserAdChoice(ind, userChoice);
+            $('.main-selection-' + ind).css({ height: 'auto' });
+        });
+
+        // select ad options
+        $('body').on('change', '.ad-options', function () {
+            var ad = $(this).val();
+            if (ad != "") {
+                $(this).parent().parent().find('.ic-info-coupon').slideDown();
+            }
+            var ind = $(this).attr('data-ind');
+            $('.main-selection-' + ind).css({ height: 250 });
+        });
+
+        // Choose coupon : Yes
+        $('body').on('click', '.c-yes', function () {
+            if (isCouponSelection) {
+                $(this).find('.coupon-list').slideDown();
+            }
+            var storeId = $(this).attr('data-id');
+            var ind = $(this).attr('data-ind');
+            setCouponApply(ind, 'True');
+        });
+
+        // Choose coupon : No
+        $('body').on('click', '.c-no', function () {
+            if (isCouponSelection) {
+                $(this).parent().find('select').val('');
+                $(this).parent().find('.coupon-list').slideUp();
+            }
+
+            var storeId = $(this).attr('data-id');
+            var ind = $(this).attr('data-ind');
+            setCouponApply(ind, 'False');
+        });
+
+        // select all functionality
+
+        $('body').on('click', '.all-fc,.all-np,.all-od,.all-ic', function () {
+            var cls = '';
+            var optionId = '';
+            if ($(this).hasClass('all-fc'))
+            { cls = 'fc'; optionId = 'f'; $('.main-selection-ul').css({ height: 'auto' }); $('.select-all').css({ height: 'auto' }); $('#f-option_all').prop('checked', true); }
+            else if ($(this).hasClass('all-np'))
+            { cls = 'np'; optionId = 't'; $('.main-selection-ul').css({ height: 'auto' }); $('.select-all').css({ height: 'auto' }); $('#n-option_all').prop('checked', true); }
+            else if ($(this).hasClass('all-od'))
+            { cls = 'od'; optionId = 'd'; $('.main-selection-ul').css({ height: 'auto' }); $('.select-all').css({ height: 'auto' }); $('#d-option_all').prop('checked', true); }
+            else if ($(this).hasClass('all-ic')) {
+                cls = 'ic'; optionId = 's'; $('.main-selection-ul').css({ height: 250 });
+                $('.select-all').css({ height: 200 });
+            }
+
+            $('#data-grid tr td div ul li.' + cls).each(function (i, tag) {
+                setAdSection(tag, optionId);
+            });
+
+            if (optionId == 's') {
+                $('.ic-info-all').slideDown();
+
+            }
+            else {
+                $('.ic-info-all').slideUp();
+                $('#AdOptionIdAll').val('');
+                $('.ic-info-coupon-all').slideUp();
+                $('.coupon-option-no').prop('checked', true);
+            }
+
+        });
+
+        $('body').on('click', '.close-btn, .btn-popup-close', function () {
+            $('#Savemodel').fadeOut();
+        });
+        // select ad options all
+        $('body').on('change', '.ad-options-all', function () {
+            var ad = $(this).val();
+            var adTxt = $('#AdOptionIdAll option:selected').text();
+            var msg = '';
+            if (ad != "") {
+                $('#coupon-option-no-yes').prop('checked', true);
+                $('#CouponIdAll').val('');
+                $('.coupon-list').css("display", "none");
+                $('.coupon-list-all').css("display", "none");
+                $('.ad-Coupons').val('');
+                $(".c-yes-all label").removeClass("green_active");
+                $('.c-no-all label').addClass("green_active");
+                $('.ic-info-coupon-all').slideDown();
+
+                //check ad options
+                $('#data-grid tr td div ul li select.ad-options').each(function (i, sel) {
+                    var storeId = $(sel).parent().attr('data-id');
+                    // check value is exist in ddl or not
+                    var exists = false;
+                    for (var i = 0; i < sel.options.length; i++) {
+                        if (sel.options[i].text == adTxt) { exists = true; }
+                    }
+
+                    if (exists) {
+                        $(sel).val(ad);
+                        // $(sel).parent().find('.ic-info-coupon').slideDown();
+                    }
+                    else {
+                        $(sel).val('');
+                        msg += ' Store#  ' + storeId + ' does not match selected ad option.\n </br>';
+                        //$(sel).parent().find('.ic-info-coupon').slideUp();
+                    }
+                });
+
+                //
+                $('#data-grid tr td div ul li.ic-info-coupon').each(function (i, tag) {
+                    $(tag).slideDown();
+                    $(tag).find('select').each(function (ind, sel) {
+
+                    });
+                });
+                // check all store has selected coupon
+                if (msg != '') {
+                    $('.content_body').html(msg);
+                    $('#Savemodel').fadeIn();
+                    //alert(msg);
+                }
+                $('.coupon-option-no').prop('checked', true);
+            }
+        });
+
+
+        function setAdSection(tag, optionId) {
+            // only for IC
+            if (optionId == 's') {
+                $(tag).find('.ic-info').slideDown();
+            }
+            else {
+                $(tag).parent().find('select').val('');
+                $(tag).parent().find('.datepicker').val('');
+                $(tag).parent().find('.ic-info').slideUp();
+                $(tag).parent().parent().find('.ic-info .ic-info-coupon').slideUp();
+                $(tag).parent().parent().find('.ic-info .ic-info-coupon .coupon-list').slideUp();
+            }
+
+            var userChoice = parseInt($(tag).attr('data-uc'));
+            var storeId = $(tag).attr('data-id');
+            var ind = $(tag).attr('data-ind');
+            $('#' + optionId + '-option-' + storeId).prop('checked', 'checked');
+
+            setUserAdChoice(ind, userChoice);
+        }
+
+        // coupon Option yes for all
+        $("#coupon-option-yes-all").click(function () {
+            $('.coupon-list-all').css("display", "block");
+            $('.coupon-list').css("display", "block");
+            $('.coupon-option-yes').prop('checked', true);
+            $('.IsCouponApply').val(true);
+            //setCouponApply(ind, 'True');
+        });
+
+        // coupon Option yes no all
+        $("#coupon-option-no-yes").click(function () {
+            $('.coupon-list-all').css("display", "none");
+            $('.coupon-list').css("display", "none");
+            $('.coupon-option-no').prop('checked', true);
+            $('.IsCouponApply').val(false);
+            //setCouponApply(ind, 'True');
+        });
+
+        // select coupon all
+        $('body').on('change', '.ad-Coupon-all', function () {
+            var ad = $(this).val();
+            if (ad != "") {
+                $('#data-grid tr td div ul li.ic-info-coupon ul li').each(function (i, tag) {
+                    $(tag).find('select').each(function (ind, sel) {
+                        $(".ad-Coupons").val(ad);
+                    });
+                });
+            }
+        });
+
+        function setUserAdChoice(ind, userChoice) {
+            $('#UserAdChoice' + ind).val(userChoice);
+        }
+
+
+        function setCouponApply(ind, userChoice) {
+            $('#IsCouponApply' + ind).val(userChoice);
+        }
+
+        function Continue() {
+            $('.alert-error').slideUp();
+            //if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("Next", "Store")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    $('.content_body').html(data.Message);
+                    if (data.Status == 0) {
+                        // $('.alert-success').slideDown();
+                        //$('button.save').fadeOut();
+                        $('.alert').delay(3000).slideUp("slow", function () {
+                            redirect('@Url.Content("~/store/adconfirmation")');
+                        });
+                    }
+                    else {
+                        // $('.alert-error').slideDown();
+                    }
+                    $('#Savemodel').fadeIn();
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+            //}
+        }
+
+        function BackToSelection() {
+            isCouponSelection = false;
+        }
+
+
+
+
+
+        $(".select-all li").click(function () {
+            $(".select-all li label").removeClass("txt_color");
+            $(this).find('label').addClass("txt_color");
+        });
+
+        $(".coupen_allactive li").click(function () {
+            $(".select-all li label").removeClass("green_active");
+            $(this).find('label').addClass("green_active");
+        });
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+}

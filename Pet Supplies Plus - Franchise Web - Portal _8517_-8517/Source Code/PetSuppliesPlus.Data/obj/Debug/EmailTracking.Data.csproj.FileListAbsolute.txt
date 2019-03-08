@@ -1,0 +1,12 @@
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\bin\Debug\EmailTracking.Data.dll.config
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\bin\Debug\EmailTracking.Data.dll
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\bin\Debug\EmailTracking.Data.pdb
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\obj\Debug\EmailTracking.Data.csprojResolveAssemblyReference.cache
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\obj\Debug\EmailTracking.Data.dll
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Data\obj\Debug\EmailTracking.Data.pdb
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\bin\Debug\EmailTracking.Data.dll.config
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\bin\Debug\EmailTracking.Data.dll
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\bin\Debug\EmailTracking.Data.pdb
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\obj\Debug\EmailTracking.Data.csprojResolveAssemblyReference.cache
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\obj\Debug\EmailTracking.Data.dll
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Data\obj\Debug\EmailTracking.Data.pdb

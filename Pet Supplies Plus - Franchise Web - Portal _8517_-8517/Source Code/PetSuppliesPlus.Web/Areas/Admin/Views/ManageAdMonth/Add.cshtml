@@ -1,0 +1,266 @@
+﻿@model PetSuppliesPlus.Model.AdMonth.AdMonthModel
+@using PetSuppliesPlus.Framework;
+@{
+    ViewBag.Title = "AdMonth";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+@using (Html.BeginForm("Add", "AdMonth", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Ad Month</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Year<span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.Year, new SelectList(Model.YearList, "Value", "Text"), "Select Year", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Year)
+                                @Html.HiddenFor(m => m.EncryptedID)
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Month<span class="text-danger">*</span></label>
+                               
+                                @Html.DropDownListFor(m => m.Month, new SelectList(Model.MonthList, "Value", "Text"), "Select Month", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Month)
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Lock Out Start Date<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.LockOutStartDate, (Model.LockOutStartDate.Year > 2000 ? Model.LockOutStartDate.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true" })
+                                @Html.ValidationMessageFor(m => m.LockOutStartDate)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Lock Out End Date<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.LockOutEndDate, (Model.LockOutEndDate.Year > 2000 ? Model.LockOutEndDate.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true" })
+                                @Html.ValidationMessageFor(m => m.LockOutEndDate)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        @*<div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>In Home Start<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.InHomeStart, (Model.InHomeStart.Year > 2000 ? Model.InHomeStart.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true" })
+                                @Html.ValidationMessageFor(m => m.InHomeStart)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+
+                                <label>In Home End<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.InHomeEnd, (Model.InHomeEnd.Year > 2000 ? Model.InHomeEnd.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true" })
+                                @Html.ValidationMessageFor(m => m.InHomeEnd)
+
+
+                            </div>
+                        </div>*@
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Ad Option<span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.AdOptionID, new SelectList(Model.AdOptionList, "Value", "Text"), "Select AdOption", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.AdOptionID)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Ad Coupon</label>
+                                @Html.DropDownListFor(m => m.AdCouponID, new SelectList(ViewBag.CouponList, "Value", "Text"), "Select Coupon", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.AdCouponID)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+
+                                <label>Pet Partner Info<span class="text-danger">*</span></label>
+                                @Html.TextAreaFor(m => m.PetpartnerInfo, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.PetpartnerInfo)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Corporation Plan Text@*<span class="text-danger">*</span>*@</label>
+                                @Html.TextAreaFor(m => m.CorpPlanText, new { @class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.CorpPlanText)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Drop Number<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.DropNumber, new { @class = "form-control number", @maxlenght="4" })
+                                @Html.ValidationMessageFor(m => m.DropNumber)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Corporation In Home Date<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.CorpInHomeDate, (Model.CorpInHomeDate.Year > 2000 ? Model.CorpInHomeDate.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true" })
+                                @Html.ValidationMessageFor(m => m.CorpInHomeDate)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        
+                         <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <button type="button" class="btn btn-default save" onclick="return SaveAdMonth();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageAdMonth/Index")';">Cancel</button>
+                                <input type="reset" id="btnReset" name="btnReset" style="display: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script src="~/Scripts/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //$('.datepicker').datepicker({
+        //    minDate: 0
+        //});
+    });
+
+    //$("#frm_date").datepicker({
+    //    showOn: 'button',
+    //    buttonImage: 'images/calendar.gif',
+    //    buttonImageOnly: true,
+    //    dateFormat: 'yy-mm-dd',
+    //    onClose: function (selectedDate) {
+    //        $("#to_date").datepicker("option", "minDate", selectedDate);
+    //    }
+    //});
+
+    //$("#to_date").datepicker({
+    //    showOn: 'button',
+    //    buttonImage: 'images/calendar.gif',
+    //    buttonImageOnly: true,
+    //    dateFormat: 'yy-mm-dd',
+    //    onClose: function (selectedDate) {
+    //        $("#frm_date").datepicker("option", "maxDate", selectedDate);
+    //    }
+    //});
+
+    //  $(".datepick").datepicker({ dateFormat: 'yy-mm-dd', minDate: '2013-09-10', maxDate: '2013-10-10' });
+
+    $('#LockOutEndDate').datepicker({
+        minDate: 0,
+        onClose: function (selectedDate) {
+            $("#LockOutStartDate").datepicker("option", "maxDate", selectedDate);
+        }
+    });
+
+    $('#LockOutStartDate').datepicker({
+        minDate: 0,
+        onClose: function (selectedDate) {
+            $("#LockOutEndDate").datepicker("option", "minDate", selectedDate);
+        }
+    });
+
+    //$('#InHomeEnd').datepicker({
+    //    minDate: 0,
+    //    onClose: function (selectedDate) {
+    //        $("#InHomeStart").datepicker("option", "maxDate", selectedDate);
+    //        $("#CorpInHomeDate").datepicker("option", "maxDate", selectedDate);
+    //    }
+    //});
+
+    //$('#InHomeStart').datepicker({
+    //    minDate: 0,
+    //    onClose: function (selectedDate) {
+    //        $("#InHomeEnd").datepicker("option", "minDate", selectedDate);
+    //        $("#CorpInHomeDate").datepicker("option", "minDate", selectedDate);
+    //    }
+    //});
+
+    $('#CorpInHomeDate').datepicker({
+        minDate: 0
+    });
+
+
+    //LockOutEndDate
+    //LockOutStartDate
+    //InHomeStart
+    //InHomeEnd
+    function clear() {
+        $('#Name').val('')
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveAdMonth();
+        }
+    });
+    function SaveAdMonth() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("Save", "ManageAdMonth")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        $('.alert').delay(3000).slideUp("slow", function () {
+                            redirect('@Url.Content("~/admin/manageAdMonth/index")');
+                        });
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                    }
+
+                    @*if (data.Status == 0) {
+                        redirect('@Url.Content("~/admin/manageAdMonth/index")');
+                    }
+                    else {
+                        $('#error-messgae').html(data.Message);
+                        $('.alert-error').slideDown();
+                    }*@
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

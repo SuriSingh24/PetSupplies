@@ -1,0 +1,119 @@
+﻿@model PetSuppliesPlus.Model.Store.AllowedStoreOptionModel
+@{
+    ViewBag.Title = "Store Ad Options";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+
+@using (Html.BeginForm("Add", "ManageStoreOption", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="tabular-data">
+        
+        <table class="table stacktable large-only tablularData storead_list">
+            <caption>Store Ad Options <span> List</span></caption>
+            <thead class="th-scroll">
+                <tr>
+                    <td> Ad Option<span class="text-danger">*</span></td>
+                    <td colspan="2">
+                        @Html.DropDownListFor(m => m.AdOptionID, new SelectList(ViewBag.OptionList, "Value", "Text"), "Select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AdOptionID)
+                    </td>
+                    <td style="width:100px;">
+                        <button type="button" class="btn btn-default save" onclick="return SaveStoreOption();">Save</button>
+                    </td>
+                </tr>
+                <tr id="search-filter" class="th-list">
+                    <th style="width:90px !important;"> <input type="checkbox" id="chkall" class="chk-all" /> Select</th>
+                    <th style="width:92px !important;">
+                        Store ID
+                    </th>
+                    <th colspan="2">
+                        Store Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="data-grid" class="tscroll">
+                <!-- Data Table  -->
+            </tbody>
+        </table>
+    </div>
+   
+}
+
+<script type="text/javascript">
+
+    $('body').on('change', '#AdOptionID', function () {
+        var oId = $(this).val();
+        if (oId != undefined && oId != '') {
+            $('#data-grid').load('@Url.Action("StoreList", "ManageStoreOption")/' + oId);
+        }
+    });
+
+    $('body').on('change', '.chk-all', function () {
+        //
+        var chk = $(this).prop('checked');
+        $('.chk').each(function (i, tag) {
+            $(this).prop('checked', chk);
+        });
+    });
+
+    function clear() {
+
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveStoreOption();
+        }
+    });
+    function SaveStoreOption() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("AssignAdOptionsToStore", "ManageStoreOption")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        $('.alert').delay(8000).slideUp("slow", function () {
+                            // redirect('@Url.Content("~/Admin/ManageStoreOption/Index")');
+                        });
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

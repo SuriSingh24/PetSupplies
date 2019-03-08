@@ -1,0 +1,235 @@
+﻿@model PetSuppliesPlus.Model.AdMonth.AdMonthModel
+@using PetSuppliesPlus.Framework;
+@{
+    ViewBag.Title = "PopulateMissingEntry";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+
+@using (Html.BeginForm(new { @class = "form-horizontal", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Populate Missing Entry</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            @*<span>Populate missing Entry for current Month @utilityHelper.CurrentDateTime.ToString("MMMM, yyyy")?</span>*@
+                            @if (Model != null)
+                            {
+                                <span>Populate missing Entry for current Month @((new DateTime(Model.Year, Model.Month, 1)).ToString("(MMMM yyyy)"))?
+                            <br /> Lockout Start Date: @(Model.LockOutStartDate.ToString(ApplicationConstant.DateFormatDisplay)) Lockout End Date: @(Model.LockOutEndDate.ToString(ApplicationConstant.DateFormatDisplay)) 
+                            </span>
+                            }
+                            else
+                            {
+                                <span>Populate missing Entry for current Month @utilityHelper.CurrentDateTime.ToString("MMMM, yyyy")?</span>
+                            }
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Drop Number<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control number" maxlength="4" id="DropNumber" name="DropNumber" data-val-required="Drop number is required." placeholder="Drop Number" value="" data-val="true" data-val-maxlength="Drop number must be up to 4 characters long" />
+
+                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="DropNumber"></span>
+                                <div class="clearfix"></div>
+                                <br></br>
+                                <button type="button" class="btn btn-default save" onclick="return PopulateMissing();" id="Populate">Populate missing entry</button>
+                                <button type="button" class="btn btn-default save hidden" onclick="return PopulateConformed();" id="PopulateConform">Confirm</button>
+                                <button type="button" class="btn btn-default save hidden" onclick="return refresh();" id="RefreshPage">Cancel</button>
+                                @*<button type="button" class="btn btn-default save hidden" style="display:none" onclick="return CurrentExceptionReport();" id="Execptionbutton">View Exception Report</button>*@
+                                @*<button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageStore     /Index")';">Cancel</button>
+                                    <input type="reset" id="btnReset" name="btnReset" style="display: none;" />*@
+                                <a href="" id="Execptionbutton" class="btn btn-default save hidden">View Exception Report</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<div class="tabular-data" id="change-list">
+</div>
+
+<script src="~/Scripts/AjaxGrid.js"></script>
+
+@*<script type="text/javascript">
+        _accessUrl = '@Url.Action("MissingEntryGridList", "ManageStore")';
+        _gridDivId = 'data-grid';
+        _searchBoxDivId = 'search-filter';
+        _showAllRecords = false;
+        _sortExpression = 'storeid';
+        _isEditorPage = true;
+
+        $(function () {
+            asynList();
+
+        });
+
+        $('body').on('change', '#search-filter th input[type=text]', function () {
+            searchRequest();
+        });
+
+
+    </script>*@
+
+<script>
+    function clear() {
+        $('#Name').val('')
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            PopulateMissing();
+        }
+    });
+
+
+    function PopulateMissing() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("PopulateMissingEntry", "ManageStore")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.TransMessage.Status == 0) {
+                        PopulateMissingList();
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                        $('.alert ul li strong').html(data.TransMessage.Message);
+                    }
+                },
+                error: function (data) {
+                    //   alert('Error');
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+
+
+    function PopulateMissingList() {
+        $('.alert-error').slideUp();
+        $.ajax({
+            cache: false,
+            async: true,
+            url: '@Url.Action("PopulateMissingEntryList", "ManageStore")',
+            type: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#change-list').html(data);
+                // $('#DropNumber').Attr("Readonly", "true");
+                // $('#Populate').attr('Disabled', 'Disabled');
+                $('#Populate').hide();
+                $('#PopulateConform').removeClass('hidden');
+                $('#RefreshPage').removeClass('hidden');
+                $('#RefreshPage').focus();
+            },
+            error: function (data) {
+                alert('Error');
+            },
+            beforeSend: function () {
+                $('.wait-pupup').fadeIn();
+            },
+            complete: function () {
+                $('.wait-pupup').fadeOut();
+            }
+        });
+    }
+
+
+    function PopulateConformed() {
+        //  alert('start');
+        $('.alert-error').slideUp();
+        $.ajax({
+            cache: false,
+            async: true,
+            url: '@Url.Action("PopulateEntryConformed", "ManageStore")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                //  debugger
+                // alert(data);
+                $('.alert ul li strong').html(data.Message);
+                if (data.Status == 0) {
+                    $('.alert-success').slideDown();
+                    $('.alert').delay(5000).slideUp("slow");
+                    $('#PopulateConform').addClass('hidden');
+                    $('#RefreshPage').addClass('hidden');
+                    // debugger
+                    //
+                    $('#DropNumber').val()
+                    var d = new Date(),
+                            n = d.getMonth() + 1;
+                    var url = "@Url.Content("~/Admin/Exception/Index?id=")" + $('#DropNumber').val() + "&month=" + n;
+                    //$('#Execptionbutton').append("<a href='" + url + "'</a>")
+                    //$("#Execptionbutton").css("display", "block");
+                    $('#Execptionbutton').removeClass('hidden');
+                    $("#Execptionbutton").prop("href", url)
+
+                }
+                else {
+                    $('.alert-error').slideDown();
+                }
+                //$('#change-list').html(data);
+                //$('#Populate').attr('Disabled', 'Disabled');
+                //$('#PopulateConformed').removeClass('hidden');
+                //$('#PopulateConformed').focus();
+            },
+            error: function (data) {
+                alert('Error');
+            },
+            beforeSend: function () {
+                $('.wait-pupup').fadeIn();
+            },
+            complete: function () {
+                $('.wait-pupup').fadeOut();
+            }
+        });
+    }
+    function refresh() {
+        redirect('@Url.Content("~/Admin/ManageStore/ManageMissingEntry")');
+    }
+
+
+
+</script>

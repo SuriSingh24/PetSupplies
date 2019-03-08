@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>    
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/site.css")" />
+    <link href="~/Content/css/dev-site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")" />
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse admin-bg nav-box">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="javascript:void(0);" class="navbar-brand">Pet Supplies Plus</a>
+            </div>
+
+            @if (PetSuppliesPlus.Framework.SessionHelper.IsUserLogin && PetSuppliesPlus.Framework.SessionHelper.IsAdmin)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+                                Manage<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Content("~/Admin/ManageMarket")">Market</a></li>
+                                <li><a href="@Url.Content("~/Admin/ManageStore")">Store</a></li>
+                                <li><a href="@Url.Content("~/Admin/ManageUser")">User</a></li>
+                                @*<li><a href="@Url.Content("~/Admin/ManageUserStore")">User Store</a></li>*@
+                                <li><a href="@Url.Content("~/Admin/ManageCoupon")">Coupon</a></li>
+                                <li><a href="@Url.Content("~/Admin/AdOption")">Ad Option</a></li>
+                                <li><a href="@Url.Content("~/Admin/ManageAdMonth")">Ad Month</a></li>
+                                <li><a href="@Url.Content("~/Admin/ManageStoreOption/AllowAdOptions")">Store Ad Option</a></li>
+
+                            </ul>
+                        </li>
+                        @*<li><a href="@Url.Content("~/admin/managestore/missingentry")">Missing Entries</a></li>*@
+
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+                                Populate Entry<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Content("~/admin/ManageStore/ManageMissingEntry")">Populate Missing Entry</a></li>
+                                <li><a href="@Url.Content("~/Admin/Exception/Index")">Exception Report</a></li>
+                                <li><a href="@Url.Content("~/Admin/ManageStore/StoreAdChoiceHistory")">Store AdChoice History</a></li>
+                            </ul>
+
+                        <li><a href="@Url.Content("~/admin/ManageStore/Report")">Output Reports</a></li>
+                        <li><a href="@Url.Content("~/admin/AdminChangePassword")">Change Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:void(0);">Welcome @PetSuppliesPlus.Framework.SessionHelper.UserName</a></li>
+                        <li><a href="@Url.Content("~/admin/account/logout")">Logout</a> </li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container body-content">
+        <div style="min-height: 500px;">
+            @Html.Partial("_Notifications")
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - PetSuppliesPlus</p>
+        </footer>
+    </div>
+    <!-- Ajax Process Start -->
+    <div class="wait-pupup">
+        <div class="wait-process">
+            <img src="@Url.Content("~/Content/images/ajax-loader.gif")" alt="Please wait..." />
+
+        </div>
+    </div>
+    <!-- Ajax Process End -->
+    <script type="text/javascript">
+        $(document).ajaxComplete(function (event, request, settings) {
+            $('.wait-pupup').hide();
+        });
+        $(document).ajaxSend(function (event, request, settings) {
+            $('.wait-pupup').show();
+
+        });
+        $(document).ajaxStart(function () {
+            $('.wait-pupup').show();
+        });
+
+        $('body').on('click', '.alert .close', function (e) {
+            $('.alert').slideUp();
+        });
+
+        $.ajaxSetup({
+            statusCode: {
+                401: function () {
+                    alert('Your session has been expired, please login again');
+                    window.location.href = '@Url.Action("Index", "Account")?id=' + window.location;
+                }
+            }
+        });
+
+        $('body').on('keypress', '.number', function (e) {
+            if (e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+            else
+                return true;
+        });
+
+        $('body').on('keypress', '.alpha-numeric', function (e) {
+            if ((e.which > 64 && e.which < 91) || (e.which > 96 && e.which < 123) || e.which == 8 || e.keyCode == 9 || e.which == 13 || e.which == 32 || e.which == 35 || e.which == 39 || e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 37 || e.keyCode == 39 || e.which == 95 || e.which == 45 || e.which == 46 || (e.which >= 48 && e.which <= 57)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+
+
+        //$('body').on('keypress', '.maxlength', function (e) {
+        //    var tag = $(this).val();
+        //    if (e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)) {
+        //        return false;
+        //    }
+        //    else
+        //        return true;
+        //    return (tag.length < 100);
+        //});
+
+
+        //$(function () {
+        //    //$('input[type=text]').addAttr('maxlength', '100');
+        //    $('input[type=text]').addClass('maxlength');
+        //});
+
+
+        function redirect(toUrl) {
+            window.location = toUrl;
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>

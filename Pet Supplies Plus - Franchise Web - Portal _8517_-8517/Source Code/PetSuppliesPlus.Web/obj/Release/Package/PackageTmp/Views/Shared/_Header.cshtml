@@ -1,0 +1,39 @@
+﻿@using PetSuppliesPlus.Framework
+@using PetSuppliesPlus.Web.Utility
+@{
+    string _url = Request.Url.ToString().ToLower();
+    string controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    string action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
+}
+<div class="container-fluid">
+    <div class="col-xs-12 col-sm-4 col-md-4 inside-page">
+        <h1 class="logo"><img src="@Url.Content("~/Content/images/logo.png")"></h1>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-5">
+        <p class="contact-text">
+            Questions? Call us: Amanda Clemons: "(734) 793-6656, Austin Henson (734) 793-6606 or Email us at <a href="mailto:adrequest@petsuppliesplus.com"> adrequest@petsuppliesplus.com</a>
+        </p>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="brand clearfix">
+            <ul class="ts-profile-nav">
+                <li>
+                    <div class="hdr-serach">
+                        <input type="text" id="topSearch" name="topSearch" placeholder="Search..." class="top-search" />
+                    </div>
+                </li>
+                @if (SessionHelper.IsUserLogin)
+            {
+                    <li class="ts-account">
+                        <a href="#"><img alt="" class="ts-avatar hidden-side" src="@Url.Content("~/Content/images/profile.png")">@SessionHelper.UserName<i class="hidden-side s-menu"><img src="@Url.Content("~/Content/images/arrow.png")"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "MyAccount")">My Account</a></li>
+                            <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
+                        </ul>
+                    </li>
+                    <span class="menu-btn"><img src="@Url.Content("~/Content/images/menu.png")"></span>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

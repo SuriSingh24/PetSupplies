@@ -1,0 +1,27 @@
+﻿@using PetSuppliesPlus.Framework
+@using PetSuppliesPlus.Web.Utility
+@{
+    string _url = Request.Url.ToString().ToLower();
+    string controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    string action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
+}
+
+@if (SessionHelper.UserId > 0)
+{
+    <ul class="ts-sidebar-menu">
+        <li class="@(_url.Contains("myaccount") ? "open" : (_url.Contains("store/history") ? "open": (_url.Contains("home/document") ? "open" : "")) )">
+            <div class="more"><i class="sarrow2"></i></div>
+            <a href="#" class="parent @(_url.Contains("myaccount")? "active" : "" )"><i class="my-ac1"></i>My Account </a>
+            <ul>
+                <li ><a class="@(_url.Contains("myaccount/changepassword")? "active" : "" )" href="@Url.Action("ChangePassword", "MyAccount")"><i ><img src="@Url.Content("~/Content/images/icon2.png")"></i>Change Password</a></li>
+                <li ><a class="@(_url.Contains("history")? "active" : "" )" href="@Url.Action("History", "Store")"><i ><img src="@Url.Content("~/Content/images/icon3.png")"></i>History </a></li>
+                <li ><a class="@(_url.Contains("myaccount/index")? "active" : "" )" href="@Url.Action("Index", "MyAccount")"><i ><img src="@Url.Content("~/Content/images/icon4.png")"></i>Account Settings </a></li>
+                @*<li ><a class="@(_url.Contains("document")? "active" : "" )" href="@Url.Action("Document", "Home")" ><i ><img src="@Url.Content("~/Content/images/icon5.png")"></i>Documents</a></li>*@
+            </ul>
+        </li>
+        <li ><a href="@Url.Action("Index", "Store")" class="@(_url.Contains("store")? "active" : "" )"><i class="stors"></i>Stores</a></li>
+      
+        <!-- Account from above -->
+
+    </ul>
+}

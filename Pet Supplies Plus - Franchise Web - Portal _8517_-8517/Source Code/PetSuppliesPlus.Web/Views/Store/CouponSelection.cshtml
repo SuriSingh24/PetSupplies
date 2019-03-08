@@ -1,0 +1,207 @@
+﻿@model IList<PetSuppliesPlus.Model.Store.StoreAdChoiceModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "Store List";
+    }
+    <h2>Coupon Options</h2>
+    <div class="alrt-text2">
+        <p>Select All Option: This auto-populates the below field when submitted.</p>
+        <p class="fc">
+            <input id="text-option-1" type="radio" name="text-option-1">
+            <label for="text-option-1">Yes</label>
+            <div class="check"></div>
+        </p>
+        <p class="fc">
+            <input id="text-option-2" type="radio" name="text-option-1">
+            <label for="text-option-2">No</label>
+            <div class="check"></div>
+        </p>
+    </div>
+
+    <div class="alert alert-error row" style="display: none;">
+        <button class="close" type="button">
+            ×
+        </button>
+        <ul>
+            <li><strong id="error-messgae"></strong></li>
+        </ul>
+    </div>
+    <div class="alert alert-success row" style="display: none;">
+        <button class="close" type="button">
+            ×
+        </button>
+        <ul>
+            <li><strong id="success-messgae"></strong></li>
+        </ul>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="table-responsive table-bg">
+            <h1>Choose Coupon</h1>
+            @using (Html.BeginForm("CouponSelection", "Store", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "frmUserAdChoice" }))
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr id="search-filter">
+                            <th width="22%">
+                                Store Name
+                            </th>
+                            <th width="13%">
+                                Store #
+                            </th>
+                            <th width="65%">Coupon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-grid">
+                        <!-- Data Table  -->
+                        @if (Model != null)
+                        {
+                            int counter = 0;
+                            for (int i = 0; i < Model.Count(); i++)
+                            {
+                                bool? isChecked = Model[i].IsCouponApply;
+                                <tr>
+                                    <td>
+                                        @Model[i].Storename, @Model[i].Ownername
+                                    </td>
+                                    <td>@(Model[i].StoreID.ToString())</td>
+                                    <td>
+                                        <div class="dshbrd-radio" @(Model[i].UserAdChoice == UserAdChoice.NotPrinting ? "style=display:none;" : "")>
+                                            <ul>
+
+                                                @Html.HiddenFor(m => m[i].ChoiceID, new { @id = "ChoiceID" + i })
+                                                @Html.HiddenFor(m => m[i].EncryptedID, new { @id = "EncryptedID" + i })
+                                                @Html.HiddenFor(m => m[i].UserAdChoice, new { @id = "UserAdChoice" + i })
+                                                @Html.HiddenFor(m => m[i].StoreID, new { @id = "StoreID" + i })
+                                                @Html.HiddenFor(m => m[i].AdMonthID, new { @id = "AdMonthID" + i })
+                                                @Html.HiddenFor(m => m[i].FollowedCorporate, new { @id = "FollowedCorporate" + i })
+                                                @Html.HiddenFor(m => m[i].AdOptionID, new { @id = "AdOptionID" + i })
+                                                @Html.HiddenFor(m => m[i].ADOptionName, new { @id = "ADOptionName" + i })
+                                                @Html.HiddenFor(m => m[i].InHomeDate, new { @id = "InHomeDate" + i })
+                                                @Html.HiddenFor(m => m[i].IsCouponApply, new { @id = "IsCouponApply" + i })
+                                                @Html.HiddenFor(m => m[i].CouponName, new { @id = "CouponName" + i })
+                                                @Html.HiddenFor(m => m[i].ChoiceInitials, new { @class = "choice-initials", @id = "ChoiceInitials" + i })
+
+
+                                                <li class="yes" data-id="@Model[i].StoreID" data-uc="@((byte)PetSuppliesPlus.Framework.UserAdChoice.IndividualChoice)" data-ind="@i">
+                                                    <input type="radio" id="s-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isChecked == true ? "checked=checked" : "")>
+                                                    <label for="s-option-@Model[i].StoreID">Yes</label>
+                                                    <div class="check">
+                                                        <div class="inside"></div>
+                                                    </div>
+                                                    <p class="coupon-list" @(isChecked == true ? "" : "style=display:none;" )>
+                                                        @Html.DropDownListFor(m => m[i].CouponID, new SelectList(Model[i].CouponList, "Value", "Text"), "Select Coupon", new { @class = "form-control", @style = "margin-bottom:10px;" })
+                                                    </p>
+                                                </li>
+                                                <li class="no" data-id="@Model[i].StoreID" data-ind="@i">
+                                                    <input type="radio" id="t-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isChecked == false ? "checked=checked" : "")>
+                                                    <label for="t-option-@Model[i].StoreID">No</label>
+                                                    <div class="check">
+                                                        <div class="inside"></div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                counter++;
+                            }
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="right">
+                                <button type="button" class="btn btn-default save" onclick="return Continue();">Continue</button>
+                                @*<button type="button" class="btn btn-default save" onclick="return BackToSelection();">Back to Selection</button>*@
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+
+    @section scripts
+{
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-ui.js"></script>
+
+        <script type="text/javascript">
+            var isCouponSelection = true;
+            var isUserChoiceSelection = false;
+            var usrAdChoiceId = '[0].EncryptedID';
+
+            $('.datepicker').datepicker({
+                minDate: 0
+            });
+
+            $('body').on('click', '.yes', function () {
+                if (isCouponSelection) {
+                    $(this).find('.coupon-list').slideDown();
+                }
+                var storeId = $(this).attr('data-id');
+                var ind = $(this).attr('data-ind');
+                setCouponApply(ind, 'True');
+            });
+
+            $('body').on('click', '.no', function () {
+                if (isCouponSelection) {
+                    $(this).parent().find('select').val('');
+                    $(this).parent().find('.coupon-list').slideUp();
+                }
+
+                var storeId = $(this).attr('data-id');
+                var ind = $(this).attr('data-ind');
+                setCouponApply(ind, 'False');
+            });
+
+            function setCouponApply(ind, userChoice) {
+                $('#IsCouponApply' + ind).val(userChoice);
+            }
+
+            function Continue() {
+                $('.alert-error').slideUp();
+                //if ($('form').valid()) {
+                var data = $('form');
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    url: '@Url.Action("NextToConfirmation", "Store")',
+                    type: 'POST',
+                    data: data.serialize(),
+                    //contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('.alert ul li strong').html(data.Message);
+                        if (data.Status == 0) {
+                            $('.alert-success').slideDown();
+                            //$('button.save').fadeOut();
+                            $('.alert').delay(3000).slideUp("slow", function () {
+                                redirect('@Url.Content("~/store/adconfirmation")');
+                            });
+                        }
+                        else {
+                            $('.alert-error').slideDown();
+                        }
+                    },
+                    error: function (data) {
+                    },
+                    beforeSend: function () {
+                        $('.wait-pupup').fadeIn();
+                    },
+                    complete: function () {
+                        $('.wait-pupup').fadeOut();
+                    }
+                });
+                //}
+            }
+
+            function BackToSelection() {
+                isCouponSelection = false;
+            }
+        </script>
+
+    }

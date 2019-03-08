@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Users.UserStoreModel>
+    @{
+        ViewBag.Title = "Manage User Store";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    @Html.Action("Add", "ManageUserStore")
+
+    <div class="tabular-data">
+        <table class="table stacktable large-only tablularData">
+            <caption> <span>Selected @ViewBag.OwnerName's Stores</span></caption>
+            <thead>
+                <tr id="search-filter">
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('storeid')">Store ID</a>
+                        <br />
+                        <input type="text" id="storeid" name="storeid" class="form-control number" placeholder="Store ID" />
+                    </th>
+                    
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('Storename')">Store Name</a>
+                        <br />
+                        <input type="text" id="Storename" name="Storename" class="form-control" placeholder="Store Name" />
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('name')">Owner Group</a>
+                        <br />
+                        <input type="text" id="Ownergroup" name="Ownergroup" class="form-control" placeholder="Owner Group" />
+                        <input type="text" id="userid" name="userid" value="@ViewBag.UserID" class="form-control" style="display:none" />
+                    </th>
+                    @*<th>
+                        <a class="sort-icon" onclick="sortRequest('Circulation')">Circulation</a>
+                        <br />
+                        <input type="text" id="Circulation" name="Circulation" class="form-control" placeholder="Circulation" />
+                    </th>*@
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('City')">City</a>
+                        <br />
+                        <input type="text" id="City" name="City" class="form-control" placeholder="City" />
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('State')">State</a>
+                        <br />
+                        <input type="text" id="State" name="State" class="form-control" placeholder="State" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('Market')">Market</a>
+                        <br />
+                        <input type="text" id="Market" name="Market" class="form-control" placeholder="Market" />
+                    </th>
+                    <th style="vertical-align: top; width: 100px;">
+                        Action
+                        <br />
+                        <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="data-grid">
+                <!-- Data Table  -->
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/AjaxGrid.js"></script>
+
+    <script type="text/javascript">
+        _accessUrl = '@Url.Action("DataGridList", "ManageUserStore")';
+        _gridDivId = 'data-grid';
+        _searchBoxDivId = 'search-filter';
+        _showAllRecords = false;
+        _sortExpression = 'createdon';
+        _isEditorPage = true;
+        $( document ).ready(function() {
+            searchRequest();
+        });
+        $('body').on('change', '#search-filter th input[type=text]', function () {
+            searchRequest();
+        });
+
+    </script>

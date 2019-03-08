@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Store";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>Store <span>List</span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storeid')">Store ID</a>
+                    <br />
+                    <input type="text" id="storeid" name="storeid" class="form-control number" placeholder="Store ID" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('Ownergroup')">Owner Group</a>
+                    <br />
+                    <input type="text" id="Ownergroup" name="Ownergroup" class="form-control" placeholder="Owner Group" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('Storename')">Store Name</a>
+                    <br />
+                    <input type="text" id="Storename" name="Storename" class="form-control" placeholder="Store Name" />
+                </th>
+                @*<th>
+                    <a class="sort-icon" onclick="sortRequest('Circulation')">Circulation</a>
+                    <br />
+                    <input type="text" id="Circulation" name="Circulation" class="form-control" placeholder="Circulation" />
+                </th>*@
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('City')">City</a>
+                    <br />
+                    <input type="text" id="City" name="City" class="form-control" placeholder="City" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('State')">State</a>
+                    <br />
+                    <input type="text" id="State" name="State" class="form-control" placeholder="State" />
+                </th>
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('marketname')">Market</a>
+                    <br />
+                    <input type="text" id="marketname" name="marketname" class="form-control" placeholder="Market" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('storecode')">Store Code</a>
+                    <br />
+                    <input type="text" id="storecode" name="storecode" class="form-control" placeholder="Store Code" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('artworkcode')">Art WorkCode</a>
+                    <br />
+                    <input type="text" id="artworkcode" name="artworkcode" class="form-control" placeholder="Art WorkCode" />
+                </th>
+                <th style="vertical-align: top; width: 100px;">
+                    Action
+                    <br />
+                    <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+
+                    <a href="@Url.Content("~/Admin/ManageStore/Add")">
+                        <img src="@Url.Content("~/content/images/add-user.png")" title="add" style="cursor:pointer;" />
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/AjaxGrid.js"></script>
+
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "ManageStore")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'storeid';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+
+    });
+
+    $('body').on('change', '#search-filter th input[type=text]', function () {
+        searchRequest();
+    });
+
+
+    function removeStore(eId) {
+
+        if (confirm('Are you sure you want to delete this store?')) {
+            var data = {
+                id: eId
+            };
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("DeleteStore", "ManageStore")',
+                type: 'POST',
+                data: JSON.stringify({ id: eId }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Message);
+                    if (data.Status == 0) {
+                        asynList();
+                    }
+                },
+                error: function (data) {
+                }
+
+            });
+        }
+    }
+
+</script>

@@ -1,0 +1,162 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceModel
+@{
+    ViewBag.Title = "Ad Month";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="table-responsive">
+    <div class="tabular-data">
+        <table class="table stacktable large-only tablularData">
+            <caption>Ad Month <span>List</span></caption>
+            <thead>
+                <tr id="search-filter">
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('year')">Year &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; </a>
+                        <br />
+                        <input type="text" id="year" name="year" class="form-control number" placeholder="Year" />
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('month')">Month &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </a>
+                        
+                        @Html.DropDownList("month", new SelectList(ViewBag.MonthList, "Value", "Text"), "All", new { @class = "form-control" })
+                        @*<input type="text" id="month" name="month" class="form-control" placeholder="Month" />*@
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('dropnumber')">Drop Number &nbsp;  &nbsp; </a>
+                       
+                        <input type="text" id="dropnumber" name="dropnumber" class="form-control number" placeholder="Drop Number" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('lockoutstartdate')">Lockout Start Date   </a>
+                        <br />
+                        <input type="text" id="lockoutstartdate" name="lockoutstartdate" class="form-control datepicker" placeholder="Lockout Start Date" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('lockoutenddate')">Lockout End Date  </a>
+                        <br />
+                        <input type="text" id="lockoutenddate" name="lockoutenddate" class="form-control datepicker" placeholder="Lockout End Date" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('inhomedate')">In Home Date &nbsp; &nbsp; &nbsp;</a>
+                        <br />
+                        <input type="text" id="inhomedate" name="inhomedate" class="form-control datepicker" placeholder="In Home Date" />
+                    </th>
+
+                    @*<th>
+                            <a class="sort-icon" onclick="sortRequest('inhomestart')">In Home Start Date</a>
+                            <br />
+                            <input type="text" id="inhomestart" name="inhomestart" class="form-control datepicker" placeholder="In Home Start" />
+                        </th>
+
+                        <th>
+                            <a class="sort-icon" onclick="sortRequest('inhomeend')">In Home End Date </a>
+                            <br />
+                            <input type="text" id="inhomeend" name="inhomeend" class="form-control datepicker" placeholder="In Home End Date" />
+                        </th>*@
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('adoptionid')">Ad Option  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                        <br />
+                        @Html.DropDownList("adoptionid", new SelectList(ViewBag.AdOptionList, "Value", "Text"), "All", new { @class = "form-control" })
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('adcouponid')">Ad Coupon &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                        <br />
+                        @Html.DropDownList("adcouponid", new SelectList(ViewBag.CouponList, "Value", "Text"), "All", new { @class = "form-control" })
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('petpartnerinfo')">Pet Partner Information</a>
+                        <br />
+                        <input type="text" id="petpartnerinfo" name="petpartnerinfo" class="form-control" placeholder="Pet Partner Info" />
+                    </th>
+
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('corporateplantext')">Corporation Plan Text</a>
+                        <br />
+                        <input type="text" id="corporateplantext" name="corporateplantext" class="form-control" placeholder="Corporation Plan Text" />
+                    </th>
+
+                    <th style="vertical-align: top; width: 100px;">
+                        Action
+                        <br />
+                        <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+
+                        <a href="@Url.Content("~/Admin/manageAdMonth/Add")">
+                            <img src="@Url.Content("~/content/images/add-user.png")" title="add" style="cursor:pointer;" />
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="data-grid">
+                <!-- Data Table  -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="popup-big-text" class="work-popup">
+    <div class="work-area">
+        <a href="javascript:void(0);" class="close-btn">X</a>
+        <div class="work-body popup-big-text-body">
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/AjaxGrid.js"></script>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "ManageAdMonth")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'admonthid';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+
+    $(function () {
+        $('.datepicker').datepicker();
+    });
+
+    $('body').on('click', '.big-text', function () {
+        var div = $(this).attr('data-div');
+        var content = $(div).html();
+        $('.popup-big-text-body').html(content);
+        $('#popup-big-text').fadeIn();
+    });
+
+    $('body').on('click', '.close-btn', function () {
+        $('#popup-big-text').fadeOut();
+    });
+    function removeUser(eId) {
+        if (confirm('Are you sure you want to delete this record?')) {
+            var data = {
+                id: eId
+            };
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("DeleteAdMonth", "ManageAdMonth")',
+                type: 'POST',
+                data: JSON.stringify({ id: eId }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Message);
+                    if (data.Status == 0) {
+                        asynList();
+                    }
+                },
+                error: function (data) {
+                }
+
+            });
+        }
+    }
+</script>

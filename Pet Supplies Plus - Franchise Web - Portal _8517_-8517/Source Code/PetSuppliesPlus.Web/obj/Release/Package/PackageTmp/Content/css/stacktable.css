@@ -1,0 +1,19 @@
+.stacktable { width: 100%; }
+.st-head-row { padding: 10px; background: #716658; color: #fff; font-size: 14px;
+    font-weight: 400;
+    height: 42px;}
+.st-head-row.st-head-row-main { font-size: 1.5em; height: 40px; background-color: #53483a}
+.st-key { width: 49%; text-align: left; padding: 10px; height: 50px; }
+.st-val { width: 49%; padding-left: 1%; }
+
+
+/* RESPONSIVE EXAMPLE */
+
+.stacktable.large-only { display: table; }
+.stacktable.small-only { display: none; }
+
+@media (max-width: 767px) {
+  .stacktable.large-only { display: none; }
+  .stacktable.small-only { display: table; }
+.stacktable tbody tr:nth-child(odd) td{background-color: #ECECEC;}
+}

@@ -1,0 +1,62 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceModel
+@{
+    ViewBag.Title = "CouponPage";
+    Layout = null;
+}
+
+<form id="Coupon">
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        Take Coupon</br>
+        <input type="radio" name="takecoupon" id="yes" value="1" checked="checked">Yes</br>
+        <input type="radio" name="takecoupon" id="no" value="0">No</br>
+       
+        @Html.DropDownListFor(m => m.CouponID, new SelectList(Model.CouponList, "Value", "Text"), "Select Coupon", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CouponID)
+
+        <button type="button" class="btn btn-default save" onclick="return GoToConfirmationPage();">Continue</button>
+        <button type="button" class="btn btn-default save" onclick="window.location = '@Url.Content("~/store/Detail/")@Model.StoreID';">Back To Choice</button>
+    </dl>
+</div>
+</form>
+
+<div id="DivConfirmation"></div>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#yes').on('click', function () {
+                $('#CouponID').show();
+            });
+            $('#no').on('click', function () {
+                $('#CouponID').hide();
+            });
+        });
+
+        function GoToConfirmationPage() {
+            if ($('form').valid()) {
+                var data = $('form');
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    url: '@Url.Action("ConfirmationPage", "Store")',
+                    type: 'POST',
+                    data: data.serialize(),
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#DivConfirmation').html(data);
+                    },
+                    error: function (data) {
+                    },
+                    beforeSend: function () {
+                        $('.wait-pupup').fadeIn();
+                    },
+                    complete: function () {
+                        $('.wait-pupup').fadeOut();
+                    }
+                });
+            }
+        }
+    </script>
+

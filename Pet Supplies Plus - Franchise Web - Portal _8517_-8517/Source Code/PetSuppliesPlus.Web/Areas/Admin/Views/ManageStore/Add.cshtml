@@ -1,0 +1,180 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreModel
+@{
+    ViewBag.Title = "Add Store";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+
+@using (Html.BeginForm("Add", "ManageStore", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Add Store</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            @if (Model.EncryptedID != null)
+                            {
+                            <div class="col-md-6 col-sm-6">
+                                <label>Store Id<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.StoreID, new { @class = "form-control",@readonly="readonly", @placeholder = "Store Id" })
+                                @Html.ValidationMessageFor(m => m.StoreID)
+
+                               
+                            </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Store Id<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(m => m.StoreID, new { @class = "form-control", @placeholder = "Store Id" })
+                                    @Html.ValidationMessageFor(m => m.StoreID)
+                                </div>
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $("#StoreID").val("");
+                                    });
+                                </script>
+                            }
+                            <div class="col-md-6 col-sm-6">
+                                <label>Owner Group<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.Ownergroup, new { @class = "form-control", @placeholder = "Owner Group" })
+                                @Html.ValidationMessageFor(m => m.Ownergroup)
+                            </div>
+                          
+                            @*<div class="col-md-6 col-sm-6">
+                                <label>Circulation<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.Circulation, new { @class = "form-control", @placeholder = "Circulation" })
+                                @Html.ValidationMessageFor(m => m.Circulation)
+                            </div>*@
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Store Name<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.Storename, new { @class = "form-control", @placeholder = "Store Name" })
+                                @Html.ValidationMessageFor(m => m.Storename)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>City<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                                @Html.ValidationMessageFor(m => m.City)
+                            </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                       
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>State<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", @placeholder = "State" })
+                                @Html.ValidationMessageFor(m => m.State)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Store Code</label>
+                                @Html.TextBoxFor(m => m.StoreCode, new { @class = "form-control", @placeholder = "Store Code" })
+                                @Html.ValidationMessageFor(m => m.StoreCode)
+                            </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Art Work Code</label>
+                                @Html.TextBoxFor(m => m.ArtworkCode, new { @class = "form-control", @placeholder = "Art Work Code" })
+                                @Html.ValidationMessageFor(m => m.ArtworkCode)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Market<span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(m => m.MarketID, new SelectList(ViewBag.MarketList, "Value", "Text"), "Select Market", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.MarketID)
+                                @Html.HiddenFor(m => m.EncryptedID)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12">
+                                <button type="button" class="btn btn-default save" onclick="return SaveStore();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageStore/Index")';">Cancel</button>
+                                <input type="reset" id="btnReset" name="btnReset" style="display: none;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script type="text/javascript">
+    function clear() {
+        $('#Ownergroup').val('');
+        //$('#Circulation').val('');
+        $('#City').val('');
+        $('#State').val('');
+        $('#Storename').val('');
+    }
+
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveStore();
+        }
+    });
+    function SaveStore() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("SaveStore", "ManageStore")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        $('.alert').delay(5000).slideUp("slow", function () {
+                             redirect('@Url.Content("~/Admin/ManageStore/Index")');
+                        });
+                    }
+                    else {
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

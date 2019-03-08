@@ -1,0 +1,602 @@
+
+<TABLE WIDTH = "100%" CELLPADDING = "1" valign="top" CELLSPACING = "0"  border="0">	
+	<TR>
+		<TD COLSPAN="2" ALIGN="center" style="font-size:20px;"><BR><BR><BR><b>Project Plan</b></TD>
+	</TR>	
+	<TR>
+		<TD>							
+			<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "0" CELLSPACING = "1">					
+				<TR>
+					<TD style="padding-left:4px;"><BR><BR><BR><b>Revision History</b><BR></TD>						
+				</TR>					
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR  bgcolor="c3c3c3">
+								<TD width="75"><b>Version</b></TD>
+								<TD width="175"><b>Date</b></TD>
+								<TD width="250"><b>Reason for Change</b></TD>
+								<TD width="250"><b>Changes Made By</b></TD>
+								<TD width="100"><b>Status</b></TD>
+							</TR>			<TR>
+								<TD class="text">1.0</TD>									
+								<TD class="text">07-07-2016</TD>									
+								<TD class="text">PP Create</TD>									
+								<TD class="text">Shiv Prakash Kichara</TD>									
+								<TD class="text">Approved</TD>									
+							</TR>			<TR>
+								<TD class="text">1.1</TD>									
+								<TD class="text">08-07-2016</TD>									
+								<TD class="text"></TD>									
+								<TD class="text">Shiv Prakash Kichara</TD>									
+								<TD class="text">Approved</TD>									
+							</TR>			<TR>
+								<TD class="text">1.2</TD>									
+								<TD class="text">29-07-2016</TD>									
+								<TD class="text">Team Update</TD>									
+								<TD class="text">Shiv Prakash Kichara</TD>									
+								<TD class="text">Approved</TD>									
+							</TR>			<TR>
+								<TD class="text">1.3</TD>									
+								<TD class="text">05-08-2016</TD>									
+								<TD class="text"></TD>									
+								<TD class="text">Shiv Prakash Kichara</TD>									
+								<TD class="text">Approved</TD>									
+							</TR>			</TABLE>
+					</TD>
+				</TR>				
+				<TR>
+					<TD style="padding-left:4px;"><b>1. Client Details</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "1" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%">Client Name</TD>
+								<TD class="text">Austin Henson</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Region</TD>
+								<TD class="text">EDT</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Phone Number / VOIP</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Email</TD>
+								<TD class="text">ahenson@petsuppliesplus.com</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">IM</TD>
+								<TD class="text">Skype:--ahenson@petsuppliesplus.com</TD>
+							</TR>							
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD style="padding-left:4px;"><b>2. Project Details</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%">Project ID</TD>
+								<TD class="text">OD3594</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Project Name</TD>
+								<TD class="text">Monthly Opt In Manager (8666)</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Start Date</TD>
+								<TD class="text">07-07-2016</TD>
+							</TR>	
+							<TR>
+								<TD class="text" width="40%">Project Coordinator</TD>
+								<TD class="text">Shiv Prakash Kichara</TD>
+							</TR>	
+							<TR>
+								<TD class="text" width="40%">Project Source ( Elance / Off Elance)</TD>
+								<TD class="text">Odesk</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Department</TD>
+								<TD class="text">Microsoft</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Project Type</TD>
+								<TD class="text">workview</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Project Subtype</TD>
+								<TD class="text">development</TD>
+							</TR>																
+						</TABLE>
+					</TD>						
+				</TR>							
+				<TR>
+					<TD style="padding-left:4px;"><b>3. Team Members</b></TD>						
+				</TR>	
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR  bgcolor="c3c3c3">
+								<TD class="text" height="28" width="10%"><b>Name</b></TD>
+								<TD class="text" height="28" width="15%"><b>Department</b></TD>
+								<TD class="text" height="28" width="20%"><b>Role</b></TD>									
+								<TD class="text" height="28" width="45%"><b>Responsibility</b></TD>									
+								<TD class="text" height="28" width="10%"><b>Status</b></TD>								
+							</TR>			<TR>
+								<TD class="text" valign="top">Gaurav Walia</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR>Unit Testing<BR></TD>									
+								<TD class="text" valign="top">Follow company current coding standard and programming. Also responsibility of unit testing and   integration testing ## </TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Shiv Prakash Kichara</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR>Integration Testing<BR>Project Coordinator<BR></TD>									
+								<TD class="text" valign="top">Follow company current coding standard and programming. Also responsibility of unit testing and   integration testing ## Insure all follows up, client interaction for development make properly, and plan the activities to meet project goal. Understand client requirement through different media and smooth development process throughout the project development life cycle. Review the development process, make all technical documents, find any risks/issues, project backup, and all other activities as per the company current standard. Project coordinator also responsible for acceptance testing of the project. Following activities should be done by project coordinator: Requirement analysis, creation of PP, TS, project re estimation, project monitoring and controlling, change control, impact analysis, risk ## </TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Lalan Kumar</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR>Unit Testing<BR></TD>									
+								<TD class="text" valign="top">Follow company current coding standard and programming. Also responsibility of unit testing and   integration testing ## </TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Deepak Rawat</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">Functional Testing<BR></TD>									
+								<TD class="text" valign="top">Tester</TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Himanshu Gupta</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR>Unit Testing<BR></TD>									
+								<TD class="text" valign="top">Follow company current coding standard and programming. Also responsibility of unit testing and   integration testing ## </TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Dharmpal Saini</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR>Unit Testing<BR></TD>									
+								<TD class="text" valign="top">Follow company current coding standard and programming. Also responsibility of unit testing and   integration testing ## </TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Sharvan Kumar</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">Platform Manager<BR></TD>									
+								<TD class="text" valign="top">								
+Responsible for review the CMMI artifacts, Keep project tracking, and do risk escalation.
+
+Review the project artifacts in predefined frequency and ensure the predefined standard follows throughout the software development life cycle. ## 																																</TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Kanhya Thakur</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">Junior Project Manager<BR></TD>									
+								<TD class="text" valign="top">								
+Responsible for review the CMMI artifacts, Keep project tracking, and do risk escalation.
+
+Review the project artifacts in predefined frequency and ensure the predefined standard follows throughout the software development life cycle. ## 																																																																								</TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>			<TR>
+								<TD class="text" valign="top">Amit Gupta</TD>
+								<TD class="text" valign="top">Microsoft<BR></TD>									
+								<TD class="text" valign="top">.Net Programmer<BR></TD>									
+								<TD class="text" valign="top">								
+Responsible for review the CMMI artifacts, Keep project tracking, and do risk escalation.
+
+Review the project artifacts in predefined frequency and ensure the predefined standard follows throughout the software development life cycle. ## 																																																																								</TD>																										
+								<TD class="text" valign="top">Active</TD>																										
+							</TR>
+						</TABLE>
+					</TD>						
+				</TR>								
+				<TR>
+					<TD style="padding-left:4px;"><b>4. Development Environment</b></TD>						
+				</TR>	
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" colspan="2"><b>Hardware</b></TD>									
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Processor</TD>
+								<TD class="text">Intel(R) Pentium(R) 4 CPU 2.80GHz</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">RAM</TD>
+								<TD class="text">1 GB</TD>
+							</TR>
+							<TR>
+								<TD class="text" colspan="2"><b>Software</b></TD>									
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Designing Tools</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Development Tools</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Operating System</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Web Server</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Scripting Language</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Database</TD>
+								<TD class="text"></TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Client Side Scripting</TD>
+								<TD class="text"></TD>
+							</TR>																								
+						</TABLE>
+					</TD>						
+				</TR>			
+				<TR>
+					<TD style="padding-left:4px;"><b>5. Project Receivables</b></TD>						
+				</TR>	
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text">N/A</TD>									
+							</TR>																															
+						</TABLE>
+					</TD>						
+				</TR>										
+				<TR>
+					<TD style="padding-left:4px;"><b>6. Test Deliverables</b></TD>						
+				</TR>	
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text">NIL</TD>									
+							</TR>																															
+						</TABLE>
+					</TD>						
+				</TR>	
+				<TR>
+					<TD style="padding-left:4px;"><b>7. Project Milestones</b></TD>						
+				</TR>					
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">								
+							<TR bgcolor="c3c3c3">
+								<TD class="text" width="30%"><b>Milestone Title</b></TD>
+								<TD class="text" width="45%"><b>Milestone Description</b></TD>
+								<TD class="text" width="15%"><b>Date</b></TD>									
+								<TD class="text" width="10%"><b>Amount</b></TD>
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">First week (2016-07-09) ending payment</TD>
+								<TD class="text" valign="top">First week (2016-07-09) ending payment</TD>
+								<TD class="text" valign="top">11-07-2016</TD>
+								<TD class="text" valign="top">800.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-07-09) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-07-09) ending payment</TD>
+								<TD class="text" valign="top">11-07-2016</TD>
+								<TD class="text" valign="top">200.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-07-16) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-07-16) ending payment</TD>
+								<TD class="text" valign="top">18-07-2016</TD>
+								<TD class="text" valign="top">1000.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-07-23) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-07-23) ending payment</TD>
+								<TD class="text" valign="top">25-07-2016</TD>
+								<TD class="text" valign="top">1000.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-07-30) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-07-30) ending payment</TD>
+								<TD class="text" valign="top">01-08-2016</TD>
+								<TD class="text" valign="top">1000.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-08-06) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-08-06) ending payment</TD>
+								<TD class="text" valign="top">08-08-2016</TD>
+								<TD class="text" valign="top">1000.0000</TD>									
+							</TR>								
+							<TR>
+								<TD class="text" valign="top">Week (2016-08-13) ending payment</TD>
+								<TD class="text" valign="top">Week (2016-08-13) ending payment</TD>
+								<TD class="text" valign="top">15-08-2016</TD>
+								<TD class="text" valign="top">1000.0000</TD>									
+							</TR>		</TABLE>
+					</TD>						
+				</TR>										
+				<TR>
+					<TD  style="padding-left:4px;"><b>8. SDLC MODEL</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%">SDLC MODEL</TD>
+								<TD class="text">Maintenance Model</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Tailoring made to the model  ( YES / NO)</TD>
+								<TD class="text">No</TD>
+							</TR>
+							
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>9. Maintenance Log</b></TD> 						
+				</TR>				
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">									
+							<TR>
+								<TD class="text"><a href="http://172.16.10.23/whosin2/whosin3/modules/projects/maintenance_log.php?project_id=8666" target="_blank">Maintenance Log</a></TD>
+							</TR>															
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>10. Configuration Management</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%">Configuration Manager</TD>
+								<TD class="text">Shiv Prakash Kichara</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Configuration Management Tool</TD>
+								<TD class="text">Team Foundation Server 2008</TD>
+							</TR>							
+							<TR>
+								<TD class="text" width="40%">Version Technique</TD>
+								<TD class="text">m.nn ( m for Major version; nn for minor version number)</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Document Naming Convention</TD> 
+								<TD class="text">{Document Name}_{Version Number}_{Modification Date}</TD>
+							</TR>
+								
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;" valign="top">Configuration Items</TD>
+								<TD>
+									<DIV>
+										<TABLE width="100%" cellpadding="4">													
+										<TR>
+											<TD class="text">SOW/ Proposal/ Contract</TD>
+										</TR>													
+										<TR>
+											<TD class="text">Service Agreement</TD>
+										</TR>													
+										<TR>
+											<TD class="text">Project Plan</TD>
+										</TR>													
+										<TR>
+											<TD class="text">Maintenance Log</TD>
+										</TR>
+									</TABLE>
+									</DIV>
+								</TD>
+							</TR>									
+							<TR>
+								<TD class="text" width="40%" valign="top">Live Documents</TD>
+								<TD>
+									<DIV>
+										<TABLE width="100%" cellpadding="0" cellspacing="0">													
+											<TR>
+												<TD class="text">Risk Register</TD>
+											</TR>													
+											<TR>
+												<TD class="text">Issue List</TD>
+											</TR>										
+										</TABLE>
+									</DIV>
+								</TD>
+							</TR>								
+							<TR>
+								<TD class="text" width="40%" valign="top">Records</TD>
+								<TD>
+									<DIV>
+										<TABLE width="100%" cellpadding="0" cellspacing="0">													
+											<TR>
+												<TD class="text">Project Status Report</TD>
+											</TR>													
+											<TR>
+												<TD class="text">Review Reports</TD>
+											</TR>													
+											<TR>
+												<TD class="text">SQA Review Reports</TD>
+											</TR>													
+											<TR>
+												<TD class="text">PI Note</TD>
+											</TR>													
+											<TR>
+												<TD class="text">Weekly XLS</TD>
+											</TR>
+										</TABLE>
+									</DIV>
+								</TD>
+							</TR>
+							<TR>									
+								<TD class="text" width="40%" style="padding-left:40px;">Others</TD>
+								<TD class="text">No</TD>
+							</TR>	</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>11. Risk Management</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text"><a href="http://172.16.10.23/whosin2/modules/cmmi/view_project_plan_risk_register.php?id=8666" target="_blank">Risk Register</a></TD>
+							</TR>
+						</TABLE>
+					</TD>						
+				</TR>	
+				<TR>
+					<TD  style="padding-left:4px;"><b>12. Quality Management</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" colspan="3"><b>Quality Assurance</b></TD>
+							</TR>
+							<TR>
+								
+								<TD class="text" width="40%" style="padding-left:40px;">Maintenance Log</TD>
+								<TD class="text">Yes</TD>
+							</TR>
+							<TR>
+								
+								<TD class="text" width="40%" style="padding-left:40px;">Source Code</TD>
+								<TD class="text">No</TD>
+							</TR>								
+							<TR>
+								<TD class="text" width="40%">Others( if applicable, illustrate)</TD>
+								<TD class="text">N/A</TD>
+							</TR>
+							<TR>
+								
+								<TD class="text" width="40%">Review Technique</TD>
+								<TD class="text">Circulation</TD>
+							</TR>		<TR>
+								<TD class="text" colspan="3"><b>Test Receivables</b></TD>									
+							</TR>
+							<TR>
+								
+								<TD class="text" width="40%" style="padding-left:40px;">Application URL</TD>
+								<TD class="text">Yes</TD>
+							</TR>									
+							<TR>
+								
+								<TD class="text" width="40%" style="padding-left:40px;">Setup / Exe</TD>
+								<TD class="text">Yes</TD>
+							</TR>								
+							<TR>
+								
+								<TD class="text" width="40%" style="padding-left:40px;">Others (if any)</TD>
+								<TD class="text">No</TD>
+							</TR>
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>13. Assumptions</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text">N/A</TD>								 	
+							</TR>
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>14. Training</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%">Required</TD>								 	
+								<TD class="text">No</TD>								 	
+							</TR>
+							<TR>
+								<TD class="text" width="40%">Mandatory</TD>								 	
+								<TD class="text">N/A</TD>								 	
+							</TR>
+						</TABLE>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>15. PSR Frequency</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<DIV>
+							<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+								<TR>
+									<TD class="text" width="40%">PSR Frequency</TD>								 	
+									<TD class="text">Fortnightly</TD>								 	
+								</TR>
+							</TABLE>
+						</DIV>
+					</TD>						
+				</TR>
+				<TR>
+					<TD  style="padding-left:4px;"><b>16. SQA Review Frequency</b></TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">
+						<DIV>
+							<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+								<TR>
+									<TD class="text" width="40%">SQA Review Frequency</TD>								 	
+									<TD class="text">Fortnightly</TD>								 	
+								</TR>
+							</TABLE>
+						</DIV>
+					</TD>						
+				</TR>				
+				<TR>
+					<TD style="padding-left:4px;"><b>17. Metrics Plan</b> </TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">						
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" colspan="2"><b>Specified Measures</b></TD>									
+							</TR>			
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Total Defects Count(testing)</TD>
+								<TD class="text">20</TD>
+							</TR>
+							<TR>
+								<TD class="text" width="40%" style="padding-left:40px;">Max defect count with the highest severity</TD>
+								<TD class="text">10</TD>
+							</TR>				
+													
+						</TABLE>						
+					</TD>						
+				</TR>									
+				<TR>
+					<TD style="padding-left:4px;"><b>18. Items to be Backed Up</b> </TD>						
+				</TR>
+				<TR>
+					<TD style="padding-top:15px;">						
+						<TABLE WIDTH = "100%" BORDER = "0" CELLPADDING = "2" CELLSPACING = "1" ALIGN="center">
+							<TR>
+								<TD class="text" width="40%"><b>Items:</b></TD>
+								<TD class="text">Documents<BR>Source Code<BR>Database<BR></TD> 
+							</TR> 																				
+						</TABLE>						
+					</TD>						
+				</TR>
+			</TD>
+		</TR>
+</TABLE>

@@ -1,0 +1,105 @@
+﻿@model PetSuppliesPlus.Models.LoginModel
+@{
+
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+<div class="login-page" id="loginForm">
+    <div class="form">
+        <h1>Account Login</h1>
+
+        <div class="alert alert-error row" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="error-messgae"></strong></li>
+            </ul>
+        </div>
+
+
+        @using (Html.BeginForm("Dologin", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", @id = "frmLogin" }))
+        {
+            @Html.HiddenFor(m => m.ReturnUrl);
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Enter your Email Address", @class = "control1", @tabindex = "1" })
+            @Html.ValidationMessageFor(m => m.Email)
+            <div class="clear"></div>
+
+            <label>Password</label>
+            @Html.PasswordFor(m => m.Password, new { @placeholder = "Enter your Password", @class = "control1", @tabindex = "2" })
+            @Html.ValidationMessageFor(m => m.Password)
+            <div class="clear"></div>
+
+            <div class="checkbox pull-left">
+                <label class="control control--checkbox">
+                    &nbsp;Remember Me
+                    @Html.CheckBoxFor(mbox => mbox.RememberMe, new { @tabindex = "3", })
+                    <div class="control__indicator"></div>
+                </label>
+
+            </div>
+            <a href="@Url.Action("ForgotPassword", "Home")" class="pull-right need-help">Forgot Password?</a><span class="clearfix"></span>
+            <button type="button" onclick="doLogin()" tabindex="4">login</button>
+
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        function clear() {
+            $('#Email').val('');
+            $('#Password').val('');
+        }
+
+        function doLogin() {
+            $('.alert-error').slideUp();
+            if ($('#frmLogin').valid()) {
+                var data = $('#frmLogin');
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    url: '@Url.Action("DoLogin", "Home")',
+                    type: 'POST',
+                    data: data.serialize(),
+                    //contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Status == 0) {
+                            window.location = data.Message;
+                        }
+                        else {
+                            //alert(data.Message);
+                            $('#error-messgae').html(data.Message);
+                            $('.alert-error').slideDown();
+                        }
+                    },
+                    error: function (data) {
+                    },
+                    beforeSend: function () {
+                        $('.wait-pupup').fadeIn();
+                    },
+                    complete: function () {
+                        $('.wait-pupup').fadeOut();
+                    }
+                });
+            }
+        }
+
+        $('#frmLogin').keypress(function (e) {
+            if (e.which == 13) {
+                doLogin();
+            }
+        });
+
+        $('body').on('click', '.control__indicator', function () {
+
+        });
+    </script>
+}

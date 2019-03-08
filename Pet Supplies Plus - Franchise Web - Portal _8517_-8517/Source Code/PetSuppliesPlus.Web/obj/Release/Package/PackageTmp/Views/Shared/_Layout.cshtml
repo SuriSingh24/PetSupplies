@@ -1,0 +1,157 @@
+﻿@using PetSuppliesPlus.Framework
+@{
+    string _url = Request.Url.ToString().ToLower();
+    string controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    string action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Pet Supplies Plus :: @ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootstrap.min.css")" />
+  
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/css/dev-site.css")" rel="stylesheet" type="text/css">
+
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var _isShowProcess = true;
+        var dateformat = 'dd/mm/yyyy';
+    </script>
+</head>
+<body>
+
+
+    <header class="header staic-hdr">
+        <!-- Header Start -->
+        @Html.Partial("~/Views/Shared/_Header.cshtml")
+        <!-- Header Start -->
+    </header>
+    <section class="ts-main-content">
+        <nav class="ts-sidebar">
+            <!-- Left Menu Start -->
+            @Html.Partial("~/Views/Shared/_LeftSideMenu.cshtml")
+            <!-- Left Menu Start -->
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Ajax Process Start -->
+    <div class="wait-pupup">
+        <div class="wait-process">
+            <img src="@Url.Content("~/Content/images/ajax-loader.gif")" alt="Please wait..." />
+        </div>
+    </div>
+    <!-- Ajax Process End -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    @*<script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+
+        <script src="~/Content/js/main.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <link href="~/Content/css/font-awesome.css" rel="stylesheet" />*@
+    <script type="text/javascript">
+        $(document).ajaxComplete(function (event, request, settings) {
+            $('.wait-pupup').hide();
+        });
+        $(document).ajaxSend(function (event, request, settings) {
+            if (_isShowProcess)
+                $('.wait-pupup').show();
+
+        });
+        $(document).ajaxStart(function () {
+            if (_isShowProcess)
+                $('.wait-pupup').show();
+        });
+
+        $('body').on('click', '.alert .close', function (e) {
+            $('.alert').slideUp();
+        });
+
+        $.ajaxSetup({
+            statusCode: {
+                401: function () {
+                    alert('Your session has been expired, please login again');
+                    window.location.href = '@Url.Action("Index", "Home")?id=' + window.location;
+                }
+            }
+        });
+
+        $('body').on('keypress', '.number', function (e) {
+            if (e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+            else
+                return true;
+        });
+
+        function reset(formId) {
+            $('form#' + formId).find("input[type=text], textarea, select").val("");
+        }
+
+        $(".reset").click(function () {
+            $(this).closest('form').find("input[type=text], textarea").val("");
+        });
+
+        function redirect(toUrl) {
+            window.location = toUrl;
+        }
+
+        function redirect(url) {
+            window.setTimeout(window.location = url, 5000);
+        }
+
+        $('.hdr-serach').keypress(function (e) {
+            var searchText = $('#topSearch').val();
+            if (e.which == 13) {
+
+                if (searchText != undefined && searchText != '') {
+                    var storUrl = '@Url.Content("~/store/index/")' + searchText;
+                    window.location = storUrl;
+                }
+            }
+        });
+
+        function topSearch() {
+
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+
+
+    <script src="@Url.Content("~/Content/js/main.js")"></script>
+
+</body>
+</html>

@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PetSupplies_8517" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbPetSupplies_8517" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PetSupplies_8517.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PetSupplies_8517.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="AdMonths" EntityType="PetSupplies_8517.AdMonth" />
+    <EntitySet Name="ADOptions" EntityType="PetSupplies_8517.ADOption" />
+    <EntitySet Name="AllowedStoreOptions" EntityType="PetSupplies_8517.AllowedStoreOption" />
+    <EntitySet Name="Coupons" EntityType="PetSupplies_8517.Coupon" />
+    <EntitySet Name="Documents" EntityType="PetSupplies_8517.Document" />
+    <EntitySet Name="EventLogs" EntityType="PetSupplies_8517.EventLog" />
+    <EntitySet Name="ExceptionReports" EntityType="PetSupplies_8517.ExceptionReport" />
+    <EntitySet Name="LoginHistories" EntityType="PetSupplies_8517.LoginHistory" />
+    <EntitySet Name="Markets" EntityType="PetSupplies_8517.Market" />
+    <EntitySet Name="Stores" EntityType="PetSupplies_8517.Store" />
+    <EntitySet Name="StoreAdChoices" EntityType="PetSupplies_8517.StoreAdChoice" />
+    <EntitySet Name="StoreAdChoiceHistories" EntityType="PetSupplies_8517.StoreAdChoiceHistory" />
+    <EntitySet Name="sysdiagrams" EntityType="PetSupplies_8517.sysdiagram" />
+    <EntitySet Name="Users" EntityType="PetSupplies_8517.User" />
+    <EntitySet Name="UserStores" EntityType="PetSupplies_8517.UserStore" />
+    <AssociationSet Name="FK_AdMonth_ADOption" Association="PetSupplies_8517.FK_AdMonth_ADOption">
+      <End Role="ADOption" EntitySet="ADOptions" />
+      <End Role="AdMonth" EntitySet="AdMonths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdMonth_Coupon" Association="PetSupplies_8517.FK_AdMonth_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="AdMonth" EntitySet="AdMonths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_AdMonth" Association="PetSupplies_8517.FK_Document_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonths" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExceptionReport_AdMonth" Association="PetSupplies_8517.FK_ExceptionReport_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonths" />
+      <End Role="ExceptionReport" EntitySet="ExceptionReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_AdMonthID" Association="PetSupplies_8517.FK_StoreAdChoice_AdMonthID">
+      <End Role="AdMonth" EntitySet="AdMonths" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_AdMonth" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_AdMonth">
+      <End Role="AdMonth" EntitySet="AdMonths" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllowedStoreOption_ADOption" Association="PetSupplies_8517.FK_AllowedStoreOption_ADOption">
+      <End Role="ADOption" EntitySet="ADOptions" />
+      <End Role="AllowedStoreOption" EntitySet="AllowedStoreOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_ADOption" Association="PetSupplies_8517.FK_StoreAdChoice_ADOption">
+      <End Role="ADOption" EntitySet="ADOptions" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_ADOption" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_ADOption">
+      <End Role="ADOption" EntitySet="ADOptions" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllowedStoreOption_Store" Association="PetSupplies_8517.FK_AllowedStoreOption_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="AllowedStoreOption" EntitySet="AllowedStoreOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_Coupon" Association="PetSupplies_8517.FK_StoreAdChoice_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_Coupon" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExceptionReport_Store" Association="PetSupplies_8517.FK_ExceptionReport_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ExceptionReport" EntitySet="ExceptionReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginHistory_User" Association="PetSupplies_8517.FK_LoginHistory_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="LoginHistory" EntitySet="LoginHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Store_Market" Association="PetSupplies_8517.FK_Store_Market">
+      <End Role="Market" EntitySet="Markets" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_Store" Association="PetSupplies_8517.FK_StoreAdChoice_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_Store" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserStore_Store" Association="PetSupplies_8517.FK_UserStore_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="UserStore" EntitySet="UserStores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoice_User" Association="PetSupplies_8517.FK_StoreAdChoice_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_StoreAdChoice" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_StoreAdChoice">
+      <End Role="StoreAdChoice" EntitySet="StoreAdChoices" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoreAdChoiceHistory_User" Association="PetSupplies_8517.FK_StoreAdChoiceHistory_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="StoreAdChoiceHistory" EntitySet="StoreAdChoiceHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserStore_User" Association="PetSupplies_8517.FK_UserStore_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserStore" EntitySet="UserStores" />
+    </AssociationSet>
+    <AssociationSet Name="CouponAdMonth" Association="PetSupplies_8517.CouponAdMonth">
+      <End Role="AdMonth" EntitySet="AdMonths" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="AdMonth">
+    <Key>
+      <PropertyRef Name="AdMonthID" />
+    </Key>
+    <Property Name="AdMonthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdCoupnID" Type="Int32" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="LockOutEndDate" Type="DateTime" Precision="3" />
+    <Property Name="LockOutStartDate" Type="DateTime" Precision="3" />
+    <Property Name="DropNumber" Type="Int32" />
+    <Property Name="PetpartnerInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CorpInHomeDate" Type="DateTime" Precision="3" />
+    <Property Name="AdOptionID" Type="Int32" />
+    <Property Name="CorpPlanText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ADOption" Relationship="PetSupplies_8517.FK_AdMonth_ADOption" FromRole="AdMonth" ToRole="ADOption" />
+    <NavigationProperty Name="Coupon" Relationship="PetSupplies_8517.FK_AdMonth_Coupon" FromRole="AdMonth" ToRole="Coupon" />
+    <NavigationProperty Name="Documents" Relationship="PetSupplies_8517.FK_Document_AdMonth" FromRole="AdMonth" ToRole="Document" />
+    <NavigationProperty Name="ExceptionReports" Relationship="PetSupplies_8517.FK_ExceptionReport_AdMonth" FromRole="AdMonth" ToRole="ExceptionReport" />
+    <NavigationProperty Name="StoreAdChoices" Relationship="PetSupplies_8517.FK_StoreAdChoice_AdMonthID" FromRole="AdMonth" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_AdMonth" FromRole="AdMonth" ToRole="StoreAdChoiceHistory" />
+    <NavigationProperty Name="Coupons" Relationship="PetSupplies_8517.CouponAdMonth" FromRole="AdMonth" ToRole="Coupon" />
+  </EntityType>
+  <EntityType Name="ADOption">
+    <Key>
+      <PropertyRef Name="ADOptionID" />
+    </Key>
+    <Property Name="ADOptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADOptionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialChoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MinimumCirculation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vendorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Inactive" Type="Boolean" />
+    <NavigationProperty Name="AdMonths" Relationship="PetSupplies_8517.FK_AdMonth_ADOption" FromRole="ADOption" ToRole="AdMonth" />
+    <NavigationProperty Name="AllowedStoreOptions" Relationship="PetSupplies_8517.FK_AllowedStoreOption_ADOption" FromRole="ADOption" ToRole="AllowedStoreOption" />
+    <NavigationProperty Name="StoreAdChoices" Relationship="PetSupplies_8517.FK_StoreAdChoice_ADOption" FromRole="ADOption" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_ADOption" FromRole="ADOption" ToRole="StoreAdChoiceHistory" />
+  </EntityType>
+  <EntityType Name="AllowedStoreOption">
+    <Key>
+      <PropertyRef Name="AllowedStoreOptionID" />
+    </Key>
+    <Property Name="AllowedStoreOptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreID" Type="Int32" />
+    <Property Name="AdOptionID" Type="Int32" />
+    <NavigationProperty Name="ADOption" Relationship="PetSupplies_8517.FK_AllowedStoreOption_ADOption" FromRole="AllowedStoreOption" ToRole="ADOption" />
+    <NavigationProperty Name="Store" Relationship="PetSupplies_8517.FK_AllowedStoreOption_Store" FromRole="AllowedStoreOption" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="AdMonths" Relationship="PetSupplies_8517.FK_AdMonth_Coupon" FromRole="Coupon" ToRole="AdMonth" />
+    <NavigationProperty Name="StoreAdChoices" Relationship="PetSupplies_8517.FK_StoreAdChoice_Coupon" FromRole="Coupon" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_Coupon" FromRole="Coupon" ToRole="StoreAdChoiceHistory" />
+    <NavigationProperty Name="AdMonths1" Relationship="PetSupplies_8517.CouponAdMonth" FromRole="Coupon" ToRole="AdMonth" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MonthID" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AdMonth" Relationship="PetSupplies_8517.FK_Document_AdMonth" FromRole="Document" ToRole="AdMonth" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+    <Property Name="IpAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ExceptionReport">
+    <Key>
+      <PropertyRef Name="ExceptionID" />
+    </Key>
+    <Property Name="ExceptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MonthId" Type="Int32" />
+    <Property Name="StoreId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="IsAnyAdChoiseAssigned" Type="Boolean" />
+    <NavigationProperty Name="AdMonth" Relationship="PetSupplies_8517.FK_ExceptionReport_AdMonth" FromRole="ExceptionReport" ToRole="AdMonth" />
+    <NavigationProperty Name="Store" Relationship="PetSupplies_8517.FK_ExceptionReport_Store" FromRole="ExceptionReport" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="LoginHistory">
+    <Key>
+      <PropertyRef Name="LoginHistoryID" />
+    </Key>
+    <Property Name="LoginHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="IPaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="PetSupplies_8517.FK_LoginHistory_User" FromRole="LoginHistory" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Market">
+    <Key>
+      <PropertyRef Name="MarketID" />
+    </Key>
+    <Property Name="MarketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Stores" Relationship="PetSupplies_8517.FK_Store_Market" FromRole="Market" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Ownergroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Storename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MarketID" Type="Int32" />
+    <Property Name="StoreCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ArtworkCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AllowedStoreOptions" Relationship="PetSupplies_8517.FK_AllowedStoreOption_Store" FromRole="Store" ToRole="AllowedStoreOption" />
+    <NavigationProperty Name="ExceptionReports" Relationship="PetSupplies_8517.FK_ExceptionReport_Store" FromRole="Store" ToRole="ExceptionReport" />
+    <NavigationProperty Name="Market" Relationship="PetSupplies_8517.FK_Store_Market" FromRole="Store" ToRole="Market" />
+    <NavigationProperty Name="StoreAdChoices" Relationship="PetSupplies_8517.FK_StoreAdChoice_Store" FromRole="Store" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_Store" FromRole="Store" ToRole="StoreAdChoiceHistory" />
+    <NavigationProperty Name="UserStores" Relationship="PetSupplies_8517.FK_UserStore_Store" FromRole="Store" ToRole="UserStore" />
+  </EntityType>
+  <EntityType Name="StoreAdChoice">
+    <Key>
+      <PropertyRef Name="ChoiceID" />
+    </Key>
+    <Property Name="ChoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdMonthID" Type="Int32" />
+    <Property Name="StoreID" Type="Int32" />
+    <Property Name="AdOptionID" Type="Int32" />
+    <Property Name="TimeStamp" Type="Time" Precision="7" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InHomeDate" Type="DateTime" Precision="3" />
+    <Property Name="ChoiceInitials" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FollowedCorporate" Type="Boolean" />
+    <Property Name="NotPrinting" Type="Boolean" />
+    <Property Name="OwnDistribution" Type="Boolean" />
+    <Property Name="CouponID" Type="Int32" />
+    <NavigationProperty Name="AdMonth" Relationship="PetSupplies_8517.FK_StoreAdChoice_AdMonthID" FromRole="StoreAdChoice" ToRole="AdMonth" />
+    <NavigationProperty Name="ADOption" Relationship="PetSupplies_8517.FK_StoreAdChoice_ADOption" FromRole="StoreAdChoice" ToRole="ADOption" />
+    <NavigationProperty Name="Coupon" Relationship="PetSupplies_8517.FK_StoreAdChoice_Coupon" FromRole="StoreAdChoice" ToRole="Coupon" />
+    <NavigationProperty Name="Store" Relationship="PetSupplies_8517.FK_StoreAdChoice_Store" FromRole="StoreAdChoice" ToRole="Store" />
+    <NavigationProperty Name="User" Relationship="PetSupplies_8517.FK_StoreAdChoice_User" FromRole="StoreAdChoice" ToRole="User" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_StoreAdChoice" FromRole="StoreAdChoice" ToRole="StoreAdChoiceHistory" />
+  </EntityType>
+  <EntityType Name="StoreAdChoiceHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChoiceID" Type="Int32" />
+    <Property Name="AdMonthID" Type="Int32" />
+    <Property Name="StoreID" Type="Int32" />
+    <Property Name="AdOptionID" Type="Int32" />
+    <Property Name="TimeStamp" Type="Time" Precision="7" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InHomeDate" Type="DateTime" Precision="3" />
+    <Property Name="ChoiceInitials" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CouponID" Type="Int32" />
+    <NavigationProperty Name="AdMonth" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_AdMonth" FromRole="StoreAdChoiceHistory" ToRole="AdMonth" />
+    <NavigationProperty Name="ADOption" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_ADOption" FromRole="StoreAdChoiceHistory" ToRole="ADOption" />
+    <NavigationProperty Name="Coupon" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_Coupon" FromRole="StoreAdChoiceHistory" ToRole="Coupon" />
+    <NavigationProperty Name="Store" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_Store" FromRole="StoreAdChoiceHistory" ToRole="Store" />
+    <NavigationProperty Name="StoreAdChoice" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_StoreAdChoice" FromRole="StoreAdChoiceHistory" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="User" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_User" FromRole="StoreAdChoiceHistory" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ownername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LoginHistories" Relationship="PetSupplies_8517.FK_LoginHistory_User" FromRole="User" ToRole="LoginHistory" />
+    <NavigationProperty Name="StoreAdChoices" Relationship="PetSupplies_8517.FK_StoreAdChoice_User" FromRole="User" ToRole="StoreAdChoice" />
+    <NavigationProperty Name="StoreAdChoiceHistories" Relationship="PetSupplies_8517.FK_StoreAdChoiceHistory_User" FromRole="User" ToRole="StoreAdChoiceHistory" />
+    <NavigationProperty Name="UserStores" Relationship="PetSupplies_8517.FK_UserStore_User" FromRole="User" ToRole="UserStore" />
+  </EntityType>
+  <EntityType Name="UserStore">
+    <Key>
+      <PropertyRef Name="UserStoreID" />
+    </Key>
+    <Property Name="UserStoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="StoreID" Type="Int32" />
+    <NavigationProperty Name="Store" Relationship="PetSupplies_8517.FK_UserStore_Store" FromRole="UserStore" ToRole="Store" />
+    <NavigationProperty Name="User" Relationship="PetSupplies_8517.FK_UserStore_User" FromRole="UserStore" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_AdMonth_ADOption">
+    <End Type="PetSupplies_8517.ADOption" Role="ADOption" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="AdMonth">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdMonth_Coupon">
+    <End Type="PetSupplies_8517.Coupon" Role="Coupon" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="AdMonth">
+        <PropertyRef Name="AdCoupnID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_AdMonth">
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="MonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExceptionReport_AdMonth">
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.ExceptionReport" Role="ExceptionReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="ExceptionReport">
+        <PropertyRef Name="MonthId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_AdMonthID">
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="AdMonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_AdMonth">
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdMonth">
+        <PropertyRef Name="AdMonthID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="AdMonthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllowedStoreOption_ADOption">
+    <End Type="PetSupplies_8517.ADOption" Role="ADOption" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.AllowedStoreOption" Role="AllowedStoreOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="AllowedStoreOption">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_ADOption">
+    <End Type="PetSupplies_8517.ADOption" Role="ADOption" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_ADOption">
+    <End Type="PetSupplies_8517.ADOption" Role="ADOption" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADOption">
+        <PropertyRef Name="ADOptionID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="AdOptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllowedStoreOption_Store">
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.AllowedStoreOption" Role="AllowedStoreOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="AllowedStoreOption">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_Coupon">
+    <End Type="PetSupplies_8517.Coupon" Role="Coupon" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_Coupon">
+    <End Type="PetSupplies_8517.Coupon" Role="Coupon" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExceptionReport_Store">
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.ExceptionReport" Role="ExceptionReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="ExceptionReport">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginHistory_User">
+    <End Type="PetSupplies_8517.User" Role="User" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.LoginHistory" Role="LoginHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LoginHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Store_Market">
+    <End Type="PetSupplies_8517.Market" Role="Market" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Market">
+        <PropertyRef Name="MarketID" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="MarketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_Store">
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_Store">
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserStore_Store">
+    <End Type="PetSupplies_8517.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.UserStore" Role="UserStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="UserStore">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoice_User">
+    <End Type="PetSupplies_8517.User" Role="User" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StoreAdChoice">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_StoreAdChoice">
+    <End Type="PetSupplies_8517.StoreAdChoice" Role="StoreAdChoice" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreAdChoice">
+        <PropertyRef Name="ChoiceID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="ChoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoreAdChoiceHistory_User">
+    <End Type="PetSupplies_8517.User" Role="User" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.StoreAdChoiceHistory" Role="StoreAdChoiceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StoreAdChoiceHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserStore_User">
+    <End Type="PetSupplies_8517.User" Role="User" Multiplicity="0..1" />
+    <End Type="PetSupplies_8517.UserStore" Role="UserStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserStore">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CouponAdMonth">
+    <End Type="PetSupplies_8517.AdMonth" Role="AdMonth" Multiplicity="*" />
+    <End Type="PetSupplies_8517.Coupon" Role="Coupon" Multiplicity="*" />
+  </Association>
+</Schema>

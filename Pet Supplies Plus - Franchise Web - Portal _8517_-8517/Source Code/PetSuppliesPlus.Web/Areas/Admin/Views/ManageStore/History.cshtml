@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>Ad Choice History <span>List of Store ID : @ViewBag.StoreId</span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('month')">Ad Month</a>
+                    <br />
+                    @*<input type="text" id="month" name="month" class="form-control" placeholder="Ad Month" />*@
+                    @Html.DropDownList("month", new SelectList(ViewBag.MonthList, "Value", "Text"), "All", new { @class = "form-control" })
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('storename')">Store Name</a>
+                    <br />
+                    <input type="text" id="storename" name="storename" class="form-control" placeholder="Store Name" />
+                    <input type="text" id="storeid" name="storeid" value="@ViewBag.StoreId" style="display:none;" />
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('adoptionname')">Ad Option</a>
+                    <br />
+                    <input type="text" id="adoptionname" name="adoptionname" class="form-control" placeholder="AdOption Name" />
+                </th>
+
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('user')">User</a>
+                    <br />
+                    <input type="text" id="user" name="user" class="form-control" placeholder="User" />
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('ipaddress')">IPAddress</a>
+                    <br />
+                    <input type="text" id="ipaddress" name="ipaddress" class="form-control" placeholder="IPAddress" />
+                </th>
+
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('device')">Device</a>
+                    <br />
+                    <input type="text" id="device" name="device" class="form-control" placeholder="Device" />
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('browser')">Browser</a>
+                    <br />
+                    <input type="text" id="browser" name="browser" class="form-control" placeholder="Browser" />
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('followedcorporate')">Followed Corporate</a>
+                    <br />
+                    <select id="followedcorporate" name="followedcorporate" class="form-control">
+                        <option value="">All</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </th>
+                <th >
+                    <a class="sort-icon" onclick="sortRequest('choiceinitial')">Choice Initial</a>
+                    <br />
+                    <input type="text" id="choiceinitial" name="choiceinitial" class="form-control" placeholder="Choice Initial" />
+                </th>
+                <th><img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" /></th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+
+    <a href="@Url.Content("~/Admin/ManageStore/Index")">Back </a>
+</div>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/AjaxGrid.js"></script>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridListForHistory", "ManageStore")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'createdon';
+    _isEditorPage = true;
+
+    $(function () {
+        searchRequest();
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+
+</script>
+
+
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Store.StoreModel>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count() > 0)
+{
+    int counter = 0;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.StoreID)</td>
+            <td>
+                @item.Ownergroup
+            </td>
+            <td>@(item.Storename)</td>
+            @*<td>@(item.Circulation)</td>*@
+            <td>@(item.City)</td>
+            <td>@(item.State)</td>
+            <td>@(item.MarketName)</td>
+            <td>@(item.StoreCode)</td>
+            <td>@(item.ArtworkCode)</td>
+        </tr>
+        counter++;
+    }
+    <tr>
+        <td colspan="12">
+            @Html.Partial("DataPaging")
+        </td>
+    </tr>
+}
+else
+{
+    <tr>
+        <td colspan="12">
+            <span class="no-data">No record found.</span>
+        </td>
+    </tr>
+
+}

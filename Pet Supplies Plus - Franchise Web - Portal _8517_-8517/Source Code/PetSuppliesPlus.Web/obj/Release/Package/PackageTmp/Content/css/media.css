@@ -1,0 +1,121 @@
+@media screen and  (max-width : 1270px)
+ {
+    .all-ic:last-child { float: left; position: relative;}
+    .ic.main-selection {position: relative !important;right: 0!important;}
+    .dshbrd-radio ul li label {font-size:15px;}
+ }
+    
+
+
+@media screen and (min-width: 767px){
+	.dashboard_menu{display: block !important; }
+    #userMenu .hidden-xs{display: inline-block !important;}
+}
+@media screen and (min-width: 767px) and (max-width:1200px){
+	header .links .logout{margin-right: 10px;}
+	header .links > div{margin-left: 10px;}
+	header .logo,header .links{position: static;}
+	header .search-container {float: left; width: 40%; text-align: right;}
+	header .top-menu::before,header .top-menu::after{content: ""; display: block; clear: both;}
+}
+@media screen and (min-width: 970px) and (max-width:1070px){
+	#tablularData th:first-child, #tablularData td:first-child{padding-left: 10px;}
+	#tablularData th:last-child, #tablularData td:last-child{padding-right: 10px;}
+	section.wrapper > .related_content{padding: 20px 20px 0px;}
+}
+@media screen and (min-width: 970px) and (max-width:1024px){
+	section.wrapper > nav ul > li > a{padding: 0 10px;}
+	section.wrapper > nav > ul > li > ul > li{padding-left: 10px;}
+	section.wrapper > nav{width: 220px;}
+	section.wrapper > nav ul > li > a .icon{margin-right: 0;}
+	section.wrapper > .related_content{width: calc(100vw - 215px - 17px);width: -webkit-calc(100vw - 215px - 17px);}
+	#tablularData th:first-child, #tablularData td:first-child{padding-left: 5px;}
+	#tablularData th:last-child, #tablularData td:last-child{padding-right: 5px;}
+}
+
+@media screen and (max-width: 970px){
+	section.wrapper > nav{margin-left: -257px;}
+	section.wrapper > .related_content{width: calc(100vw); width: -webkit-calc(100vw);}
+	header .search-container{width: auto;padding-left: 20px;}
+	header .logo{padding-left: 10px;}
+	header .links button.print-page{margin-right: 10px;}
+	html,body{overflow-x:hidden }
+	section.wrapper{width: calc(100vw + 257px);width: -webkit-calc(100vw + 257px);}
+	.slideMenuMobile {
+	  background: #716658 none repeat scroll 0 0;
+	  display: inline-block;
+	  color: #fff;
+	  padding: 10px;
+	  cursor: pointer;
+	  margin: 0 0 20px;
+	}
+	.slideMenuMobile::before{
+		content: 'Menu';
+	}
+	section.wrapper > nav{transition-duration: 200ms;}
+	section.wrapper > nav.open{margin-left: 0; transition-duration: 200ms;}
+}
+
+@media screen and (max-width: 767px){
+	header{position: relative;}
+	section.wrapper{margin: 0;}
+	header .logo,header .links{position: static;}	
+	header .search-container {float: left; padding-left: 15px;width: auto;}
+	header .top-menu::before,header .top-menu::after{content: ""; display: block; clear: both;}
+	header .links > div{margin-left: 5px; }
+	header .links .logout{margin-left: 5px;margin-right: 5px;}
+	header .links .btn.btn-default.dropdown-toggle .profile-pic{margin-right: 0;}
+	.mainMenuMobile {
+	  border-radius: 1px;
+	  display: inline-block;
+	  float: left;
+	  height: 20px;
+	  margin: 15px 0 0 15px;
+	  width: 25px;
+	  cursor: pointer;
+	}
+	.mainMenuMobile::before{
+	  display: block;
+	  content: "";
+	  background: #000;
+	  height: 2px;
+	  box-shadow: 0 7px 0 #000,0 14px 0 #000;
+	}
+	section.wrapper > .related_content{padding: 23px 15px;}
+	.tabular-data caption {
+	  color: #727272;
+	  font-size: 24px;
+	  font-weight: 500;
+	}
+	.tabular-data caption span {
+	  font-weight: 300;
+	}
+	.tabular-data{box-shadow: none;}
+	
+}
+@media screen and (max-width: 640px){
+	header .links{width: 100%;}
+	header .search-container{float: right; margin-right: 10px;}
+	header .search-bar input[type="search"]{width: 140px;}
+	.dashboard_menu ul li{display: block; float: none;} 
+	.dashboard_menu{margin-top: 0; display: none;}
+	.mainMenuMobile {
+	  border-radius: 1px;
+	  display: inline-block;
+	  float: left;
+	  height: 20px;
+	  margin: 15px 0 0 15px;
+	  width: 25px;
+	  cursor: pointer;
+	}
+	.mainMenuMobile::before{
+	  display: block;
+	  content: "";
+	  background: #000;
+	  height: 2px;
+	  box-shadow: 0 7px 0 #000,0 14px 0 #000;
+	}
+	header .links button.print-page{padding: 0 10px;}
+	.related_content h1{font-size: 32px;}
+}
+ 

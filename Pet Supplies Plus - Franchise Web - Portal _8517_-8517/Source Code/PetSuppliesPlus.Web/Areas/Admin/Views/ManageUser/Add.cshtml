@@ -1,0 +1,143 @@
+﻿@model PetSuppliesPlus.Model.Users.UsersModel
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-error row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="error-messgae"></strong></li>
+    </ul>
+</div>
+<div class="alert alert-success row" style="display: none;">
+    <button class="close" type="button">
+        ×
+    </button>
+    <ul>
+        <li><strong id="success-messgae"></strong></li>
+    </ul>
+</div>
+@using (Html.BeginForm("Add", "ManageUser", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span>Add User</span> User Account</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>Owner Name<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control", @placeholder = "Owner Name" })
+                                @Html.ValidationMessageFor(m => m.OwnerName)
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>Email<span class="text-danger">*</span></label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="clearfix"></div>
+
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-6 col-sm-6">
+                                <label>IsActive </label>
+                                @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control", @style = "width:15px; height:15px;" })
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label>IsAdmin </label>
+                                @Html.CheckBoxFor(m => m.IsAdmin, new { @class = "form-control", @style = "width:15px; height:15px;" })
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="col-md-12 col-sm-12">
+                            @if (string.IsNullOrEmpty(Model.EncryptedID))
+                            {
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Password<span class="text-danger">*</span></label>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </div>
+                            }
+                            @*<div class="col-md-6 col-sm-6">
+                    <label>Store</label>
+                    @Html.DropDownListFor(m => m.StoreID, new SelectList(ViewBag.StoreList, "Value", "Text"), "Select Store", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.StoreID)
+                </div>*@
+
+                            @Html.HiddenFor(m => m.EncryptedID)
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12">
+                                <button type="button" class="btn btn-default save" onclick="return SaveUser();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="window.location = '@Url.Content("~/Admin/ManageUser/Index")';">Cancel</button>
+                                <input type="reset" id="btnReset" name="btnReset" style="display: none;" />
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script type="text/javascript">
+    function clear() {
+        $('#Email').val('');
+        $('#Password').val('');
+        $('OwnerName').val('');
+    }
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveUser();
+        }
+    });
+    function SaveUser() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("SaveUser", "ManageUser")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                        $('.alert').delay(3000).slideUp("slow", function () {
+                            redirect('@Url.Content("~/Admin/ManageUser/Index")');
+                        });
+
+                    }
+                    else {
+                        $('#error-messgae').html(data.Message);
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>

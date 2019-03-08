@@ -1,0 +1,565 @@
+
+<script type="text/javascript" src="http://172.16.10.23/whosin2/modules/bdms/scripts/ajax.js"></script>
+<script type="text/javascript" src="http://172.16.10.23/whosin2/modules/bdms/scripts/ajax-dynamic-list.js"></script>
+<script type="text/javascript" src="http://172.16.10.23/whosin2/modules/bdms/scripts/modal-message.js"></script>
+<script type="text/javascript" src="http://172.16.10.23/whosin2/modules/bdms/scripts/ajax-dynamic-content.js"></script>
+<!--<script type="text/javascript" src="http://172.16.10.23/whosin2/modules/bdms/scripts/wz_tooltip.js"></script>-->
+<link rel="stylesheet" href="http://172.16.10.23/whosin2/modules/bdms/css/modal-message.css" type="text/css">
+<LINK REL = "stylesheet" HREF = "http://172.16.10.23/whosin2/css/default.css">
+<style type="text/css">
+
+/* START CSS NEEDED ONLY IN DEMO */
+fieldset { border:1px solid black }
+
+legend {
+  padding: 0.2em 0.5em;
+  border:1px solid black;
+  color:green;
+  font-size:90%;
+  text-align:right;
+  }
+
+#mainContainer{
+	width:100%;
+	margin:0 auto;
+	text-align:left;
+	height:100%;
+	background-color:#FFF;
+	border-left:0px double #000;
+	border-right:0px double #000;
+}
+#formContent{
+	padding:5px;
+}
+/* END CSS ONLY NEEDED IN DEMO */
+
+
+/* Big box with list of options */
+#ajax_listOfOptions{
+	position:absolute;	/* Never change this one */
+	width:175px;	/* Width of box */
+	height:250px;	/* Height of box */
+	overflow:auto;	/* Scrolling features */
+	border:1px solid #317082;	/* Dark green border */
+	background-color:#FFF;	/* White background color */
+	text-align:left;
+	font-size:0.9em;
+	z-index:100;
+}
+#ajax_listOfOptions div{	/* General rule for both .optionDiv and .optionDivSelected */
+	margin:1px;
+	padding:1px;
+	cursor:pointer;
+	font-size:0.9em;
+}
+#ajax_listOfOptions .optionDiv{	/* Div for each item in list */
+
+}
+#ajax_listOfOptions .optionDivSelected{ /* Selected item in the list */
+	background-color:#317082;
+	color:#FFF;
+}
+#ajax_listOfOptions_iframe{
+	background-color:#F00;
+	position:absolute;
+	z-index:5;
+}
+
+form{
+	display:inline;
+}
+
+</style>
+
+<form name='frmEstimation' method='post' action=''><INPUT TYPE='HIDDEN' name='enquiry_id' id='enquiry_id' value='85642'><INPUT TYPE='HIDDEN' name='hidden_delete_task' id='hidden_delete_task' value=''><TABLE WIDTH = "100%" CELLPADDING = "5" valign='top' CELLSPACING = "0" style='border-collapse:collapse;' border='0'>
+		<TR>
+			<TD align='center' WIDTH="80%" colspan='3' CLASS="sidecellhead" HEIGHT = "28" >Project Effort Estimation Sheet [ Enquiry No. 85642 ]</TD>
+			<TD align='center' WIDTH="20%" CLASS="sidecellhead" HEIGHT = "28" >&nbsp;</TD></TR>
+		<input type='hidden' name='check_status' id='check_status' value=''>
+		<input type='hidden' name='final' id='final' value=''>
+
+
+		<TR>
+
+			<TD align='left' width='15%' class='text' ><b>Project Name :</b> </TD>
+			<TD align='left' width='25%' class='text'>Franchise Web - Portal</TD>
+
+			<TD align='left' width='15%' class='text' ><b>Estimated By : </b></TD>
+			<TD align='left' width='' class='text'>Gaurav Kumar Singh,Palash Agrawal</TD>
+
+		</TR>
+		<TR>
+
+			<TD align='left' class='text' ><b>Platform :</b> </TD>
+			<TD align='left' class='text'>HTML, .NET</TD>
+
+			<TD align='left' class='text' ><b>Reviewed By : </b></TD><TD align='left' class='text'>Kanhya Thakur</TD>	</TR>
+		<TR>
+
+			<TD align='left' class='text' ><b>Client Name :</b> </TD>
+			<TD align='left' class='text'>Austin Henson</TD>
+
+			<TD align='left' class='text' ><b>Approved By :</b> </TD>
+			<TD align='left' class='text'>Kanhya Thakur</TD>
+
+		</TR>
+
+		<TR>
+			<TD align='left' class='text' ><b>Estimation Sheet Status :</b> </TD>
+			<TD align='left' class='text'>Pending</TD>
+			<TD align='left' class='text' ><b></b> </TD>
+			<TD align='left' class='text'></TD>
+		</TR>
+		</table>
+		<TABLE WIDTH = "100%" CELLPADDING = "0" valign='top' CELLSPACING = "0" style='border-collapse:collapse;' border='0'>
+			<TR>
+			<TD align='left' width='5%' CLASS="sidecellhead" HEIGHT = "28" >S.No.</TD>
+			<TD align='left' width='20%' CLASS="sidecellhead" HEIGHT = "28" >Stage</TD>
+			<TD align='left' width='20%' CLASS="sidecellhead" HEIGHT = "28" >Task</TD>
+			<TD align='center' width='10%' CLASS="sidecellhead" HEIGHT = "28" >Duration(person hrs)</TD>
+			<TD align='center' width='' CLASS="sidecellhead" HEIGHT = "28" >Basis of Quote</TD>
+			</TD>
+			</TR>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>1</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>System Analysis</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task15'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration15'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis15'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >SRS</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Project Plan</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.2</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Task Schedular + MOMs</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>1.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Project Analysis</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>2.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Project Monitoring and Controlling</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>2.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>2</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>System Design</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task16'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration16'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis16'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >SDD + ER + Class Diagram</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>3</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Designing / Development</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task20'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration20'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis20'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Unit testing + Staging Server Setup + Delivery Uploading</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.4</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Code Review</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.5</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >WSR + PSR + Project Matrix</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.8</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Data Base Design</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >HTML +Design Review</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.4</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+							<TR valign='top'>
+								<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='right'  CLASS="text"  HEIGHT = "28" ><b>HTML</b></TD>
+								<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+							</tr>
+							<TR valign='top'>
+								<TD align='center'  CLASS="text"></TD>
+								<TD align='right'  CLASS="text"></TD>
+								<TD align='left'  CLASS="text"><div id='div_Task_20_11'></div></TD>
+								<TD align='center'  CLASS="text"><div id='div_Duration_20_11'></div></TD>
+								<TD align='left'  CLASS="text"><div id='div_Basis_20_11'></div></TD>
+							</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Login page design and responsive HTML</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>10.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Login page design and responsive HTML </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Dashbaord and 1 inside page design and responsive HTML</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>25.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Dashbaord and 1 inside page design and responsive HTML </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >HTML troubleshooting</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>5.0</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >HTML troubleshooting </TD>
+				</tr>
+							<TR valign='top'>
+								<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='right'  CLASS="text"  HEIGHT = "28" ><b>SEO</b></TD>
+								<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+								<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+							</tr>
+							<TR valign='top'>
+								<TD align='center'  CLASS="text"></TD>
+								<TD align='right'  CLASS="text"></TD>
+								<TD align='left'  CLASS="text"><div id='div_Task_20_46'></div></TD>
+								<TD align='center'  CLASS="text"><div id='div_Duration_20_46'></div></TD>
+								<TD align='left'  CLASS="text"><div id='div_Basis_20_46'></div></TD>
+							</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Outsourcing</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>4</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>System Testing</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task17'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration17'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis17'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >System Testing</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>1.8</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>5</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Reviews & Audits</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task31'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration31'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis31'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >SQA + Management Review + CM Accnt.</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.8</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Internal + External Audits</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.4</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>6</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Acceptance Testing</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task22'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration22'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis22'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Acceptance Testing</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.4</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>7</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Implementation</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task24'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration24'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis24'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >Live Server Setup</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>8</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Post Production Support & Maintainence</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task27'></div></TD>
+					<TD align='center'  CLASS="text"><div id='div_Duration27'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis27'></div></TD>
+				</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='right'  CLASS="text"  HEIGHT = "28" ></TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" >30 Days Bug fixing support, if required</TD>
+					<TD align='center'  CLASS="text"  HEIGHT = "28" ><b>0.8</TD>
+					<TD align='left'  CLASS="text"  HEIGHT = "28" > </TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>9</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Client Requested Documentation</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task26'></div></TD>
+					<TD align='center'  CLASS="text"   ><div id='div_Duration26'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis26'></div></TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" >--</TD>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+			</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>10</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Training</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task32'></div></TD>
+					<TD align='center'  CLASS="text"   ><div id='div_Duration32'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis32'></div></TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" >--</TD>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+			</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>11</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Perceieved Risk (if any)</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task30'></div></TD>
+					<TD align='center'  CLASS="text"   ><div id='div_Duration30'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis30'></div></TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" >--</TD>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+			</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="sidecell" HEIGHT = "28" ><b>12</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ><b>Client communication</b></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" ></TD>
+				<TD align='left'  CLASS="sidecell"  HEIGHT = "28" >&nbsp;</TD>
+			</tr>
+				<TR valign='top'>
+					<TD align='center'  CLASS="text" ></TD>
+					<TD align='right'  CLASS="text"  ></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Task33'></div></TD>
+					<TD align='center'  CLASS="text"   ><div id='div_Duration33'></div></TD>
+					<TD align='left'  CLASS="text"   ><div id='div_Basis33'></div></TD>
+				</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" >--</TD>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" >2.0</TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+			</tr>
+			<TR valign='top'>
+				<TD align='center'  CLASS="text"  HEIGHT = "28" ><b></b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" ><b>Reference Project Name/URL</b></TD>
+				<TD align='left'  CLASS="text"  HEIGHT = "28" colspan='3'>N/A</TD>
+				
+			</tr>
+	<TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" colspan='3' width='100%'><hr size='1' width='100%'></TD>
+	</tr>
+	<TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='right'  CLASS="text"   style='color:red' HEIGHT = "28" ><b>Total Hours :&nbsp;&nbsp;</b></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" >53.5</TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+	</tr><TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='right'  CLASS="text"   style='color:red' HEIGHT = "28" ><b>Total Devlopment Hours :&nbsp;&nbsp;</b></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" >42.5</TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+	</tr><TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='right'  CLASS="text"   style='color:red' HEIGHT = "28" ><b>Total Non Devlopment Hours :&nbsp;&nbsp;</b></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" >11.0</TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+	</tr><TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='right'  CLASS="text"   style='color:red' HEIGHT = "28" ><b>Total Cost :&nbsp;&nbsp;</b></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" >751.1</TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+	</tr>
+	<TR valign='top'>
+		<TD align='center'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>
+		<TD align='left'  CLASS="text"  HEIGHT = "28" ></TD>	</tr>	</TABLE></form><TABLE WIDTH = "50%" CELLPADDING = "5" valign='top' CELLSPACING = "0" style='border-collapse:collapse;' border='0' >
+		<tr><td><fieldset><legend CLASS="text"><b>&nbsp;&nbsp;Skill Cost Utilization % &nbsp;&nbsp;</b></legend>
+<TABLE WIDTH="100%" CELLPADDING = "5" valign='top' CELLSPACING = "0" style='border-collapse:collapse;' border='1' > <tr><th CLASS="text" valign='top' align='left'>Technology</th>
+		  <th CLASS="text" valign='top' align='left'>Dev. Hr.</th>
+		  <th CLASS="text" valign='top' align='left'>Dev. Cost</th>
+		  <th CLASS="text" valign='top' align='left'>N.Dev Hr.</th>
+		  <th CLASS="text" valign='top' align='left'>N.Dev Cost</th>
+		  <th CLASS="text" valign='top' align='left'>Total Cost</th>
+		  <th CLASS="text" valign='top' align='left'>Cost(%)</th>
+		  </tr><tr><td CLASS="text" >.NET</td>
+						  <td CLASS="text" >2.5</td>
+						  <td CLASS="text" >37.1</td>
+						  <td CLASS="text" >9.2</td>
+						  <td CLASS="text" >128.8</td>
+						  <td CLASS="text" >165.9</td><td CLASS="text">22.09</td></tr><tr><td CLASS="text" >HTML</td>
+						  <td CLASS="text" >40</td>
+						  <td CLASS="text" >560</td>
+						  <td CLASS="text" ></td>
+						  <td CLASS="text" ></td>
+						  <td CLASS="text" >560</td><td CLASS="text">74.56</td></tr><tr><td CLASS="text" >Tester</td>
+						  <td CLASS="text" ></td>
+						  <td CLASS="text" ></td>
+						  <td CLASS="text" >1.8</td>
+						  <td CLASS="text" >25.2</td>
+						  <td CLASS="text" >25.2</td><td CLASS="text">3.35</td></tr><tr><td CLASS="text" ><b>Total</b></td>
+		  <td CLASS="text" >42.5</td>
+		  <td CLASS="text" >597.1</td>
+		  <td CLASS="text" >11</td>
+		  <td CLASS="text" >154</td>
+		  <td CLASS="text" >751.1</td>
+		  <td CLASS="text" >&nbsp;</td></tr></TABLE></fieldset></td></tr></TABLE>

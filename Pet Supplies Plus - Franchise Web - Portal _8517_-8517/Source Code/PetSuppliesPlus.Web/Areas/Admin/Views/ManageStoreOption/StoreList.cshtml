@@ -1,0 +1,24 @@
+﻿@model PetSuppliesPlus.Model.Store.AllowedStoreOptionModel
+@{
+    Layout = null;
+}
+
+@if (Model.Detail != null && Model.Detail.Count() > 0)
+{
+    int counter = 0;
+    for (int i = 0; i < Model.Detail.Count(); i++)
+    {
+        <tr>
+            <td class="firstwidh">
+                @Html.HiddenFor(m => m.Detail[i].AllowedStoreOptionID)
+                @Html.HiddenFor(m => m.Detail[i].StoreID)
+                @Html.HiddenFor(m => m.Detail[i].AdOptionID)
+                @Html.CheckBoxFor(m => m.Detail[i].IsSelect, new { @class = "chk", @id = "chk-" + i.ToString() })
+            </td>
+            <td class="firstwidh2"> @Model.Detail[i].StoreID</td>
+            <td colspan="2">@Model.Detail[i].StoreName</td>
+        </tr>
+        counter++;
+    }
+}
+

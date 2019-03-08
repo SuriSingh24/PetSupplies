@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Store.StoreAdChoiceModel>
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@(new DateTime(item.AdMonthDetail.Year, item.AdMonthDetail.Month, 1).ToString("MMMM"))</td>
+                <td>@(new DateTime(item.AdMonthDetail.Year, item.AdMonthDetail.Month, 1).ToString("yyyy"))</td>
+                <td>@item.StoreID</td>
+                <td>@item.Storename</td>
+                <td>@item.ADOptionName</td>
+                <td>@item.AdCouponName</td>
+                <td>@item.DropNumber</td>
+                <td>@item.Device</td>
+                <td>@item.Browser</td>
+
+                <td style="display:none;"></td>
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="8">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="2">
+                <span class="no-data">No store found.</span>
+            </td>
+        </tr>
+
+    }

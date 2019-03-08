@@ -1,0 +1,9 @@
+To Create Initial Admin User in Database:
+
+insert into dbo.[User](Ownername,Email,Password,IsAdmin,IsActive) 
+values ('Craig','Craig@gmail.com','TWZd8ohZNpN7Wz9X0Ba0gA==',1,1)
+
+insert into dbo.[User](Ownername,Email,Password,IsAdmin,IsActive)
+values ('Leor','Leor@gmail.com','TWZd8ohZNpN7Wz9X0Ba0gA==',1,1)
+
+Note: please replace "Craig@gmail.com" & "Leor@gmail.com" to User email address.

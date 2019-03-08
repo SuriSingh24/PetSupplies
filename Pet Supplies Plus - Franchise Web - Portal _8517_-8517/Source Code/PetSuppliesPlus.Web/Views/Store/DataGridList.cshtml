@@ -1,0 +1,119 @@
+﻿@model IList<PetSuppliesPlus.Model.Store.StoreAdChoiceModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            bool isFcChecked = Model[i].UserAdChoice == UserAdChoice.FollowCorporate;
+            string iFChecked = isFcChecked == true ? "" : "";
+            bool isIcChecked = Model[i].UserAdChoice == UserAdChoice.IndividualChoice;
+            string icChecked = isIcChecked == true ? "" : "";
+            bool isNpChecked = Model[i].UserAdChoice == UserAdChoice.NotPrinting;
+            string npChecked = isNpChecked == true ? "" : "";
+            bool isOdChecked = Model[i].UserAdChoice == UserAdChoice.DoingOwnDistribution;
+            string odChecked = isNpChecked == true ? "" : "";
+            bool? isChecked = Model[i].IsCouponApply;
+            <tr>
+                <td class="firsttd_width">
+                    @*<a href="@Url.Content("~/store/detail/")@item.EncryptedID" title="store detail">
+                            @item.Storename, @item.Ownergroup
+                        </a>*@
+                    @Model[i].Storename
+                </td>
+                <td>@(Model[i].StoreID.ToString())</td>
+                <td>
+                    @Html.HiddenFor(m => m[i].ChoiceID, new { @id = "ChoiceID" + i })
+                    @Html.HiddenFor(m => m[i].EncryptedID, new { @id = "EncryptedID" + i })
+                    @Html.HiddenFor(m => m[i].UserAdChoice, new { @id = "UserAdChoice" + i })
+                    @Html.HiddenFor(m => m[i].StoreID, new { @id = "StoreID" + i })
+                    @Html.HiddenFor(m => m[i].AdMonthID, new { @id = "AdMonthID" + i })
+                    @Html.HiddenFor(m => m[i].FollowedCorporate, new { @id = "FollowedCorporate" + i })
+                    @Html.HiddenFor(m => m[i].ADOptionName, new { @id = "ADOptionName" + i })
+                    @Html.HiddenFor(m => m[i].AdCouponName, new { @id = "AdCouponName" + i })
+                    @Html.HiddenFor(m => m[i].IsCouponApply, new { @class= "IsCouponApply", @id = "IsCouponApply" + i })
+                    @Html.HiddenFor(m => m[i].CouponName, new { @id = "CouponName" + i })
+                    @*@Html.HiddenFor(m => m[i].CouponID, new { @id = "CouponID" + i })*@
+                    @Html.HiddenFor(m => m[i].ChoiceInitials, new { @class = "choice-initials", @id = "ChoiceInitials" + i })
+
+                    <div class="dshbrd-radio">
+                        <ul class="main-selection-ul main-selection-@i" style="@(isIcChecked == true ? "height: 250px" : "")">
+                            <li class="fc main-selection" data-id="@Model[i].StoreID" data-uc="@((byte)PetSuppliesPlus.Framework.UserAdChoice.FollowCorporate)" data-ind="@i">
+                                <input type="radio" id="f-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isFcChecked == true ? "checked=checked" : "")>
+                                <label for="f-option-@Model[i].StoreID">Follow Corporate</label>
+                                <div class="check"></div>
+                            </li>
+                            <li class="np main-selection" data-id="@Model[i].StoreID" data-uc="@((byte)PetSuppliesPlus.Framework.UserAdChoice.NotPrinting)" data-ind="@i">
+                                <input type="radio" id="t-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isNpChecked == true ? "checked=checked" : "")>
+                                <label for="t-option-@Model[i].StoreID">Not Printing for the Month</label>
+                                <div class="check">
+                                    <div class="inside"></div>
+                                </div>
+                            </li>
+                            <li class="od main-selection" data-id="@Model[i].StoreID" data-uc="@((byte)PetSuppliesPlus.Framework.UserAdChoice.DoingOwnDistribution)" data-ind="@i">
+                                <input type="radio" id="d-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isOdChecked == true ? "checked=checked" : "")>
+                                <label for="d-option-@Model[i].StoreID">Self-Distributing <br/> (Creating Own Artwork From Files Provided By PSP)</label>
+                                <div class="check">
+                                    <div class="inside"></div>
+                                </div>
+                            </li>
+                            <li class="ic main-selection" data-id="@Model[i].StoreID" data-uc="@((byte)PetSuppliesPlus.Framework.UserAdChoice.IndividualChoice)" data-ind="@i">
+                                <input type="radio" id="s-option-@Model[i].StoreID" name="selector_@Model[i].StoreID" data-id="@Model[i].StoreID" @(isIcChecked == true ? "checked=checked" : "")>
+                                <label for="s-option-@Model[i].StoreID">Alternative Options</label>
+                                <div class="check">
+                                    <div class="inside"></div>
+                                </div>
+                                <span class="clear-fix"></span>
+                                <ul class="ic-info" style="@(isIcChecked == true ? "" : "display:none;" )">
+                                    <li class="clear-fix"  data-id="@Model[i].StoreID" data-ind="@i">
+                                        @Html.DropDownListFor(m => m[i].AdOptionID, new SelectList(Model[i].AdOptionList, "Value", "Text", Model[i].AdOptionID), "Select Ad Option", new { @class = "form-control ad-options", @data_ind = i.ToString(), @style = "margin-bottom:10px;" })
+                                        @*@Html.TextBoxFor(m => m[i].InHomeDate, (Model[i].InHomeDate.Year > 2000 ? Model[i].InHomeDate.ToString(ApplicationConstant.DateFormat) : " "), new { @class = "form-control datepicker", @readonly = "true", @placeholder = "Select Date" })*@
+                                        @*@Html.DropDownListFor(m => m[i].SelectedAdOption, Model[i].StoreAdOptionList, new { @class = "form-control ad-options", @style = "margin-bottom:10px;", @multiple = "multiple" })*@
+                                    </li>
+
+                                    <!-- Coupon Selection Start  -->
+                                    <li class="ic-info-coupon clear-fix" style="@(isChecked.HasValue == true ? "" : "display:none;" )">
+                                        <p> Choose Coupon Options </p>
+                                        <ul>
+                                            <li class="c-yes" data-id="@Model[i].StoreID" data-ind="@i">
+                                                <input id="coupon-option-yes-@i" class="coupon-option-yes" type="radio" name="coupon-option-@i" @(isChecked == true ? "checked=checked" : "")>
+                                                <label for="coupon-option-yes-@i">Yes</label>
+                                                <span class="check"></span>
+                                                <p class="coupon-list"  data-id="@Model[i].StoreID" data-ind="@i" @(isChecked == true ? "" : "style=display:none;" )>
+                                                    @Html.DropDownListFor(m => m[i].CouponID, new SelectList(Model[i].CouponList, "Value", "Text", Model[i].CouponID), "Select Coupon", new { @class = "form-control ad-Coupons", @style = "margin-bottom:10px;" })
+                                                </p>
+                                            </li>
+                                            <li class="c-no" data-id="@Model[i].StoreID" data-ind="@i">
+                                                <input id="coupon-option-no-@i" type="radio" class="coupon-option-no" name="coupon-option-@i" @(isChecked == false ? "checked=checked" : "")>
+                                                <label for="coupon-option-no-@i">No</label>
+                                                <span class="check"></span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- Coupon Selection End  -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            counter++;
+        }
+        @*<tr>
+                <td colspan="2">
+                    @Html.Partial("DataPaging")
+                </td>
+            </tr>*@
+    }
+    else
+    {
+        <tr>
+            <td colspan="2">
+                <span class="no-data">No store found.</span>
+            </td>
+        </tr>
+
+    }

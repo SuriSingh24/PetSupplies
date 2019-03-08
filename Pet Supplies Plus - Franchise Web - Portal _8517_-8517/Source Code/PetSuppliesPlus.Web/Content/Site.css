@@ -1,0 +1,355 @@
+﻿body {
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default*/
+
+.right {
+    float: right;
+}
+
+.btn-trigger {
+    margin: 0 10px;
+}
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.sort-icon {
+    cursor: pointer;
+    -moz-font-feature-settings: normal;
+    -moz-font-language-override: normal;
+    display: inline-block;
+    font-size: inherit;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    transform: translate(0px, 0px);
+}
+
+.sort-asc:before {
+    content: "\f15d \00a0";
+    font-family: fontawesome;
+}
+
+.sort-desc:before {
+    content: "\f15e \00a0";
+    font-family: fontawesome;
+}
+
+.no-data {
+    text-align: center;
+}
+
+.selectclass {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 34px;
+    line-height: 40px;
+    text-shadow: none;
+    width: 26.5%;
+}
+
+.widget-paging .page-status {
+    float: left;
+    width: auto;
+}
+
+.widget-paging .page-no {
+    float: right;
+    width: auto;
+}
+
+    .widget-paging .page-no span {
+        background: none repeat scroll 0 0 #e1e1e1;
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 6px 8px;
+    }
+
+        .widget-paging .page-no span.active {
+            background: none repeat scroll 0 0 #666;
+            color: #fff;
+            cursor: none;
+        }
+
+        .widget-paging .page-no span.disabled {
+            background: none repeat scroll 0 0 #666;
+            color: #fff;
+            cursor: none;
+        }
+
+.space-left {
+    margin-left: 15px;
+}
+
+.star {
+    color: #f00;
+    font-weight: bold;
+}
+
+.main_area {
+    background: none repeat scroll 0 0 #fff;
+    border: 8px solid #fff;
+    border-radius: 9px 9px 0 0;
+    box-shadow: -1px -1px 5px 0 #e1e1e1;
+    margin: 20px 0 0;
+    padding: 20px;
+}
+
+    .main_area h2 {
+        color: #009ec5;
+        font-size: 25px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 5px 15px;
+        background: #eee;
+        border-radius: 5px;
+    }
+
+        .main_area h2 .editbtn {
+            float: right;
+            margin-top: -4px;
+        }
+
+            .main_area h2 .editbtn a {
+                font-size: 16px;
+                font-weight: normal;
+                text-decoration: none;
+                text-transform: capitalize;
+                background: #009ec5;
+                padding: 5px 15px;
+                color: #fff;
+            }
+
+                .main_area h2 .editbtn a:hover {
+                    text-decoration: underline;
+                }
+
+.title_bg {
+    background: #eee;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+}
+
+
+
+.main_area h3, .main_area h4, .main_area h5, .main_area h1 {
+    font-weight: 700;
+    color: #009ec5;
+}
+
+.main_area .display-value {
+    padding-top: 7px;
+}
+
+.main_area .form-control {
+    margin: 0;
+}
+
+.ip_inputBx .form-control {
+    margin: 0;
+}
+
+table {
+    width: 100%;
+}
+
+ .admin-bg {
+    background: #00ae41 none repeat scroll 0 0 !important;
+    border: 0 none !important;
+    border-radius: 0 !important;
+}
+.admin-bg .navbar-brand{ color:#fff;}
+.admin-bg .navbar-nav > li > a{ color:#fff; font-size:16px;}
+.admin-bg .nav .caret {
+    border-bottom-color: #fff;
+    border-top-color: #fff;
+}
+
+.admin-bg {
+    background: #00ae41 none repeat scroll 0 0 !important;
+    border: 0 none !important;
+    border-radius: 0 !important;
+}
+.admin-bg .navbar-inverse .navbar-brand{ color:#fff;}
+.admin-bg .navbar-inverse .navbar-nav > li > a{ color:#fff; font-size:16px;}
+
+.admin-bg .nav .caret {
+    border-bottom-color: #fff;
+    border-top-color: #fff;
+}
+
+ .admin-bg .navbar-brand{ color:#fff !important;}
+.admin-bg .navbar-nav > li > a{ color:#fff!important; font-size:16px !important;}
+.admin-bg .nav .caret {
+    border-bottom-color: #fff !important;
+    border-top-color: #fff !important;
+}
+
+
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus { background:#00ae41 none repeat scroll 0 0 !important;
+}
+
+
+/*popup start here*/
+
+.wait-pupup, .work-popup {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 99999999;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    max-width: 100%;
+}
+
+    .wait-pupup .wait-process {
+        width: 150px;
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        z-index: 100002;
+        margin: -50px 0 0 -80px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 3px;
+        text-align: center;
+        border: 1px solid #eee;
+    }
+
+    .work-popup .work-area {
+        width: 600px;
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        z-index: 100002;
+        margin: -200px 0 0 -300px;
+        padding: 10px;
+        background: #ffffff;
+        border-radius: 3px;
+        text-align: center;
+        border: 1px solid #eee;
+        text-align: left;
+    }
+/*popup end*/
+.home_login_wrap, .home-notification, .home_login_wrap, .login-user-detail {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 6px;
+    margin: 0;
+    padding: 15px;
+    position: absolute;
+    z-index: 999;
+    display: none;
+    box-shadow: 0 0 4px 0 #e1e1e1;
+    width: 300px;
+    top: 38px;
+    right: 0px;
+}
+
+    .home-notification ul li, .login-user-detail ul li {
+        font-size: 13px;
+    }
+
+    .home-notification li:hover, .home_login_wrap, .home-notification:hover, .login-user-detail li:hover, .login-user-detail:hover {
+        transition: none;
+        transform: none;
+        margin: 0 !important;
+    }
+
+
+
+ 
+
+.modalclose {
+    border-radius: 0 0 0 5px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.single-column {
+    max-width: 340px;
+}
+
+.hide {
+    display: none;
+}
+
+.single-column h2 {
+    color: #009ec5;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.profile_head h2 {
+    color: #009ec5;
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+.cke_button__about, .cke_button__scayt {
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
+}
+
+ 
+
+@media all and (min-width: 320px) and (max-width: 640px) {
+    .work-popup .work-area {
+        left: 0;
+        margin: 2%;
+        max-width: 96%;
+        padding: 10px;
+        top: 10%;
+        width: 600px;
+    }
+    .admin-bg .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+     color:#fff !important; background:#039038;}
+     
+}

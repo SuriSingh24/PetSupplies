@@ -1,0 +1,17 @@
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\bin\Debug\EmailTracking.Data.dll
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\bin\Debug\EmailTracking.Data.pdb
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\obj\Debug\EmailTracking.Framework.csprojResolveAssemblyReference.cache
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\bin\Debug\EmailTracking.Framework.dll
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\bin\Debug\EmailTracking.Framework.pdb
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\obj\Debug\EmailTracking.Framework.dll
+D:\Shiv\ShourceCode_IntialProject\DropShipping.Framework\obj\Debug\EmailTracking.Framework.pdb
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\bin\Debug\EmailTracking.Framework.dll
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\bin\Debug\EmailTracking.Framework.pdb
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\bin\Debug\EmailTracking.Data.dll
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\bin\Debug\EmailTracking.Data.pdb
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.csprojResolveAssemblyReference.cache
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.dll
+D:\Shiv\ShourceCode_IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.pdb
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.csprojResolveAssemblyReference.cache
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.dll
+C:\Users\ratneshkumar\Desktop\IntialProject\EmailTracking.Framework\obj\Debug\EmailTracking.Framework.pdb

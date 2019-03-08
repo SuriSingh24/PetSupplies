@@ -1,0 +1,16 @@
+D:\Applications\DropShipping\ShourceCode\JobSignUp.Model\obj\Debug\DropShipping.Model.csprojResolveAssemblyReference.cache
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\obj\Debug\DropShipping.Model.csprojResolveAssemblyReference.cache
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\System.Web.Http.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\EPPlus.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\System.Net.Http.Formatting.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\System.Web.Http.xml
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\System.Net.Http.Formatting.xml
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\EntityFramework.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Model.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Model.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Data.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Framework.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Data.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\bin\Debug\DropShipping.Framework.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\obj\Debug\DropShipping.Model.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Model\obj\Debug\DropShipping.Model.pdb

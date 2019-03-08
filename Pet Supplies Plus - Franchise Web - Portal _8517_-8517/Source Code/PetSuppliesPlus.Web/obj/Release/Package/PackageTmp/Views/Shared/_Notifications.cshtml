@@ -1,0 +1,79 @@
+﻿@{
+    //success messages
+    var successMessages = new List<string>();
+    if (TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Success)] as IList<string>);
+    }
+    //error messages
+    var errorMessages = new List<string>();
+    if (TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Error)] != null)
+    {
+        errorMessages.AddRange(TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Error)] as IList<string>);
+    }
+    if (ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Error)] != null)
+    {
+        errorMessages.AddRange(ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Error)] as IList<string>);
+    }
+    //info message
+    var infoMessages = new List<string>();
+    if (TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Info)] != null)
+    {
+        infoMessages.AddRange(TempData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Info)] as IList<string>);
+    }
+    if (ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Info)] != null)
+    {
+        infoMessages.AddRange(ViewData[string.Format("{0}", PetSuppliesPlus.Framework.MessageStatus.Info)] as IList<string>);
+    }
+}
+@foreach (var message in successMessages)
+{
+    <div class="alert alert-success">
+        <button class="close" type="button">
+            ×
+        </button>
+        <strong>@Html.Raw(message)</strong>
+    </div>
+}
+
+@foreach (var message in infoMessages)
+{
+    <div class="alert alert-info">
+        <button class="close" type="button">
+            ×
+        </button>
+        <strong>@Html.Raw(message)</strong>
+    </div>
+}
+
+@if (errorMessages.Count > 1)
+{
+    <div class="alert alert-error row">
+        <button class="close" type="button">
+            ×
+        </button>
+        <ul>
+            @foreach (var message in errorMessages)
+            {
+                <li><strong>@Html.Raw(message)</strong></li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    foreach (var message in errorMessages)
+    {
+        <div class="alert alert-error row" style="margin-left: 0px; margin-bottom: 0px; margin-top: 10px;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <strong>@Html.Raw(message)</strong>
+        </div>
+    }
+}
+

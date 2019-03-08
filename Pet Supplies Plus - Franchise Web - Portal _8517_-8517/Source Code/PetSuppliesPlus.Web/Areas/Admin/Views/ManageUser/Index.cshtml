@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "User List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>User Account <span>List</span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('name')">Name</a>
+                    <br />
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('email')">Email</a>
+                    <br />
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Email" />
+                </th>
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('status')">Status</a>
+                    <br />
+                    <select id="status" name="status" class="form-control">
+                        <option value="">All</option>
+                        <option value="T">Active</option>
+                        <option value="F">InActive</option>
+                    </select>
+                </th>
+                <th style="vertical-align: top; width: 100px;">
+                    Action
+                    <br />
+                    <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+
+                    <a href="@Url.Content("~/Admin/ManageUser/Add")">
+                        <img src="@Url.Content("~/content/images/add-user.png")" title="add" style="cursor:pointer;" />
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/AjaxGrid.js"></script>
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "ManageUser")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'userid';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+
+    });
+
+    $('body').on('change', '#search-filter th input[type=text],#search-filter th select', function () {
+        searchRequest();
+    });
+
+    function removeUser(eId) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            var data = {
+                id: eId
+            };
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("DeleteUser", "ManageUsers")',
+                type: 'POST',
+                data: JSON.stringify({ id: eId }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Message);
+                    if (data.Status == 0) {
+                        asynList();
+                    }
+                },
+                error: function (data) {
+                }
+
+            });
+        }
+    }
+</script>

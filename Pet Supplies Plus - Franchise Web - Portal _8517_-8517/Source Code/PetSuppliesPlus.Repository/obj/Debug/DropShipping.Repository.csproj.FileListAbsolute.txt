@@ -1,0 +1,11 @@
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\obj\Debug\DropShipping.Repository.csprojResolveAssemblyReference.cache
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\System.Web.Http.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\System.Net.Http.Formatting.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\System.Web.Http.xml
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\System.Net.Http.Formatting.xml
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\DropShipping.Repository.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\DropShipping.Repository.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\DropShipping.Data.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\bin\Debug\DropShipping.Data.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\obj\Debug\DropShipping.Repository.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Repository\obj\Debug\DropShipping.Repository.pdb

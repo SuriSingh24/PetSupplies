@@ -1,0 +1,10 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("../fonts/siemens-sans-roman.eot");
+	src: url("../fonts/siemens-sans-roman.eot#iefix") format("embedded-opentype"),
+	url("../fonts/siemens-sans-roman.woff") format("woff"),
+	url("../fonts/siemens-sans-roman.ttf") format("truetype"),
+	url("../fonts/siemens-sans-roman.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}

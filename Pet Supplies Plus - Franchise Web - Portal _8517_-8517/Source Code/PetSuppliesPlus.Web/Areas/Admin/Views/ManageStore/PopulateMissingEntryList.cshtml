@@ -1,0 +1,64 @@
+﻿@model PetSuppliesPlus.Model.Store.StoreAdChoiceListModel
+    @using PetSuppliesPlus.Framework;
+    @{
+        ViewBag.Title = "PopulateMissingEntry";
+        Layout = null;
+    }
+
+    <table class="table stacktable large-only tablularData">
+        <caption>Following choice will be updating for the <span> @DateTime.Now.ToString("MMMM, yyyy"). </span></caption>
+        <thead>
+            <tr id="search-filter">
+                <th>
+                    Store ID
+                </th>
+                <th>
+                    Store Name
+                </th>
+                <th>
+                    Market Name
+                </th>
+                <th>
+                    Ad Choice
+                </th>
+                <th>
+                    Ad Option
+                </th>
+                <th>
+                    Ad Coupon
+                </th>
+
+                <th>
+                    Exception
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            @if (Model != null && Model.storAdChoiceList.Count() > 0)
+            {
+                foreach (var item in Model.storAdChoiceList)
+                {
+                    <tr>
+                        <td>@(item.StoreID)</td>
+
+                        <td>@(item.Storename)</td>
+                        <td>@(item.MarketName)</td>
+
+                        <td>@(item.Exception.IsAnyAdChoiseAssigned == true ?  (item.FollowedCorporate ? "Follow Corporate" : "Alternative Options" ) :"")</td>
+                        <td>@(item.ADOptionName)</td>
+
+                        <td>@(item.CouponName)</td>
+                        <td>@(item.Exception != null ? item.Exception.Description : "" )</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td >
+                        <span class="no-data">No record found.</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

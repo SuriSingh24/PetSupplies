@@ -1,0 +1,114 @@
+﻿@model PetSuppliesPlus.Model.Users.UsersModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="table-responsive table-bg">
+    <div class="col-md-12 col-sm-12">
+        <h1>My Account</h1>
+        </div>
+    
+    <div class="col-md-12 col-sm-12">
+        <div class="alert alert-error" style="display: none;">
+            <button class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="error-messgae"></strong></li>
+            </ul>
+        </div>
+        <div class="alert alert-success" style="display: none;">
+            <button data-dismiss="alert" class="close" type="button">
+                ×
+            </button>
+            <ul>
+                <li><strong id="success-messgae"></strong></li>
+            </ul>
+        </div>
+
+        @using (Html.BeginForm("Add", "ManageUser", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data", @id = "formAdd" }))
+        {
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Owner Name<span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control", @placeholder = "Owner Name" })
+                        @Html.ValidationMessageFor(m => m.OwnerName)
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label>Email<span class="text-danger">*</span></label>
+                        <input type="text" readonly class="form-control" value="@Model.Email" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br />
+                @Html.HiddenFor(m => m.StoreID)
+                @Html.HiddenFor(m => m.Email)
+                @Html.HiddenFor(m => m.IsActive)
+                @Html.HiddenFor(m => m.IsAdmin)
+                @Html.HiddenFor(m => m.EncryptedID)
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-default save" onclick="return SaveUser();">Save</button>
+                        <input type="reset" id="btnReset" name="btnReset" style="display: none;" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br />
+            </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function clear() {
+        $('#Email').val('');
+        $('#Password').val('');
+        $('OwnerName').val('');
+    }
+    $('form').keypress(function (e) {
+        if (e.which == 13) {
+            SaveUser();
+        }
+    });
+    function SaveUser() {
+        $('.alert-error').slideUp();
+        if ($('form').valid()) {
+            var data = $('form');
+            $.ajax({
+                cache: false,
+                async: true,
+                url: '@Url.Action("SaveUser", "MyAccount")',
+                type: 'POST',
+                data: data.serialize(),
+                //contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('.alert ul li strong').html(data.Message);
+                    if (data.Status == 0) {
+                        $('.alert-success').slideDown();
+                    }
+                    else {
+                        //$('#error-messgae').html(data.Message);
+                        $('.alert-error').slideDown();
+                    }
+                },
+                error: function (data) {
+                },
+                beforeSend: function () {
+                    $('.wait-pupup').fadeIn();
+                },
+                complete: function () {
+                    $('.wait-pupup').fadeOut();
+                }
+            });
+        }
+    }
+</script>
+
+

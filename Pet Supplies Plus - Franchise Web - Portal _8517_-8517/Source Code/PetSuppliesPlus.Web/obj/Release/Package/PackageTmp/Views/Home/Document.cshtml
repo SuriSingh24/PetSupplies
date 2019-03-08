@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PetSuppliesPlus.Models.DocumentModel>
+    @{
+        ViewBag.Title = "Document";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="tabular-data">
+        <table class="table stacktable large-only tablularData">
+            <caption>Document <span>List</span></caption>
+            <thead>
+                <tr id="search-filter">
+                    <th>
+
+                        File Name
+                    </th>
+                    <th>
+                        Download
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="data-grid">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    int counter = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (item.MonthID != null)
+                            {
+                            <td>
+                                @item.FileName
+                            </td>
+                            <td>
+                                <a href="@Url.Content("~/DataContainer/Documents/"+ item.FilePath)"><img src="@Url.Content("~/Content/images/download.png")" /></a>
+                            </td>
+                            }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">
+                            <span class="no-data">No record found.</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

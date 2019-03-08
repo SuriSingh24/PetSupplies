@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.Coupon.CouponModel>
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.CouponID.ToString("#CP00000")
+                </td>
+                <td>
+                    @item.CouponText
+                </td>
+                <td>@(item.IsActive == true ? "Active" : "InActive") </td>
+                <td>
+                    <a href="@Url.Content("~/Admin/ManageCoupon/Add/")@item.EncryptedID" title="edit"><img alt="edit" src="@Url.Content("~/Content/images/edit.png")"></a>
+                    @if (item.IsActive)
+                    {
+                    <a href="javascript:void(0);" onclick="removeCoupon('@item.EncryptedID')" title="InActive"><img alt="delete" src="@Url.Content("~/Content/images/delete.png")"></a>
+                    }
+                </td>
+            </tr>
+            counter++;
+        } 
+        <tr>
+            <td colspan="10">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="6">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }
+    <script>
+        function CompanyDetail(id) {
+            $('#' + id).css('display', '');
+        }
+
+
+        function removeCoupon(eId) {
+
+            if (confirm('Are you sure you want to delete this Coupon?')) {
+                var data = {
+                    id: eId
+                };
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("DeleteCoupon", "ManageCoupon")',
+                    type: 'POST',
+                    data: JSON.stringify({ id: eId }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.Message);
+                        if (data.Status == 0) {
+                            asynList();
+                        }
+                    },
+                    error: function (data) {
+                    }
+
+                });
+            }
+        }
+    </script>

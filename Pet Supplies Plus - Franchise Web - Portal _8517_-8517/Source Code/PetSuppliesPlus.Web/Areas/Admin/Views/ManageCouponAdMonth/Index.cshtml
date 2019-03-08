@@ -1,0 +1,51 @@
+﻿    @{
+        ViewBag.Title = "CouponAdMonthModel";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    @Html.Action("Add", "ManageCouponAdMonth")
+
+    <div class="tabular-data">
+        <table class="table stacktable large-only tablularData">
+            <caption>Selected Coupons for @ViewBag.Month @ViewBag.Year</caption>
+            <thead>
+                <tr id="search-filter">
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('couponid')">Coupon Id</a>
+                        <br />
+                        <input type="text" id="couponid" name="couponid" class="form-control" placeholder="Coupon ID" readonly style="display:none"  />
+                        <input type="text" id="monthid1" name="monthid1" value="@ViewBag.MonthId" class="form-control" style="display:none" />
+                    </th>
+                    <th>
+                        <a class="sort-icon" onclick="sortRequest('name')">Coupon Text</a>
+                        <br />
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Coupon Text" />
+                    </th>
+                    <th style="vertical-align: top; width: 100px;">
+                        Action
+                        <br />
+                        <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="data-grid">
+                <!-- Data Table  -->
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/AjaxGrid.js"></script>
+
+    <script type="text/javascript">
+        _accessUrl = '@Url.Action("DataGridList", "ManageCouponAdMonth")';
+        _gridDivId = 'data-grid';
+        _searchBoxDivId = 'search-filter';
+        _showAllRecords = false;
+        _sortExpression = 'createdon';
+        _isEditorPage = true;
+        $( document ).ready(function() {
+            searchRequest();
+        });
+        $('body').on('change', '#search-filter th input[type=text]', function () {
+            searchRequest();
+        });
+
+    </script>

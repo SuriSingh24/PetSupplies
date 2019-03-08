@@ -1,0 +1,7 @@
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\bin\Debug\DropShipping.Framework.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\bin\Debug\DropShipping.Framework.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\bin\Debug\DropShipping.Data.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\bin\Debug\DropShipping.Data.pdb
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\obj\Debug\DropShipping.Framework.csprojResolveAssemblyReference.cache
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\obj\Debug\DropShipping.Framework.dll
+D:\Applications\DropShipping\ShourceCode\DropShipping.Framework\obj\Debug\DropShipping.Framework.pdb

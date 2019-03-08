@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PetSuppliesPlus.Models.ExceptionReportModal>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = null;
+    }
+    @if (Model != null && Model.Count() > 0)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(new DateTime(2000, item.Month, 1).ToString("MMMM"))
+                </td>
+                <td>
+                    @item.Year
+                </td>
+               
+                <td>
+                    @item.DropNumber
+                </td>
+                <td>
+                    @item.StoreId
+                </td>
+                <td>
+                    @item.StoreName
+                </td>
+                <td>
+                    @item.Description
+                </td>
+              
+
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="7">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="7">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }

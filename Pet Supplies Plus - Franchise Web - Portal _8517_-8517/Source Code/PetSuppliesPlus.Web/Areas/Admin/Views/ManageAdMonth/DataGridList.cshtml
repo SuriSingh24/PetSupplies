@@ -1,0 +1,121 @@
+﻿@model IEnumerable<PetSuppliesPlus.Model.AdMonth.AdMonthModel>
+    @using PetSuppliesPlus.Framework;
+    @{
+        Layout = null;
+    }
+    @if (Model != null)
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Year
+                </td>
+                <td>
+                    @(new DateTime(2000, item.Month, 1).ToString("MMMM"))
+                </td>
+                <td>
+                    @item.DropNumber
+                </td>
+                <td>
+                    @item.LockOutStartDate.ToString(ApplicationConstant.DateFormatDisplay)
+                </td>
+                <td>
+                    @item.LockOutEndDate.ToString(ApplicationConstant.DateFormatDisplay)
+                </td>
+                <td>
+                    @item.CorpInHomeDate.ToString(ApplicationConstant.DateFormatDisplay)
+                </td>
+                <td>
+                    @item.AdOptionName    
+                    </td>
+                <td>
+                    @item.AdCouponName
+                </td>
+                   @* <td>
+        @item.InHomeEnd.ToString(ApplicationConstant.DateFormatDisplay)
+    </td>*@
+                <td>
+                    
+                    @if (!string.IsNullOrEmpty(item.PetpartnerInfo) && item.PetpartnerInfo.Length > 40)
+                    {
+                        <a href="javascript:void(0);" data-div=".divstorec_@item.AdMonthID" class="big-text">@item.PetpartnerInfo.GetLimitedText(40)</a>
+
+                        <div class="divstorec_@item.AdMonthID" style="display:none;">@item.PetpartnerInfo</div>
+                    }
+                    else
+                    {
+                        <span>@item.PetpartnerInfo</span>
+                    }  
+                </td>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.CorpPlanText) && item.CorpPlanText.Length > 40)
+                    {
+                        <a href="javascript:void(0);" data-div=".divstorec_@item.AdMonthID" class="big-text">@item.CorpPlanText.GetLimitedText(40)</a>
+
+                        <div class="divstorec_@item.AdMonthID" style="display:none;">@item.CorpPlanText</div>
+                    }
+                    else
+                    {
+                        <span>@item.CorpPlanText</span>
+                    }
+                </td>
+
+                <td class="icon_img">
+                    <a href="@Url.Content("~/Admin/ManageAdMonth/Add/")@item.EncryptedID" title="edit"><img alt="edit" src="@Url.Content("~/Content/images/edit.png")"></a>
+                    <a href="javascript:void(0);" onclick="removeAdMonth('@item.EncryptedID')" title="InActive"><img alt="delete" src="@Url.Content("~/Content/images/delete.png")"></a>
+                    <a href="@Url.Content("~/Admin/ManageCouponAdMonth/Index/")@item.EncryptedID" title="Add Coupon in Month"><img alt="Add Coupon" src="@Url.Content("~/Content/images/add-coupon.png")"></a>
+                    <a href="@Url.Content("~/Admin/Document/Index/")@item.EncryptedID" title="Add Document"><img alt="Add Document" src="@Url.Content("~/Content/images/Document.png")"></a>
+                </td>
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td colspan="11">
+                @Html.Partial("DataPaging")
+            </td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <td colspan="11">
+                <span class="no-data">No record found.</span>
+            </td>
+        </tr>
+
+    }
+    <script>
+        function CompanyDetail(id) {
+            $('#' + id).css('display', '');
+        }
+
+
+        function removeAdMonth(eId) {
+
+            if (confirm('Are you sure you want to delete this AdMonth?')) {
+                var data = {
+                    id: eId
+                };
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("DeleteAdMonth", "ManageAdMonth")',
+                    type: 'POST',
+                    data: JSON.stringify({ id: eId }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.Message);
+                        if (data.Status == 0) {
+                            asynList();
+                        }
+                    },
+                    error: function (data) {
+                    }
+
+                });
+            }
+        }
+    </script>

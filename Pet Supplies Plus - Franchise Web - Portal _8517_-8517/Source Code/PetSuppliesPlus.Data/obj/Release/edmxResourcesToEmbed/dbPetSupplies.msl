@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PetSupplies_8517StoreContainer" CdmEntityContainer="dbPetSupplies_8517">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PetSupplies_8517.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PetSupplies_8517.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PetSupplies_8517.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PetSupplies_8517.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PetSupplies_8517.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PetSupplies_8517.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PetSupplies_8517.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PetSupplies_8517.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PetSupplies_8517.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="AdMonths">
+      <EntityTypeMapping TypeName="PetSupplies_8517.AdMonth">
+        <MappingFragment StoreEntitySet="AdMonth">
+          <ScalarProperty Name="CorpPlanText" ColumnName="CorpPlanText" />
+          <ScalarProperty Name="AdOptionID" ColumnName="AdOptionID" />
+          <ScalarProperty Name="CorpInHomeDate" ColumnName="CorpInHomeDate" />
+          <ScalarProperty Name="PetpartnerInfo" ColumnName="PetpartnerInfo" />
+          <ScalarProperty Name="DropNumber" ColumnName="DropNumber" />
+          <ScalarProperty Name="LockOutStartDate" ColumnName="LockOutStartDate" />
+          <ScalarProperty Name="LockOutEndDate" ColumnName="LockOutEndDate" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="AdCoupnID" ColumnName="AdCoupnID" />
+          <ScalarProperty Name="AdMonthID" ColumnName="AdMonthID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADOptions">
+      <EntityTypeMapping TypeName="PetSupplies_8517.ADOption">
+        <MappingFragment StoreEntitySet="ADOption">
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="Vendorname" ColumnName="Vendorname" />
+          <ScalarProperty Name="MinimumCirculation" ColumnName="MinimumCirculation" />
+          <ScalarProperty Name="SpecialChoice" ColumnName="SpecialChoice" />
+          <ScalarProperty Name="ADOptionName" ColumnName="ADOptionName" />
+          <ScalarProperty Name="ADOptionID" ColumnName="ADOptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllowedStoreOptions">
+      <EntityTypeMapping TypeName="PetSupplies_8517.AllowedStoreOption">
+        <MappingFragment StoreEntitySet="AllowedStoreOption">
+          <ScalarProperty Name="AdOptionID" ColumnName="AdOptionID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="AllowedStoreOptionID" ColumnName="AllowedStoreOptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coupons">
+      <EntityTypeMapping TypeName="PetSupplies_8517.Coupon">
+        <MappingFragment StoreEntitySet="Coupon">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CouponText" ColumnName="CouponText" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="PetSupplies_8517.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="MonthID" ColumnName="MonthID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventLogs">
+      <EntityTypeMapping TypeName="PetSupplies_8517.EventLog">
+        <MappingFragment StoreEntitySet="EventLog">
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExceptionReports">
+      <EntityTypeMapping TypeName="PetSupplies_8517.ExceptionReport">
+        <MappingFragment StoreEntitySet="ExceptionReport">
+          <ScalarProperty Name="IsAnyAdChoiseAssigned" ColumnName="IsAnyAdChoiseAssigned" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="ExceptionID" ColumnName="ExceptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginHistories">
+      <EntityTypeMapping TypeName="PetSupplies_8517.LoginHistory">
+        <MappingFragment StoreEntitySet="LoginHistory">
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Device" ColumnName="Device" />
+          <ScalarProperty Name="IPaddress" ColumnName="IPaddress" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Markets">
+      <EntityTypeMapping TypeName="PetSupplies_8517.Market">
+        <MappingFragment StoreEntitySet="Market">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MarketID" ColumnName="MarketID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="PetSupplies_8517.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="ArtworkCode" ColumnName="ArtworkCode" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="MarketID" ColumnName="MarketID" />
+          <ScalarProperty Name="Storename" ColumnName="Storename" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Ownergroup" ColumnName="Ownergroup" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreAdChoices">
+      <EntityTypeMapping TypeName="PetSupplies_8517.StoreAdChoice">
+        <MappingFragment StoreEntitySet="StoreAdChoice">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="OwnDistribution" ColumnName="OwnDistribution" />
+          <ScalarProperty Name="NotPrinting" ColumnName="NotPrinting" />
+          <ScalarProperty Name="FollowedCorporate" ColumnName="FollowedCorporate" />
+          <ScalarProperty Name="ChoiceInitials" ColumnName="ChoiceInitials" />
+          <ScalarProperty Name="InHomeDate" ColumnName="InHomeDate" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Device" ColumnName="Device" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="AdOptionID" ColumnName="AdOptionID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="AdMonthID" ColumnName="AdMonthID" />
+          <ScalarProperty Name="ChoiceID" ColumnName="ChoiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreAdChoiceHistories">
+      <EntityTypeMapping TypeName="PetSupplies_8517.StoreAdChoiceHistory">
+        <MappingFragment StoreEntitySet="StoreAdChoiceHistory">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="ChoiceInitials" ColumnName="ChoiceInitials" />
+          <ScalarProperty Name="InHomeDate" ColumnName="InHomeDate" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Device" ColumnName="Device" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="AdOptionID" ColumnName="AdOptionID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="AdMonthID" ColumnName="AdMonthID" />
+          <ScalarProperty Name="ChoiceID" ColumnName="ChoiceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PetSupplies_8517.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PetSupplies_8517.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Ownername" ColumnName="Ownername" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserStores">
+      <EntityTypeMapping TypeName="PetSupplies_8517.UserStore">
+        <MappingFragment StoreEntitySet="UserStore">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserStoreID" ColumnName="UserStoreID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CouponAdMonth" TypeName="PetSupplies_8517.CouponAdMonth" StoreEntitySet="CouponAdMonth">
+      <EndProperty Name="Coupon">
+        <ScalarProperty Name="CouponID" ColumnName="CouponId" />
+      </EndProperty>
+      <EndProperty Name="AdMonth">
+        <ScalarProperty Name="AdMonthID" ColumnName="AdMonthID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

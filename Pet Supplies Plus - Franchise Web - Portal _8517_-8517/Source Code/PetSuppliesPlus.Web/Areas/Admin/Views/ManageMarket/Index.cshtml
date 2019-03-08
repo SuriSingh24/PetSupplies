@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Market";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tabular-data">
+    <table class="table stacktable large-only tablularData">
+        <caption>Market <span>List</span></caption>
+        <thead>
+            <tr id="search-filter">
+
+                <th>
+                    <a class="sort-icon" onclick="sortRequest('name')">Name</a>
+                    <br />
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" />
+                </th>
+                <th style="vertical-align: top; width: 100px;">
+                    Action
+                    <br />
+                    <img src="@Url.Content("~/content/images/search.png")" onclick="searchRequest();" class="search-btn" title="search" style="cursor:pointer;" />
+
+                    <a href="@Url.Content("~/Admin/ManageMarket/Add")">
+                        <img src="@Url.Content("~/content/images/add-user.png")" title="add" style="cursor:pointer;" />
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="data-grid">
+            <!-- Data Table  -->
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/AjaxGrid.js"></script>
+
+<script type="text/javascript">
+    _accessUrl = '@Url.Action("DataGridList", "ManageMarket")';
+    _gridDivId = 'data-grid';
+    _searchBoxDivId = 'search-filter';
+    _showAllRecords = false;
+    _sortExpression = 'marketid';
+    _isEditorPage = true;
+
+    $(function () {
+        asynList();
+
+    });
+
+    $('body').on('change', '#search-filter th input[type=text]', function () {
+        searchRequest();
+    });
+
+    function removeUser(eId) {
+        if (confirm('Are you sure you want to delete this market?')) {
+            var data = {
+                id: eId
+            };
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("DeleteMarket", "ManageMarket")',
+                type: 'POST',
+                data: JSON.stringify({ id: eId }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Message);
+                    if (data.Status == 0) {
+                        asynList();
+                    }
+                },
+                error: function (data) {
+                }
+
+            });
+        }
+    }
+
+</script>

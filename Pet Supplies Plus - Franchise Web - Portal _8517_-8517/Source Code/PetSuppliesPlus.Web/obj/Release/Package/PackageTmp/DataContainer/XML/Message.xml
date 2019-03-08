@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Message>
+  <Login>
+    <ErrorMessage>Invalid email or password</ErrorMessage>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+  </Login>
+
+  <ChangePassword>
+    <OldAndNewSame>New password can not be current password</OldAndNewSame>
+    <WrongPassword>Invalid current password</WrongPassword>
+    <NotMatch>New password and confirm password must be same</NotMatch>
+    <ErrorMessage>Password could not be updated</ErrorMessage>
+    <SuccessMessage>Password has been changed successfully</SuccessMessage>
+  </ChangePassword>
+
+  <ForgotPassword>
+    <ErrorMessage>Email id does not exists</ErrorMessage>
+    <SuccessMessage>Password has been sent to your email</SuccessMessage>
+  </ForgotPassword>
+
+  <User>
+    <Update>Changes has been saved successfully</Update>
+    <Save>User have been saved successfully</Save>
+  </User>
+
+
+  <Dashboard>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+  </Dashboard>
+
+  <Settings>
+    <Save>Settings has been saved successfully</Save>
+    <Update>Settings has been updated successfully</Update>
+    <Duplicate>Settings already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Settings has been deleted successfully</Delete>
+    <TriggerGroup> Random move of individuals has been triggered successfully</TriggerGroup>
+    <DeleteAll>All records have been deleted successfully</DeleteAll>
+  </Settings>
+
+  <ManageUser>
+    <Save>User has been saved successfully</Save>
+    <Update>User has been updated successfully</Update>
+    <Duplicate>Email already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>User has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected user becuase it is reference with another</NotDelete>
+  </ManageUser>
+
+  <ManageUserStore>
+    <Save>User store has been saved successfully</Save>
+    <Update>User store has been updated successfully</Update>
+    <Duplicate>Store already exists for the same user</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>User store has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected user store becuase it is reference with Store choice</NotDelete>
+  </ManageUserStore>
+
+  <ManageMarket>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected market becuase it is associate with store so please delete store associate with selected market</NotDelete>
+  </ManageMarket>
+  <ManageStore>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected store becuase it is associate with user store or store ad option or ad choice so please delete associate records with selected store</NotDelete>
+    <Failed>Request failed please try again. </Failed>
+    <NoEntry>All stores already have user choice or &lt;/br&gt; stores do not have any user or &lt;/br&gt; stores do not allow current monthAdOption.</NoEntry>
+    <UnDefinedUser>No user assign to this store.</UnDefinedUser>
+    <CurrentAdOptionNotAllowed>Current Month Follow Corporate AdOption not allowed to this store</CurrentAdOptionNotAllowed>
+    <PreviousAdOptionNotAllowed>Previous Month AdOption in does not allowed to this store</PreviousAdOptionNotAllowed>
+    <NoPreviousPlan>No AdOption in previous months for this store</NoPreviousPlan>
+    <PreviousMonthFollwCorporate>Previous month also have follow corporate</PreviousMonthFollwCorporate>
+    <CurrentAdOptionNotPrintingAllowed>Current Month Not Printing AdOption not allowed to this store</CurrentAdOptionNotPrintingAllowed>
+    <CurrentAdOptionNotSelfAllowed>Current Month Self Distributing AdOption not allowed to this store</CurrentAdOptionNotSelfAllowed>
+    <PreviousMonthNotPrinting>Previous month also have Not Printing</PreviousMonthNotPrinting>
+    <PreviousMonthSelfdistributing>Previous month also have Self distributing</PreviousMonthSelfdistributing>
+    <PreviousMonthAdOption>Reassigned as previous month</PreviousMonthAdOption>
+    <PreviousMonthCouponNotMatch>Previous month coupon does not matched</PreviousMonthCouponNotMatch>
+    <NoCurrentMonthPlan>No StoreAdChoice exist for current month for this drop number</NoCurrentMonthPlan>
+    <NoPreviousDropNo>Given Drop Number does not exist for previous month</NoPreviousDropNo>
+    <AlreadyUpdated>StoreAdChoice for this month already updated</AlreadyUpdated>
+    <StoreidDuplicate>Record already exists</StoreidDuplicate>
+  </ManageStore>
+  <AdOption>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <SpecialDuplicate>Record already exists with special Ad option</SpecialDuplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been inactived successfully</Delete>
+    <NotDelete>You could not delete selected record becuase it is associated with store ad option so please delete store ad option associated with selected ad option</NotDelete>
+  </AdOption>
+  <StoreAdChoice>
+    <Save>We have successfully received your Ad-Option Response(s). Thank you for your Submission. You may edit your responses before the date of [EndDate]</Save>
+    <Update>We have successfully received your Ad-Option Response(s). Thank you for your Submission. You may edit your responses before the date of [EndDate]</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected store becuase it is associated with user store so please delete store associated with selected store</NotDelete>
+    <None>Please select your Monthly Ad Choice for Store# [Store]</None>
+    <IndividualChoice>Please choose ad option for Store# [Store]</IndividualChoice>
+    <YesNo>Please select your coupon apply choice for Store# [Store]</YesNo>
+    <ChooseCoupon>Please choose coupon for Store# [Store]</ChooseCoupon>
+    <SpecialChoice>
+      Hello [User], we have received your store choice(s) successfully. However, because you have selected ‘Self-Distributing (Creating Own Artwork)’ an email will be sent with a link to download a print-ready PDF of the 4 page ad that you can use to create artwork to your printing specifications. To qualify for pet partner funding you will also need to provide proof of distribution to [adrequest@petsuppliesplus.com]
+    </SpecialChoice>
+    <RedirectToConfirmation>Almost There, Processing Summary Page…</RedirectToConfirmation>
+  </StoreAdChoice>
+
+  <Coupon>
+    <Save>Coupon has been saved successfully</Save>
+    <Update>Coupon has been updated successfully</Update>
+    <Duplicate>Coupon already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Coupon has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected coupon becuase it is associate with coupon ad month or store ad choice</NotDelete>
+  </Coupon>
+  <ManageStoreOption>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected record becuase it is reference with another</NotDelete>
+  </ManageStoreOption>
+
+  <AdMonth>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <Date>This month already has the record between LockOut StartDate and LockOut EndDate</Date>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected ad month detail becuase it is associate with coupon ad month</NotDelete>
+  </AdMonth>
+  <ManageCouponAdMonth>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected ad month detail becuase it is associate with store ad choice</NotDelete>
+    <NotAssign>You could not assign selected ad month detail becuase it is associate with store ad choice</NotAssign>
+    <AssociatedCoupon>You could not delete selected Coupon becuase it is associate with store ad choice</AssociatedCoupon>
+    <DefaultCoupon>You could not delete selected Coupon becuase it is default coupon for this month</DefaultCoupon>
+  </ManageCouponAdMonth>
+
+  <Message>
+    <Save>Message has been sent successfully</Save>
+    <Update>Message has been updated successfully</Update>
+    <Duplicate>Message already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Message has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected record becuase it is reference with another</NotDelete>
+  </Message>
+  <Store>
+    <Save>Your ad option details has been saved successfully</Save>
+    <Error>Oops!, some error occur while saving data</Error>
+  </Store>
+  <ExceptionReport>
+    <Save>Exception found check log for details</Save>
+    <Duplicate>Duplicate record found.</Duplicate>
+  </ExceptionReport>
+  <Document>
+    <Save>Record has been saved successfully</Save>
+    <Update>Record has been updated successfully</Update>
+    <Duplicate>Record already exists</Duplicate>
+    <InvalidRequest>Invalid Request</InvalidRequest>
+    <ErrorMessage>Please provide valid data</ErrorMessage>
+    <Delete>Record has been deleted successfully</Delete>
+    <NotDelete>You could not delete selected ad month detail becuase it is associate with coupon ad month</NotDelete>
+  </Document>
+
+  <MailTamplateSubject>
+    <AutoStoreAdChoiceSelection>[CurrentMonth] First Look - Marketing Opt-In Manager – Due [LockoutEndDate]</AutoStoreAdChoiceSelection>
+  </MailTamplateSubject>
+</Message>
